@@ -1,0 +1,121 @@
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #071343;
+    margin: 0;
+    padding: 2rem;
+  }
+
+  .payment-container {
+    background: white;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .payment-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .payment-details div {
+    margin-bottom: 1rem;
+    min-width: 160px;
+  }
+
+  .payment-method h3 {
+    margin-bottom: 0.2rem;
+  }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    gap: 0.5rem;
+  }
+
+  .tab-button {
+    flex: 1 1 30%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+    cursor: pointer;
+    font-weight: bold;
+    color: #5e4bff;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .tab-button.active {
+    background: #fff;
+    border-bottom: 2px solid #5e4bff;
+    color: black;
+  }
+
+  .tab-button.disabled {
+    background: #eee;
+    color: #999;
+    cursor: not-allowed;
+  }
+
+  .tab-button.disabled::after {
+    content: "Coming Soon";
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.7rem;
+    color: #c00;
+  }
+
+  .tab-content {
+    display: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  input[type="text"], input[type="file"], select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .required {
+    color: red;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cancel-btn, .submit-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .cancel-btn {
+    background: #eee;
+  }
+
+  .submit-btn {
+    background: #292b66;
+    color: white;
+  }

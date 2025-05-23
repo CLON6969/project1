@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+public function up(): void
+{
+    Schema::create('payments', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')->constrained()->onDelete('cascade'); // logged-in user
+        $table->string('transaction_type')->default('MemberRegistrationPayment');
+        $table->string('reference')->unique(); // like #1SDYMJUKVM
+        $table->string('narration')->nullable(); // user name or comment
+        $table->decimal('amount', 10, 2);
+        $table->enum('payment_method', ['mobile', 'card', 'bank']);
+        $table->string('mobile_number')->nullable();
+        $table->string('card_number')->nullable();
+        $table->string('bank_proof')->nullable(); // path to uploaded file
+        $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+        $table->timestamps();
+    });
+}
+
+    
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('payments');
+    }
+};

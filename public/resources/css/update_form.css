@@ -1,0 +1,90 @@
+/* Base container */
+.profile-form-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Heading */
+.profile-form-container h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Grid layout */
+.profile-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Label + Input wrapper */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.profile-form-container label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+/* Inputs, selects, textareas */
+.profile-form-container input,
+.profile-form-container select,
+.profile-form-container textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+
+.profile-form-container input:focus,
+.profile-form-container select:focus,
+.profile-form-container textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    outline: none;
+}
+
+/* File input */
+.profile-form-container input[type="file"] {
+    padding: 0.25rem 0;
+}
+
+/* Submit button */
+.profile-form-container button[type="submit"] {
+    background-color: #2563eb;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.profile-form-container button[type="submit"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* Status message */
+.status-message {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid #10b981;
+}
