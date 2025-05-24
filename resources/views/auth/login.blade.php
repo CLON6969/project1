@@ -13,6 +13,8 @@
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
+
+                <!-- Email Field -->
                 <div class="input-group">
                     <label>Email address</label>
                     <div class="input-wrapper">
@@ -24,18 +26,22 @@
                     @enderror
                 </div>
 
+                <!-- Password Field -->
                 <div class="input-group">
                     <label>Password</label>
                     <div class="input-wrapper">
                         <span class="icon"><i class="fas fa-lock"></i></span>
                         <input type="password" name="password" id="password" placeholder="Password" required>
-                        <span id="togglePassword" class="toggle-password"><i class="fas fa-eye"></i></span>
+                        <span id="togglePassword" class="toggle-password" style="cursor: pointer;">
+                            <i class="fas fa-eye"></i>
+                        </span>
                     </div>
                     @error('password')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
 
+                <!-- Options -->
                 <div class="options">
                     <label class="remember-me">
                         <input type="checkbox" name="remember">
@@ -44,9 +50,12 @@
                     <a href="{{ route('password.request') }}" class="forgot-password">Forgot password?</a>
                 </div>
 
+                <!-- Submit Button -->
                 <button type="submit" class="login-button">Sign in</button>
 
                 <div class="separator">or</div>
+
+                <!-- Social Login Buttons -->
                 <button type="button" class="social-button google">Continue with Google</button>
                 <button type="button" class="social-button facebook">Continue with Facebook</button>
                 <button type="button" class="social-button apple">Continue with Apple</button>
@@ -58,11 +67,25 @@
         </div>
     </div>
 
+    <!-- View Password Script -->
     <script>
         document.getElementById('togglePassword').addEventListener('click', function () {
             const passwordField = document.getElementById('password');
-            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+            const icon = this.querySelector('i');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
         });
     </script>
+
+    <!-- Font Awesome (make sure it's loaded) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </div>
 @endsection

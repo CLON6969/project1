@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -22,24 +21,32 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-        $request->session()->regenerate();
-        
+        $credentials = $request->only('email', 'password');
+        $remember = $request->boolean('remember');
 
-        
-$user = Auth::user();
+        if (Auth::attempt($credentials, $remember)) {
+            $request->session()->regenerate();
 
-return redirect()->intended(match ($user->role_id) {
-    1 => route('admin.dashboard'),
-    2 => route('staff.dashboard'),
-    3 => route('user.dashboard'),
-    default => '/',
-});
+            $user = Auth::user();
 
+            return redirect()->intended(match ($user->role_id) {
+                1 => route('admin.dashboard'),
+                2 => route('staff.dashboard'),
+                3 => route('user.dashboard'),
+                default => '/',
+            });
+        }
 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**
@@ -50,7 +57,6 @@ return redirect()->intended(match ($user->role_id) {
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/');

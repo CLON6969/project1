@@ -21,8 +21,14 @@ public function up(): void
         $table->enum('payment_method', ['mobile', 'card', 'bank']);
         $table->string('mobile_number')->nullable();
         $table->string('card_number')->nullable();
+        $table->string('transaction_id')->nullable(); // for future API use
+        $table->enum('api_status', ['not_applicable', 'initiated', 'success', 'failed'])->default('not_applicable');
+        $table->text('gateway_response')->nullable(); // store JSON/raw response
         $table->string('bank_proof')->nullable(); // path to uploaded file
+        $table->foreignId('invoice_id')->nullable()->constrained()->onDelete('set null');
+        $table->timestamp('paid_at')->nullable();      // Record actual payment date/time
         $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+        $table->text('notes')->nullable(); // Optional for admin/staff
         $table->timestamps();
     });
 }
@@ -37,3 +43,5 @@ public function up(): void
         Schema::dropIfExists('payments');
     }
 };
+
+

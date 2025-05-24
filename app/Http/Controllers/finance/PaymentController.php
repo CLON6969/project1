@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\finance;
+use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +11,7 @@ class PaymentController extends Controller
 {
     public function create()
     {
-        return view('user.payments.create');
+        return view('user.finance.payments.create');
     }
 
     public function store(Request $request)

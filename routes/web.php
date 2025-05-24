@@ -18,10 +18,11 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\MoreController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\finance\PaymentController;
 use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\StaffPaymentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FinanceController;
 
 
 
@@ -73,7 +74,7 @@ Route::get('/events/view/{id}', [EventController::class, 'show'])->name('events.
 
 Route::view('/loading_count_down', 'loading_count_down');
 Route::view('/page_loading', 'page_loading');
-Route::view('/payment', 'payment');
+
 Route::view('/emails/sales_contact_form', '/emails/sales_contact_form');
 
 Route::get('/load-more-packages', [PackageController::class, 'loadMore']);
@@ -145,9 +146,7 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 
     // Add more admin-specific routes here
 
-     // Admin approves payments
-     Route::get('/admin/payments', [AdminPaymentController::class, 'index'])->name('admin.payments.index');
-     Route::put('/admin/payments/{id}', [AdminPaymentController::class, 'update'])->name('admin.approve_payment');
+
 });
 
 // -------------------------------------
@@ -160,9 +159,7 @@ Route::middleware(['auth', 'role:2'])->group(function () {
 
     // Add more staff-specific routes here
     
- // Staff can also review/approve payments
- Route::get('/staff/payments', [StaffPaymentController::class, 'index'])->name('staff.payments.index');
- Route::put('/staff/payments/{id}', [StaffPaymentController::class, 'update'])->name('staff.approve_payment');
+
     
 });
 
@@ -172,9 +169,21 @@ Route::middleware(['auth', 'role:2'])->group(function () {
 Route::middleware(['auth', 'role:3'])->group(function () {
     Route::get('/user/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
 
+
+
+
+
+    // Finicial Routes
     // Payment Routes
-    Route::get('/user/payments/create', [PaymentController::class, 'create'])->name('user.payments.create');
-    Route::post('/user/payments/store', [PaymentController::class, 'store'])->name('user.submit_payment');
+    Route::get('/user/finance/payments/create', [PaymentController::class, 'create'])->name('user.finance.payments.create');
+    Route::post('/user/finance/payments/store', [PaymentController::class, 'store'])->name('user.finance.payments.submit_payment');
+
+
+    Route::get('user/finance/', [FinanceController::class, 'index'])->name('user/finance/index');
+    Route::get('user/finance/invoices/invoices', [FinanceController::class, 'invoices'])->name('user/finance/invoices/invoices');
+    Route::get('user/finance/expenses/expenses', [FinanceController::class, 'expenses'])->name('user/finance/expenses/expenses');
+    Route::get('user/finance/budget/budget', [FinanceController::class, 'budget'])->name('user/finance/budgets/budget');
+    Route::get('user/finance/reports/reports', [FinanceController::class, 'reports'])->name('user/finance/reports/reports');
 
 
     // Profile Routes

@@ -36,7 +36,7 @@
        <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo">
       <button id="toggleTheme" class="btn btn-sm btn-secondary">Toggle Dark Mode</button>
     </div>
-    <iframe id="contentFrame" src="{{ route('user.payments.create') }}"></iframe>
+    <iframe id="contentFrame" src="{{ route('user.finance.payments.create') }}"></iframe>
   </div>
 </div>
 
@@ -111,6 +111,7 @@
     { label: 'Approved', url: '/loading_count_down' },
     { label: 'Pending', url: '/transactions/pending' },
     { label: 'Rejected', url: '/transactions/rejected' },
+
     {
       label: 'Analytics',
       children: [
@@ -118,7 +119,23 @@
         { label: 'Yearly', url: '/transactions/analytics/yearly' }
       ]
     }
+
   ]));
+
+  menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
+  { label: 'Overview', url: '/user/finance/' },
+  { label: 'payments', url: '/user/finance/payments/create' },
+  { label: 'Invoices', url: '/user/finance/invoices/invoices' },
+  { label: 'Expenses', url: '/user/finance/expenses/expenses' },
+  { label: 'Budget', url: '/user/finance/budgets/budget' },
+  { label: 'Reports', url: '/user/finance/reports/reports' }
+]));
+
+
+
+
+
+
 
   enableTooltips();
 </script>
