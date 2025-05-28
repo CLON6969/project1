@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="wrapper">
+ <div class="wrapper">
   <nav id="sidebar" class="sidebar d-flex flex-column">
     <div class="d-flex justify-content-between align-items-center text-white px-3 py-2 border-bottom">
       <span class="nav-label fw-bold">Dashboard</span>
@@ -36,7 +36,7 @@
        <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo">
       <button id="toggleTheme" class="btn btn-sm btn-secondary">Toggle Dark Mode</button>
     </div>
-    <iframe id="contentFrame" src="{{ route('user.finance.payments.create') }}"></iframe>
+    <iframe id="contentFrame" src="{{ route('payments.create') }}"></iframe>
   </div>
 </div>
 
@@ -102,10 +102,7 @@
     { label: 'Edit Profile', url: '/profile/edit' }
   ]));
 
-  menu.appendChild(createDropdown('Payments', 'fas fa-credit-card', [
-    { label: 'Submit Payment', url: '/payments/submit' },
-    { label: 'Payment History', url: '/payments/history' }
-  ]));
+
 
   menu.appendChild(createDropdown('Transactions', 'fas fa-briefcase', [
     { label: 'Approved', url: '/loading_count_down' },
@@ -125,10 +122,10 @@
   menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
   { label: 'Overview', url: '/user/finance/' },
   { label: 'payments', url: '/user/finance/payments/create' },
-  { label: 'Invoices', url: '/user/finance/invoices/invoices' },
-  { label: 'Expenses', url: '/user/finance/expenses/expenses' },
-  { label: 'Budget', url: '/user/finance/budgets/budget' },
-  { label: 'Reports', url: '/user/finance/reports/reports' }
+  { label: 'Invoices', url: '/user/finance/invoices/create' },
+  { label: 'Expenses', url: '/user/finance/expenses/create' },
+  { label: 'Budget', url: '/user/finance/budgets/create' },
+  { label: 'Reports', url: '/user/finance/reports/' }
 ]));
 
 

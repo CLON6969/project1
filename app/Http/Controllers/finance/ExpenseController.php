@@ -10,11 +10,11 @@ class ExpenseController extends Controller
 {
     public function index() {
         $expenses = Expense::where('user_id', Auth::id())->get();
-        return view('finance.expenses.index', compact('expenses'));
+        return view('user.finance.expenses.index', compact('expenses'));
     }
 
     public function create() {
-        return view('finance.expenses.create');
+        return view('user.finance.expenses.create');
     }
 
     public function store(Request $request) {
@@ -36,3 +36,4 @@ class ExpenseController extends Controller
         return redirect()->route('expenses.index')->with('success', 'Expense recorded successfully.');
     }
 }
+

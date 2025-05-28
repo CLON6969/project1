@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
-    public function index() {
-        $invoices = Invoice::where('user_id', Auth::id())->get();
-        return view('finance.invoices.index', compact('invoices'));
-    }
+
+    
+public function index() {
+    $invoices = Invoice::where('user_id', Auth::id())->get();
+    return view('user.finance.invoices.index', compact('invoices'));
+}
+
 
     public function create() {
-        return view('finance.invoices.create');
+        return view('user.finance.invoices.create'); // Usually a different view for create
     }
 
     public function store(Request $request) {
@@ -33,6 +36,6 @@ class InvoiceController extends Controller
             'due_date' => $request->due_date,
         ]);
 
-        return redirect()->route('invoices.index')->with('success', 'Invoice created successfully.');
+        return redirect()->route('user.finance.invoices.index')->with('success', 'Invoice created successfully.');
     }
 }

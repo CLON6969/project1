@@ -18,12 +18,19 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\MoreController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\finance\PaymentController;
 use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\StaffPaymentController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\FinanceController;
 
+
+use App\Http\Controllers\Finance\{
+    ExpenseController,
+    InvoiceController,
+    ReportController,
+    PaymentController,
+    BudgetController,
+    FinanceController
+};
 
 
 use App\Models\Pricing;
@@ -174,16 +181,61 @@ Route::middleware(['auth', 'role:3'])->group(function () {
 
 
     // Finicial Routes
-    // Payment Routes
-    Route::get('/user/finance/payments/create', [PaymentController::class, 'create'])->name('user.finance.payments.create');
-    Route::post('/user/finance/payments/store', [PaymentController::class, 'store'])->name('user.finance.payments.submit_payment');
+
+Route::prefix('user/finance')->middleware('auth')->group(function () {
 
 
-    Route::get('user/finance/', [FinanceController::class, 'index'])->name('user/finance/index');
-    Route::get('user/finance/invoices/invoices', [FinanceController::class, 'invoices'])->name('user/finance/invoices/invoices');
-    Route::get('user/finance/expenses/expenses', [FinanceController::class, 'expenses'])->name('user/finance/expenses/expenses');
-    Route::get('user/finance/budget/budget', [FinanceController::class, 'budget'])->name('user/finance/budgets/budget');
-    Route::get('user/finance/reports/reports', [FinanceController::class, 'reports'])->name('user/finance/reports/reports');
+    // Finicial
+    Route::prefix('/')->group(function () {
+        Route::get('/', [ FinanceController::class, 'index'])->name('reports.index');
+         // Route::get('/create', [ReportController::class, 'create'])->name('reports.create');
+        //  Route::post('/', [ReportController::class, 'store'])->name('reports.store');
+    });
+
+
+    // Expenses
+    Route::prefix('expenses')->group(function () {
+        Route::get('/', [ExpenseController::class, 'index'])->name('expenses.index');
+        Route::get('/create', [ExpenseController::class, 'create'])->name('expenses.create');
+        Route::post('/', [ExpenseController::class, 'store'])->name('expenses.store');
+    });
+
+    // Invoices
+    Route::prefix('invoices')->group(function () {
+        Route::get('/', [InvoiceController::class, 'index'])->name('invoices.index');
+        Route::get('/create', [InvoiceController::class, 'create'])->name('invoices.create');
+        Route::post('/', [InvoiceController::class, 'store'])->name('invoices.store');
+    });
+
+
+
+    // Payments
+    Route::prefix('payments')->group(function () {
+        Route::get('/', [PaymentController::class, 'index'])->name('payments.index');
+        Route::get('/create', [PaymentController::class, 'create'])->name('payments.create');
+        Route::post('/', [PaymentController::class, 'store'])->name('payments.store');
+    });
+
+
+    // Budgets
+    Route::prefix('budgets')->group(function () {
+        Route::get('/', [BudgetController::class, 'index'])->name('budgets.index');
+        Route::get('/create', [BudgetController::class, 'create'])->name('budgets.create');
+        Route::post('/', [BudgetController::class, 'store'])->name('budgets.store');
+    });
+
+    // reports
+    Route::prefix('reports')->group(function () {
+        Route::get('/', [ReportController::class, 'index'])->name('reports.index');
+         // Route::get('/create', [ReportController::class, 'create'])->name('reports.create');
+        //  Route::post('/', [ReportController::class, 'store'])->name('reports.store');
+    });
+
+
+
+});
+
+
 
 
     // Profile Routes

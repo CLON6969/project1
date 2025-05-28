@@ -10,11 +10,11 @@ class BudgetController extends Controller
 {
     public function index() {
         $budgets = Budget::where('user_id', Auth::id())->get();
-        return view('finance.budgets.index', compact('budgets'));
+        return view('user.finance.budgets.index', compact('budgets'));
     }
 
     public function create() {
-        return view('finance.budgets.create');
+        return view('user.finance.budgets.create');
     }
 
     public function store(Request $request) {
@@ -33,6 +33,7 @@ class BudgetController extends Controller
             'end_date' => $request->end_date,
         ]);
 
-        return redirect()->route('budgets.index')->with('success', 'Budget created successfully.');
+        return redirect()->route('user.finance.budgets.index')->with('success', 'Budget created successfully.');
     }
 }
+

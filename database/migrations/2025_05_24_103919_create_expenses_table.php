@@ -10,16 +10,14 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
-            $table->text('description')->nullable();
             $table->decimal('amount', 10, 2);
-            $table->date('expense_date');
             $table->string('category')->nullable();
+            $table->text('notes')->nullable();
+            $table->date('date');
             $table->timestamps();
         });
     }
-
     public function down(): void {
         Schema::dropIfExists('expenses');
     }
 };
-

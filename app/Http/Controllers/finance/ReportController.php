@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class ReportController extends Controller
 {
     public function index() {
-        return view('finance.reports.index', [
+        return view('user.finance.reports.index', [
             'totalPayments' => Payment::where('user_id', Auth::id())->sum('amount'),
             'totalExpenses' => Expense::where('user_id', Auth::id())->sum('amount'),
             'totalBudgets' => Budget::where('user_id', Auth::id())->sum('amount'),
@@ -19,3 +19,5 @@ class ReportController extends Controller
         ]);
     }
 }
+
+

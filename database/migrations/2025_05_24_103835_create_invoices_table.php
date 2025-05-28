@@ -9,16 +9,14 @@ return new class extends Migration {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('invoice_number')->unique();
+            $table->string('number')->unique();
             $table->string('description')->nullable();
             $table->decimal('amount', 10, 2);
-            $table->date('issue_date');
-            $table->date('due_date')->nullable();
             $table->enum('status', ['unpaid', 'paid', 'overdue'])->default('unpaid');
+            $table->date('due_date')->nullable();
             $table->timestamps();
         });
     }
-
     public function down(): void {
         Schema::dropIfExists('invoices');
     }

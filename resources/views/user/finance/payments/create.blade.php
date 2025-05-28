@@ -22,7 +22,7 @@
     </div>
   @endif
 
-  <form method="POST" action="{{ route('user.finance.payments.submit_payment') }}" enctype="multipart/form-data">
+  <form method="POST" action="{{ route('payments.store') }}" enctype="multipart/form-data">
     @csrf
 
     <div class="payment-details">
