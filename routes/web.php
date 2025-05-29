@@ -187,7 +187,7 @@ Route::prefix('user/finance')->middleware('auth')->group(function () {
 
     // Finicial
     Route::prefix('/')->group(function () {
-        Route::get('/', [ FinanceController::class, 'index'])->name('reports.index');
+        Route::get('/', [ FinanceController::class, 'index'])->name('user.finance.index');
          // Route::get('/create', [ReportController::class, 'create'])->name('reports.create');
         //  Route::post('/', [ReportController::class, 'store'])->name('reports.store');
     });
@@ -201,8 +201,8 @@ Route::prefix('user/finance')->middleware('auth')->group(function () {
     });
 
     // Invoices
-    Route::prefix('invoices')->group(function () {
-        Route::get('/', [InvoiceController::class, 'index'])->name('invoices.index');
+    Route::prefix('/invoices')->group(function () {
+        Route::get('/', [InvoiceController::class, 'index'])->name('user.finance.invoices.index');
         Route::get('/create', [InvoiceController::class, 'create'])->name('invoices.create');
         Route::post('/', [InvoiceController::class, 'store'])->name('invoices.store');
     });
@@ -219,7 +219,7 @@ Route::prefix('user/finance')->middleware('auth')->group(function () {
 
     // Budgets
     Route::prefix('budgets')->group(function () {
-        Route::get('/', [BudgetController::class, 'index'])->name('budgets.index');
+        Route::get('/', [BudgetController::class, 'index'])->name('user.finance.budgets.index');
         Route::get('/create', [BudgetController::class, 'create'])->name('budgets.create');
         Route::post('/', [BudgetController::class, 'store'])->name('budgets.store');
     });
