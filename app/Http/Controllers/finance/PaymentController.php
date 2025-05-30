@@ -5,20 +5,39 @@ namespace App\Http\Controllers\Finance;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use App\Models\PendingSubscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PaymentController extends Controller
 {
-    public function create()
+    public function index()
     {
-        return view('user.finance.payments.create');
+        $payments = Payment::where('user_id', Auth::id())->latest()->get();
+
+        return view('user.finance.payments.index', compact('payments'));
+    }
+
+    public function create(Request $request)
+    {
+        $subscription = PendingSubscription::findOrFail($request->subscription_id);
+
+        if ($subscription->user_id !== Auth::id() || $subscription->status !== 'approved') {
+            abort(403, 'Unauthorized or subscription not approved.');
+        }
+
+        return view('user.finance.payments.create', [
+            'subscription' => $subscription,
+            'plan' => $subscription->plan,
+            'amount' => $subscription->plan->amount,
+        ]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'amount' => 'required|numeric|min:0.01',
+            'pending_subscription_id' => 'required|exists:pending_subscriptions,id',
             'payment_method' => 'required|in:mobile,card,bank',
             'mobile_number' => [
                 'required_if:payment_method,mobile',
@@ -26,21 +45,26 @@ class PaymentController extends Controller
             ],
             'card_number' => 'required_if:payment_method,card',
             'bank_proof' => 'required_if:payment_method,bank|file|mimes:jpg,jpeg,png,pdf|max:2048',
-            'invoice_id' => 'nullable|exists:invoices,id',
-            'notes' => 'nullable|string',
+            'notes' => 'nullable|string|max:1000',
         ]);
+
+        $subscription = PendingSubscription::findOrFail($request->pending_subscription_id);
+
+        if ($subscription->user_id !== Auth::id() || $subscription->status !== 'approved') {
+            return redirect()->back()->withErrors('Unauthorized or subscription not approved.');
+        }
 
         $data = [
             'user_id' => Auth::id(),
-            'transaction_type' => 'MemberRegistrationPayment',
-            'reference' => strtoupper(Str::random(10)),
-            'narration' => Auth::user()->name,
-            'amount' => $request->amount,
+            'pending_subscription_id' => $subscription->id,
+            'reference' => strtoupper(Str::uuid()),
+            'amount' => $subscription->plan->amount,
             'payment_method' => $request->payment_method,
+            'transaction_type' => 'MemberRegistrationPayment',
             'status' => 'pending',
             'api_status' => 'not_applicable',
             'notes' => $request->notes,
-            'invoice_id' => $request->invoice_id,
+            'narration' => 'Payment for subscription: ' . $subscription->plan->name,
         ];
 
         if ($request->payment_method === 'mobile') {
@@ -48,11 +72,12 @@ class PaymentController extends Controller
         } elseif ($request->payment_method === 'card') {
             $data['card_number'] = $request->card_number;
         } elseif ($request->payment_method === 'bank') {
-            $data['bank_proof'] = $request->file('bank_proof')->store('bank_proofs', 'public');
+            $path = $request->file('bank_proof')->store('bank_proofs', 'public');
+            $data['bank_proof'] = $path;
         }
 
         Payment::create($data);
 
-        return redirect()->back()->with('success', 'Payment submitted successfully and is pending approval.');
+        return redirect()->route('payments.index')->with('success', 'Payment submitted successfully and is now pending review.');
     }
 }

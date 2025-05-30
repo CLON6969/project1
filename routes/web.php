@@ -22,6 +22,8 @@ use App\Http\Controllers\AdminPaymentController;
 use App\Http\Controllers\StaffPaymentController;
 use App\Http\Controllers\ContactController;
 
+use App\Http\Controllers\SubscriptionController;
+
 
 use App\Http\Controllers\Finance\{
     ExpenseController,
@@ -110,7 +112,7 @@ Route::get('/pricing', function () {
 
 Route::get('/plan/{id}', function ($id) {
     $plan = Plan::with('features')->findOrFail($id);
-    $packages = Package::all(); // 👈 Add this line
+    $packages = Package::all(); // 
 
     return view('plan-detail', compact('plan', 'packages'));
 })->name('plan.details');
@@ -153,6 +155,20 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 
     // Add more admin-specific routes here
 
+    // Add more admin-specific routes here
+
+ Route::get('/admin/subscriptions', [SubscriptionController::class, 'index'])->name('admin.subscriptions.index');
+    Route::get('/admin/subscriptions/pending', [SubscriptionController::class, 'pending'])->name('admin.subscriptions.pending');
+    Route::get('/admin/subscriptions/approved', [SubscriptionController::class, 'approved'])->name('admin.subscriptions.approved');
+    Route::get('/admin/subscriptions/rejected', [SubscriptionController::class, 'rejected'])->name('admin.subscriptions.rejected');
+
+    Route::get('/admin/subscriptions/pending', [SubscriptionController::class, 'listPending'])->name('admin.subscriptions.pending');
+
+
+    Route::post('/admin/subscriptions/{id}/approve', [SubscriptionController::class, 'approve'])->name('admin.subscriptions.approve');
+
+
+
 
 });
 
@@ -172,77 +188,67 @@ Route::middleware(['auth', 'role:2'])->group(function () {
 
 // -------------------------------------
 // User Dashboard (Role: user only)
-// -------------------------------------
+
+
 Route::middleware(['auth', 'role:3'])->group(function () {
+
+    // Dashboard
     Route::get('/user/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
 
+    // Subscription Plan Selection
+    Route::get('/select-payment', [PaymentController::class, 'select'])->name('payment.select');
+    Route::post('/user/finance/payments/subscription/apply', [SubscriptionController::class, 'apply'])->name('subscription.apply');
 
 
+     Route::post('/subscription/apply', [SubscriptionController::class, 'apply'])->name('subscription.apply');
+    Route::get('/subscription/thankyou', [SubscriptionController::class, 'thankYou'])->name('subscription.thankyou');
 
+    // Finance Main Group
+    Route::prefix('user/finance')->group(function () {
 
-    // Finicial Routes
+        // Finance Overview
+        Route::get('/', [FinanceController::class, 'index'])->name('user.finance.index');
 
-Route::prefix('user/finance')->middleware('auth')->group(function () {
+        // Expenses
+        Route::prefix('expenses')->group(function () {
+            Route::get('/', [ExpenseController::class, 'index'])->name('expenses.index');
+            Route::get('/create', [ExpenseController::class, 'create'])->name('expenses.create');
+            Route::post('/', [ExpenseController::class, 'store'])->name('expenses.store');
+        });
 
+        // Invoices
+        Route::prefix('invoices')->group(function () {
+            Route::get('/', [InvoiceController::class, 'index'])->name('user.finance.invoices.index');
+            Route::get('/create', [InvoiceController::class, 'create'])->name('invoices.create');
+            Route::post('/', [InvoiceController::class, 'store'])->name('invoices.store');
+        });
 
-    // Finicial
-    Route::prefix('/')->group(function () {
-        Route::get('/', [ FinanceController::class, 'index'])->name('user.finance.index');
-         // Route::get('/create', [ReportController::class, 'create'])->name('reports.create');
-        //  Route::post('/', [ReportController::class, 'store'])->name('reports.store');
+        // Payments
+        Route::prefix('payments')->group(function () {
+            Route::get('/', [PaymentController::class, 'index'])->name('payments.index');
+            Route::get('/create', [PaymentController::class, 'create'])->name('payments.create');
+            Route::post('/', [PaymentController::class, 'store'])->name('payments.store');
+        });
+
+        // Budgets
+        Route::prefix('budgets')->group(function () {
+            Route::get('/', [BudgetController::class, 'index'])->name('user.finance.budgets.index');
+            Route::get('/create', [BudgetController::class, 'create'])->name('budgets.create');
+            Route::post('/', [BudgetController::class, 'store'])->name('budgets.store');
+        });
+
+        // Reports
+        Route::prefix('reports')->group(function () {
+            Route::get('/', [ReportController::class, 'index'])->name('reports.index');
+        });
+
     });
 
-
-    // Expenses
-    Route::prefix('expenses')->group(function () {
-        Route::get('/', [ExpenseController::class, 'index'])->name('expenses.index');
-        Route::get('/create', [ExpenseController::class, 'create'])->name('expenses.create');
-        Route::post('/', [ExpenseController::class, 'store'])->name('expenses.store');
-    });
-
-    // Invoices
-    Route::prefix('/invoices')->group(function () {
-        Route::get('/', [InvoiceController::class, 'index'])->name('user.finance.invoices.index');
-        Route::get('/create', [InvoiceController::class, 'create'])->name('invoices.create');
-        Route::post('/', [InvoiceController::class, 'store'])->name('invoices.store');
-    });
-
-
-
-    // Payments
-    Route::prefix('payments')->group(function () {
-        Route::get('/', [PaymentController::class, 'index'])->name('payments.index');
-        Route::get('/create', [PaymentController::class, 'create'])->name('payments.create');
-        Route::post('/', [PaymentController::class, 'store'])->name('payments.store');
-    });
-
-
-    // Budgets
-    Route::prefix('budgets')->group(function () {
-        Route::get('/', [BudgetController::class, 'index'])->name('user.finance.budgets.index');
-        Route::get('/create', [BudgetController::class, 'create'])->name('budgets.create');
-        Route::post('/', [BudgetController::class, 'store'])->name('budgets.store');
-    });
-
-    // reports
-    Route::prefix('reports')->group(function () {
-        Route::get('/', [ReportController::class, 'index'])->name('reports.index');
-         // Route::get('/create', [ReportController::class, 'create'])->name('reports.create');
-        //  Route::post('/', [ReportController::class, 'store'])->name('reports.store');
-    });
-
-
-
-});
-
-
-
-
-    // Profile Routes
+    // User Profile
     Route::get('/user/profile/edit', [ProfileController::class, 'edit'])->name('user.profile.edit');
     Route::post('/user/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
-});
 
+});
 
 
 // Keep this LAST so default auth routes don’t override custom ones

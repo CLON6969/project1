@@ -169,6 +169,15 @@ function createDropdown(title, icon, items) {
   { label: 'Reports', url: '/user/finance/reports/' }
 ]));
 
+
+  menu.appendChild(createDropdown('Subscriptions', 'fas fa-box-open', [
+  { label: 'All Subscriptions', url: '/admin/subscriptions' },
+  { label: 'Pending Approvals', url: '/admin/subscriptions/pending' },
+  { label: 'Approved', url: '/admin/subscriptions/approved' },
+  { label: 'Rejected', url: '/admin/subscriptions/rejected' }
+]));
+
+
   enableTooltips();
 </script>
 

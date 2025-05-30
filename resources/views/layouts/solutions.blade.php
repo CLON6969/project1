@@ -17,6 +17,8 @@
    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
      <!-- this is tailwind -->
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+       <!-- tailwind CSS -->
+   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
 

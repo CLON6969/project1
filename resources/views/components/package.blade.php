@@ -24,7 +24,17 @@
             </div>
             <div class="subtext">{{ $plan->content1 }}</div>
             <div class="free-header">{{ $plan->titttle1 }}</div>
-            <div class="choice">{{ $plan->button1_name }}</div>
+            
+<form method="POST" action="{{ route('subscription.apply') }}">
+    @csrf
+    <input type="hidden" name="package_id" value="{{ $package->id }}">
+    <input type="hidden" name="plan_id" value="{{ $plan->id }}">
+    <button type="submit" class="choice">{{ $plan->button1_name }}</button>
+</form>
+
+
+
+            
             <ul class="features">
                 @foreach ($plan->features as $feature)
                 <li>{{ $feature->name }}</li>
@@ -37,3 +47,5 @@
         @endforeach
     </div>
 </div>
+
+

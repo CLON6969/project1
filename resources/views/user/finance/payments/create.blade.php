@@ -27,18 +27,22 @@
 
     <div class="payment-details">
       <div><strong>TRANSACTION</strong><p>Payment</p></div>
-      <div><strong>REFERENCE</strong><p>{{ strtoupper(Str::random(10)) }}</p></div>
+      
       <div><strong>NARRATION</strong><p>{{ Auth::user()->name }}</p></div>
-      <div>
-        <strong> AMOUNT</strong>
-        <select name="amount" required>
-          <option value="">Select Amount</option>
-          <option value="50" {{ old('amount') == '50' ? 'selected' : '' }}>K50.00</option>
-          <option value="100" {{ old('amount') == '100' ? 'selected' : '' }}>K100.00</option>
-          <option value="150" {{ old('amount') == '150' ? 'selected' : '' }}>K150.00</option>
-          <option value="200" {{ old('amount') == '200' ? 'selected' : '' }}>K200.00</option>
-        </select>
-      </div>
+
+      
+<div>
+<input type="hidden" name="amount" value="{{ $amount }}">
+<div><strong>AMOUNT</strong><p>K{{ number_format($amount, 2) }}</p></div>
+
+</div>
+
+
+<div>
+  <input type="hidden" name="pending_subscription_id" value="{{ $subscription->id }}">
+
+</div>
+
     </div>
 
     <div class="payment-method">
@@ -82,6 +86,7 @@
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
   const tabButtons = document.querySelectorAll(".tab-button:not(.disabled)");
   const tabContents = document.querySelectorAll(".tab-content");
   const methodInput = document.getElementById("payment_method_input");
@@ -99,6 +104,8 @@
       }
     });
   });
+});
 </script>
+
 
 @endsection
