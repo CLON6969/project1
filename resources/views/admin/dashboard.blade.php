@@ -36,7 +36,7 @@
        <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo">
       <button id="toggleTheme" class="btn btn-sm btn-secondary">Dark Mode</button>
     </div>
-    <iframe id="contentFrame" src="{{ route('user.finance.index') }}"></iframe>
+    <iframe id="contentFrame" src="{{ route('admin.web.homepage.table.index') }}"></iframe>
   </div>
 </div>
 
@@ -85,6 +85,26 @@ toggleTheme.addEventListener("click", () => {
     tooltipTriggerList.map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
   }
 
+function renderItems(items) {
+  return items.map(item => {
+    if (item.children) {
+      const submenuId = item.label.replace(/\s+/g, '') + "SubMenu";
+      return `
+        <li>
+          <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#${submenuId}" role="button">
+            <div>${item.label}</div><i class="fas fa-angle-down"></i>
+          </a>
+          <ul class="collapse nested-submenu list-unstyled ps-3" id="${submenuId}">
+            ${renderItems(item.children)}
+          </ul>
+        </li>
+      `;
+    } else {
+      return `<li><a onclick="selectItem(this, '${item.url}')" class="nav-link">${item.label}</a></li>`;
+    }
+  }).join('');
+}
+
 function createDropdown(title, icon, items) {
   const menuId = title.replace(/\s+/g, '') + "Menu";
   const li = document.createElement('li');
@@ -98,22 +118,11 @@ function createDropdown(title, icon, items) {
       <i class="fas fa-chevron-down nav-label"></i>
     </a>
     <ul class="collapse submenu list-unstyled" id="${menuId}">
-      ${items.map(item =>
-        item.children ?
-          `<li data-bs-toggle="tooltip" title="${title}" >
-            <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#${item.label.replace(/\s+/g, '')}SubMenu" role="button">
-              <div>${item.label}</div><i class="fas fa-angle-down"></i>
-            </a>
-            <ul class="collapse nested-submenu list-unstyled" id="${item.label.replace(/\s+/g, '')}SubMenu">
-              ${item.children.map(sub => `<li><a onclick="selectItem(this, '${sub.url}')" class="nav-link">${sub.label}</a></li>`).join('')}
-            </ul>
-          </li>` :
-          `<li><a onclick="selectItem(this, '${item.url}')" class="nav-link">${item.label}</a></li>`
-      ).join('')}
+      ${renderItems(items)}
     </ul>
   `;
 
-  // Add event listener to collapse others when this one is opened
+  // Collapse logic
   setTimeout(() => {
     const trigger = li.querySelector(`[href="#${menuId}"]`);
     const targetMenu = li.querySelector(`#${menuId}`);
@@ -133,6 +142,7 @@ function createDropdown(title, icon, items) {
 
   return li;
 }
+
 
 
 
@@ -176,6 +186,38 @@ function createDropdown(title, icon, items) {
   { label: 'Approved', url: '/admin/subscriptions/approved' },
   { label: 'Rejected', url: '/admin/subscriptions/rejected' }
 ]));
+
+
+menu.appendChild(createDropdown('Web', 'fas fa-globe', [
+  {
+    label: 'Homepage',
+    children: [
+      {
+        label: 'Homepage Content',
+        children: [
+          { label: 'Edit', url: '/admin/web/homepage/content/edit' }
+        ]
+      },
+
+      {
+        label: 'Homepage bottom',
+        children: [
+          { label: 'Edit', url: '/admin/web/homepage/table' }
+        ]
+      },
+
+      {
+        label: 'Company Statements',
+        children: [
+          { label: 'Edit', url: '/admin/web/homepage/statements' }
+        ]
+      }
+    ]
+  }
+]));
+
+
+
 
 
   enableTooltips();

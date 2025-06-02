@@ -40,6 +40,11 @@ use App\Models\Package;
 use App\Models\Plan;
 
 
+// web controllers
+
+use App\Http\Controllers\Web\HomepageContentController;
+use App\Http\Controllers\Web\HomepageContentTableController;
+use App\Http\Controllers\Web\CompanyStatementController;
 
 // -----------------------------
 // Registration Pages (Custom for Admin Dashboard)
@@ -90,19 +95,11 @@ Route::get('/load-more-packages', [PackageController::class, 'loadMore']);
 
 
 
-
-
-
-
-
 Route::get('/plan/compare', function () {
     $packages = Package::all(); // <-- fetch packages
 
     return view('plan.compare', compact('packages')); // <-- pass packages to view
 })->name('compare');
-
-
-
 
 Route::get('/pricing', function () {
     $pricing = Pricing::all();
@@ -116,6 +113,12 @@ Route::get('/plan/{id}', function ($id) {
 
     return view('plan-detail', compact('plan', 'packages'));
 })->name('plan.details');
+
+
+
+
+
+
 
 Route::get('/login', function () {
     if (auth()->check()) {
@@ -148,29 +151,56 @@ Route::get('/register', function () {
 // -------------------------------------
 // Admin Dashboard (Role: admin only)
 // -------------------------------------
+
 Route::middleware(['auth', 'role:1'])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    // Add more admin-specific routes here
 
-    // Add more admin-specific routes here
 
- Route::get('/admin/subscriptions', [SubscriptionController::class, 'index'])->name('admin.subscriptions.index');
+    
+
+    Route::get('/admin/subscriptions', [SubscriptionController::class, 'index'])->name('admin.subscriptions.index');
     Route::get('/admin/subscriptions/pending', [SubscriptionController::class, 'pending'])->name('admin.subscriptions.pending');
     Route::get('/admin/subscriptions/approved', [SubscriptionController::class, 'approved'])->name('admin.subscriptions.approved');
     Route::get('/admin/subscriptions/rejected', [SubscriptionController::class, 'rejected'])->name('admin.subscriptions.rejected');
 
     Route::get('/admin/subscriptions/pending', [SubscriptionController::class, 'listPending'])->name('admin.subscriptions.pending');
 
-
     Route::post('/admin/subscriptions/{id}/approve', [SubscriptionController::class, 'approve'])->name('admin.subscriptions.approve');
 
 
 
 
+// web routes)
+
+
+    Route::get('/admin/web/homepage/content/edit', [HomepageContentController::class, 'edit'])->name('admin.web.homepage.content.edit');
+
+    Route::post('/admin/web/homepage/content/update', [HomepageContentController::class, 'update'])->name('admin.web.homepage.content.update');
+
+ Route::get('/admin/web/homepage/table', [HomepageContentTableController::class, 'index'])->name('admin.web.homepage.table.index');
+    Route::get('/admin/web/homepage/table/create', [HomepageContentTableController::class, 'create'])->name('admin.web.homepage.table.create');
+    Route::post('/admin/web/homepage/table', [HomepageContentTableController::class, 'store'])->name('admin.web.homepage.table.store');
+    Route::get('/admin/web/homepage/table/{table}/edit', [HomepageContentTableController::class, 'edit'])->name('admin.web.homepage.table.edit');
+    Route::put('/admin/web/homepage/table/{table}', [HomepageContentTableController::class, 'update'])->name('admin.web.homepage.table.update');
+    Route::delete('/admin/web/homepage/table/{table}', [HomepageContentTableController::class, 'destroy'])->name('admin.web.homepage.table.destroy');
+
+    Route::get('/admin/web/homepage/statements', [CompanyStatementController::class, 'index'])->name('admin.web.homepage.statements.index');
+    Route::get('/admin/web/homepage/statements/create', [CompanyStatementController::class, 'create'])->name('admin.web.homepage.statements.create');
+    Route::post('/admin/web/homepage/statements/store', [CompanyStatementController::class, 'store'])->name('admin.web.homepage.statements.store');
+    Route::get('/admin/web/homepage/statements/{id}/edit', [CompanyStatementController::class, 'edit'])->name('admin.web.homepage.statements.edit');
+    Route::post('/admin/web/homepage/statements/{id}/update', [CompanyStatementController::class, 'update'])->name('admin.web.homepage.statements.update');
+    Route::delete('/admin/web/homepage/statements/{id}/destroy', [CompanyStatementController::class, 'destroy'])->name('admin.web.homepage.statements.destroy');
 });
+
+
+
+
+
+
+
 
 // -------------------------------------
 // Staff Dashboard (Role: staff only)

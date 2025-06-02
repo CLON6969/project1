@@ -113,6 +113,8 @@ public function approve($id)
         $subscription->status = 'approved';
         $subscription->save();
 
+
+
         Mail::to($subscription->user->email)->send(new SubscriptionApprovedMail($subscription));
 
         return back()->with('success', 'Subscription approved and email sent to user.');
@@ -129,7 +131,4 @@ public function approve($id)
 }
 
 }
-
-
-
 

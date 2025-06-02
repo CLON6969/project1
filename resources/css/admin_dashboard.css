@@ -13,7 +13,7 @@ body, html {
 }
 
 .sidebar {
-  width: 250px;
+  width: 280px;
   background-color: #ffffff;
   transition: width 0.3s ease, background-color 0.3s, color 0.3s;
   overflow-y: auto;
@@ -217,3 +217,10 @@ body:not(.dark-mode) #toggleTheme {
 .dark-mode .logout-btn {
   color: #ffffff;
 }
+
+.nested-submenu {
+  padding-left: 1rem;
+}
+
+
+

@@ -24,7 +24,7 @@
     </div>
 
     @if(isset($homepageContent))
-        <img src="{{ asset('uploads/pics/' . $homepageContent->background_picture) }}" alt="background">
+        <img src="{{ asset('storage/uploads/pics/' . $homepageContent->background_picture) }}" alt="background">
     @endif
 
     <div class="home-logo2">
@@ -67,7 +67,7 @@
             @if (strtolower($statement->id) === '2')
                 {{-- Swap: Image first, then Text --}}
                 <div class="card {{ $imageCardClass }}">
-                    <img src="{{ asset('uploads/pics/' . $statement->background_picture) }}" alt="background picture">
+                    <img src="{{ asset('storage/uploads/pics/' . $statement->background_picture) }}" alt="background picture">
                     <div class="overlay">
                         <div class="overlay-content">
                             <h3>{{ $statement->title1_sub_content }}</h3>
@@ -87,7 +87,7 @@
                 </div>
         
                 <div class="card {{ $imageCardClass }}">
-                    <img src="{{ asset('uploads/pics/' . $statement->background_picture) }}" alt="background picture">
+                    <img src="{{ asset('storage/uploads/pics/' . $statement->background_picture) }}" alt="background picture">
                     <div class="overlay">
                         <div class="overlay-content">
                             <h3>{{ $statement->title1_sub_content }}</h3>
@@ -113,12 +113,20 @@
     <div id="about" class="internal_second_section container">
         <h1>{{ $homepageContent->title2 ?? '' }}</h1>
         <h3>{{ $homepageContent->title2 ?? '' }}</h3>
-        <p>{{ $homepageContent->title2_content ?? '' }}</p>
+        <p>{{ $homepageContent->title2_content ?? '' }}</p> 
+
+    <div class="flex items-center justify-between mb-6 mt-4">
+        <a href="{{ route('admin.web.homepage.table.create') }}" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded shadow text-sm font-medium">
+            <i class="fas fa-plus mr-2"></i> Read more...
+        </a>
+    </div>
+
+
     </div>
 
     @if(isset($homepageContent->picture1))
     <div class="image_container">
-        <img src="{{ asset('uploads/pics/' . $homepageContent->picture1) }}" alt="Image">
+        <img src="{{ asset('storage/uploads/pics/' . $homepageContent->picture1) }}" alt="Image">
     </div>
     @endif
 </section>
@@ -131,7 +139,7 @@
         @foreach($homepageContentTable as $table)
             <div class="image4 container">
                 <li><a href="{{ $table->url }}">{{ $table->url_name }}</a></li>
-                <img src="{{ asset('uploads/pics/' . $table->picture) }}" alt="Image">
+                <img src="{{ asset('storage/' . $table->picture) }}" alt="Image">
             </div>
         @endforeach
            
