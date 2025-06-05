@@ -1,36 +1,57 @@
-// Admin Dashboard (Role: admin only)
-// -------------------------------------
-Route::middleware(['auth', 'role:1'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+**`resources/views/admin/subscriptions/index.blade.php`**
+```blade
 
-    // Add more admin-specific routes here
+```
 
-    // Add more admin-specific routes here
-
-Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('admin.subscriptions.index');
-    Route::get('/subscriptions/pending', [SubscriptionController::class, 'pending'])->name('admin.subscriptions.pending');
-    Route::get('/subscriptions/approved', [SubscriptionController::class, 'approved'])->name('admin.subscriptions.approved');
-    Route::get('/subscriptions/rejected', [SubscriptionController::class, 'rejected'])->name('admin.subscriptions.rejected');
-
-        // Admin: View pending subscription applications
-    Route::get('/admin/subscriptions/pending', [SubscriptionController::class, 'listPending'])
-        ->name('admin.subscriptions.pending');
-
-    // Admin: Approve a specific subscription by ID
-    Route::post('/admin/subscriptions/{id}/approve', [SubscriptionController::class, 'approve'])
-        ->name('admin.subscriptions.approve');
+**`resources/views/admin/subscriptions/pending.blade.php`**
+```blade
 
 
+**`resources/views/admin/subscriptions/approved.blade.php`**
+```blade
 
-});
+```
 
+**`resources/views/admin/subscriptions/rejected.blade.php`**
+```blade
+
+```
+
+**`resources/views/admin/subscriptions/show.blade.php`**
+```blade
+
+```
+
+**`resources/views/admin/subscriptions/edit.blade.php`**
+```blade
+
+```
+
+**`resources/views/components/subscription-table.blade.php`**
+```blade
+
+```
+
+**`resources/views/user/finance/subscription/thankyou.blade.php`**
+```blade
+@extends('layouts.user')
+
+@section('content')
+    <div class="p-6 text-center">
+        <h1 class="text-2xl font-bold mb-2">Thank You!</h1>
+        <p>Your subscription request has been submitted successfully. Please wait for admin approval.</p>
+        <a href="{{ route('user.dashboard') }}" class="btn btn-primary mt-4">Return to Dashboard</a>
+    </div>
+@endsection
+```
 
 
 
 Route::middleware(['auth', 'role:3'])->group(function () {
-    Route::get('/user/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('/user/dashboard', [DashboardController::class, 'index'])->````````````````````````````````````````````````````````````````````````` `````````\]``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````                                                       
+        
+        
+                                    ('user.dashboard');
 
 
     // Finicial Routes

@@ -36,7 +36,7 @@
        <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo">
       <button id="toggleTheme" class="btn btn-sm btn-secondary">Dark Mode</button>
     </div>
-    <iframe id="contentFrame" src="{{ route('admin.web.homepage.table.index') }}"></iframe>
+    <iframe id="contentFrame" src="{{ route('admin.finance.reports.index') }}"></iframe>
   </div>
 </div>
 
@@ -149,40 +149,36 @@ function createDropdown(title, icon, items) {
   
 
   menu.appendChild(createDropdown('Profile', 'fas fa-user', [
-    { label: 'View Profile', url: '/profile/view' },
-    { label: 'Edit Profile', url: '/profile/edit' }
+    { label: 'View Profile', url: '/page_loading' },
+    { label: 'Edit Profile', url: '/page_loading' }
   ]));
 
 
 
-  menu.appendChild(createDropdown('Transactions', 'fas fa-briefcase', [
-    { label: 'Approved', url: '/loading_count_down' },
-    { label: 'Pending', url: '/transactions/pending' },
-    { label: 'Rejected', url: '/transactions/rejected' },
+  
 
-    {
+  menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
+  { label: 'Overview', url: '/admin/finance/reports' },
+  { label: 'payments', url: '/admin/finance/payments' },
+  { label: 'Invoices', url: '/admin/finance/invoices' },
+  { label: 'Expenses', url: '/admin/finance/expenses' },
+  { label: 'Budget', url: '/admin/finance/budgets' },
+  { label: 'Reports', url: '/admin/finance/reports' },
+
+      {
       label: 'Analytics',
       children: [
-        { label: 'Monthly', url: '/transactions/analytics/monthly' },
-        { label: 'Yearly', url: '/transactions/analytics/yearly' }
+        { label: 'Monthly', url: '/page_loading' },
+        { label: 'Yearly', url: '/page_loading' }
       ]
     }
 
-  ]));
-
-  menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
-  { label: 'Overview', url: '/user/finance/' },
-  { label: 'payments', url: '/user/finance/payments/create' },
-  { label: 'Invoices', url: '/user/finance/invoices/create' },
-  { label: 'Expenses', url: '/user/finance/expenses/create' },
-  { label: 'Budget', url: '/user/finance/budgets/create' },
-  { label: 'Reports', url: '/user/finance/reports/' }
 ]));
 
 
   menu.appendChild(createDropdown('Subscriptions', 'fas fa-box-open', [
   { label: 'All Subscriptions', url: '/admin/subscriptions' },
-  { label: 'Pending Approvals', url: '/admin/subscriptions/pending' },
+  { label: 'Pending', url: '/admin/subscriptions/pending' },
   { label: 'Approved', url: '/admin/subscriptions/approved' },
   { label: 'Rejected', url: '/admin/subscriptions/rejected' }
 ]));
@@ -190,7 +186,7 @@ function createDropdown(title, icon, items) {
 
 menu.appendChild(createDropdown('Web', 'fas fa-globe', [
   {
-    label: 'Homepage',
+    label: 'Landing-page',
     children: [
       {
         label: 'Homepage Content',

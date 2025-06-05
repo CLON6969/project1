@@ -2,10 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Plan;
-use App\Models\Package;
-use App\Models\Payment;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,32 +21,28 @@ class PendingSubscription extends Model
         'status' => 'string',
     ];
 
-    /**
-     * Relationships
-     */
+    // Relationships
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     public function package()
     {
-        return $this->belongsTo(Package::class);
+        return $this->belongsTo(\App\Models\Package::class);
     }
 
     public function plan()
     {
-        return $this->belongsTo(Plan::class);
+        return $this->belongsTo(\App\Models\Plan::class);
     }
 
-    public function payment()
+    public function payments()
     {
-        return $this->hasOne(Payment::class);
+        return $this->hasMany(\App\Models\Payment::class);
     }
 
-    /**
-     * Scopes
-     */
+    // Scopes
     public function scopeApproved($query)
     {
         return $query->where('status', 'approved');
@@ -66,9 +58,7 @@ class PendingSubscription extends Model
         return $query->where('status', 'rejected');
     }
 
-    /**
-     * Helper methods
-     */
+    // Helpers
     public function isApproved(): bool
     {
         return $this->status === 'approved';
@@ -84,6 +74,3 @@ class PendingSubscription extends Model
         return $this->status === 'rejected';
     }
 }
-
-
-

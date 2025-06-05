@@ -1,4 +1,4 @@
-@extends('layouts.user_payment')
+@extends('layouts.subscription')
 
 @section('content')
 <div class="payment-container">

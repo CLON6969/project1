@@ -39,3 +39,5 @@ public function index() {
         return redirect()->route('user.finance.invoices.index')->with('success', 'Invoice created successfully.');
     }
 }
+
+

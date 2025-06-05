@@ -57,7 +57,7 @@
 <body>
     <div class="container">
         <img src="{{ asset('uploads/pics/logo2.png') }}" alt="Future Tech Logo" class="logo">
-        <h1>Loading...</h1>
+        <h1>Page being worked on...</h1>
         <h1>Next Launch</h1>
         <button class="notify-btn" id="notify-btn">Notify Me</button>
     </div>

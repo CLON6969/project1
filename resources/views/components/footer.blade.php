@@ -27,17 +27,24 @@
         </div>
         @endforeach
 
-        <!-- Social Icons Section (Dynamic from database) -->
-        <div class="icons">
-            @foreach ($socialIcons as $social)
-            <li class="{{ Str::slug($social->icon) }} box">
-                <a href="{{ $social->name_url }}" target="_blank">
-                    <i class="fa-brands {{ $social->icon }}"></i>
-                </a>
-            </li>
-            @endforeach
-        </div>
+
     </div>
+
+            <!-- Social Icons Section (Dynamic from database) -->
+        <div class="social-icon-container">
+            <div class="icons">
+              @foreach ($socialIcons as $social)
+               <li class="{{ Str::slug($social->icon) }} box">
+                  <a href="{{ $social->name_url }}" target="_blank">
+                     <i class="fa-brands {{ $social->icon }}"></i>
+                  </a>
+              </li>
+              @endforeach
+           </div>
+
+        </div>
+
+
 </section>
 
 <footer>

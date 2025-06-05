@@ -18,11 +18,17 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\MoreController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminPaymentController;
+use App\Http\Controllers\admin\Finance\AdminPaymentController;
+use App\Http\Controllers\admin\Finance\AdminExpenseController;
+use App\Http\Controllers\admin\Finance\AdminBudgetController;
+use App\Http\Controllers\admin\Finance\AdminInvoiceController;
+use App\Http\Controllers\admin\Finance\AdminReportController;
+use App\Http\Controllers\admin\Finance\ReportExportController;
 use App\Http\Controllers\StaffPaymentController;
 use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\SubscriptionController;
+
 
 
 use App\Http\Controllers\Finance\{
@@ -160,39 +166,140 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 
 
     
+    // Subscriptions Management (Admin Panel)
+    Route::prefix('admin/subscriptions')->controller(SubscriptionController::class)->name('admin.subscriptions.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/pending', 'pending')->name('pending');
+        Route::get('/approved', 'approved')->name('approved');
+        Route::get('/rejected', 'rejected')->name('rejected');
+        Route::get('/{id}', 'show')->name('show');
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}/', 'update')->name('update');
+        Route::post('/{id}/approve', 'approve')->name('approve');
+        Route::post('/{id}/reject', 'reject')->name('reject');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
 
-    Route::get('/admin/subscriptions', [SubscriptionController::class, 'index'])->name('admin.subscriptions.index');
-    Route::get('/admin/subscriptions/pending', [SubscriptionController::class, 'pending'])->name('admin.subscriptions.pending');
-    Route::get('/admin/subscriptions/approved', [SubscriptionController::class, 'approved'])->name('admin.subscriptions.approved');
-    Route::get('/admin/subscriptions/rejected', [SubscriptionController::class, 'rejected'])->name('admin.subscriptions.rejected');
 
-    Route::get('/admin/subscriptions/pending', [SubscriptionController::class, 'listPending'])->name('admin.subscriptions.pending');
 
-    Route::post('/admin/subscriptions/{id}/approve', [SubscriptionController::class, 'approve'])->name('admin.subscriptions.approve');
+
+
+Route::prefix('admin/finance/payments')->name('admin.finance.payments.')->group(function () {
+    
+    Route::get('/', [AdminPaymentController::class, 'index'])->name('index');
+    Route::get('/{payment}', [AdminPaymentController::class, 'show'])->name('show');
+    Route::get('/{payment}/edit', [AdminPaymentController::class, 'edit'])->name('edit');
+    Route::put('/{payment}', [AdminPaymentController::class, 'update'])->name('update');
+});
+
+Route::prefix('admin/finance/expenses')->name('admin.finance.expenses.')->middleware(['auth', 'role:1'])->group(function () {
+    Route::get('/', [AdminExpenseController::class, 'index'])->name('index');
+    Route::get('/{expense}', [AdminExpenseController::class, 'show'])->name('show');
+    Route::get('/{expense}/edit', [AdminExpenseController::class, 'edit'])->name('edit');
+    Route::put('/{expense}', [AdminExpenseController::class, 'update'])->name('update');
+    Route::delete('/{expense}', [AdminExpenseController::class, 'destroy'])->name('destroy');
+});
+
+
+Route::prefix('admin/finance/budgets')->name('admin.finance.budgets.')->group(function () {
+    Route::get('/', [AdminBudgetController::class, 'index'])->name('index');
+    Route::get('/create', [AdminBudgetController::class, 'create'])->name('create');
+    Route::post('/', [AdminBudgetController::class, 'store'])->name('store');
+    Route::get('/{budget}', [AdminBudgetController::class, 'show'])->name('show');
+    Route::get('/{budget}/edit', [AdminBudgetController::class, 'edit'])->name('edit');
+    Route::put('/{budget}', [AdminBudgetController::class, 'update'])->name('update');
+    Route::delete('/{budget}', [AdminBudgetController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('admin/finance/invoices')->name('admin.finance.invoices.')->group(function () {
+    Route::get('/', [AdminInvoiceController::class, 'index'])->name('index');
+    Route::get('/create', [AdminInvoiceController::class, 'create'])->name('create');
+    Route::post('/', [AdminInvoiceController::class, 'store'])->name('store');
+    Route::get('/{invoice}', [AdminInvoiceController::class, 'show'])->name('show');
+    Route::get('/{invoice}/edit', [AdminInvoiceController::class, 'edit'])->name('edit');
+    Route::put('/{invoice}', [AdminInvoiceController::class, 'update'])->name('update');
+    Route::delete('/{invoice}', [AdminInvoiceController::class, 'destroy'])->name('destroy');
+});
+
+
+
+
+
+Route::prefix('admin/finance/reports')->name('admin.finance.reports.')->group(function () {
+
+    // 📊 Report Views
+
+
+    Route::get('/', [AdminReportController::class, 'index'])->name('index');
+    Route::get('/details/{type}', [AdminReportController::class, 'details'])->name('details');
+
+
+ 
+    // 📦 Export Endpoints (CSV/XLSX)
+
+
+
+    Route::get('/export/payments', [ReportExportController::class, 'exportPayments'])->name('reports.export.payments');
+    Route::get('/export/invoices', [ReportExportController::class, 'exportInvoices'])->name('reports.export.invoices');
+    Route::get('/export/expenses', [ReportExportController::class, 'exportExpenses'])->name('reports.export.expenses');
+    Route::get('/export/budgets', [ReportExportController::class, 'exportBudgets'])->name('reports.export.budgets');
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
 
 
 
 
 // web routes)
 
+// --- Homepage Main Content ---
+Route::prefix('admin/web/homepage')->name('admin.web.homepage.')->group(function () {
 
-    Route::get('/admin/web/homepage/content/edit', [HomepageContentController::class, 'edit'])->name('admin.web.homepage.content.edit');
+    // Homepage Content
+    Route::get('/content/edit', [HomepageContentController::class, 'edit'])->name('content.edit');
+    Route::post('/content/update', [HomepageContentController::class, 'update'])->name('content.update');
 
-    Route::post('/admin/web/homepage/content/update', [HomepageContentController::class, 'update'])->name('admin.web.homepage.content.update');
+    // Homepage Content Table
+    Route::prefix('table')->name('table.')->group(function () {
+        Route::get('/', [HomepageContentTableController::class, 'index'])->name('index');
+        Route::get('/create', [HomepageContentTableController::class, 'create'])->name('create');
+        Route::post('/', [HomepageContentTableController::class, 'store'])->name('store');
+        Route::get('/{table}/edit', [HomepageContentTableController::class, 'edit'])->name('edit');
+        Route::put('/{table}', [HomepageContentTableController::class, 'update'])->name('update');
+        Route::delete('/{table}', [HomepageContentTableController::class, 'destroy'])->name('destroy');
+    });
 
- Route::get('/admin/web/homepage/table', [HomepageContentTableController::class, 'index'])->name('admin.web.homepage.table.index');
-    Route::get('/admin/web/homepage/table/create', [HomepageContentTableController::class, 'create'])->name('admin.web.homepage.table.create');
-    Route::post('/admin/web/homepage/table', [HomepageContentTableController::class, 'store'])->name('admin.web.homepage.table.store');
-    Route::get('/admin/web/homepage/table/{table}/edit', [HomepageContentTableController::class, 'edit'])->name('admin.web.homepage.table.edit');
-    Route::put('/admin/web/homepage/table/{table}', [HomepageContentTableController::class, 'update'])->name('admin.web.homepage.table.update');
-    Route::delete('/admin/web/homepage/table/{table}', [HomepageContentTableController::class, 'destroy'])->name('admin.web.homepage.table.destroy');
+    // Company Statements
+    Route::prefix('statements')->name('statements.')->group(function () {
+        Route::get('/', [CompanyStatementController::class, 'index'])->name('index');
+        Route::get('/create', [CompanyStatementController::class, 'create'])->name('create');
+        Route::post('/store', [CompanyStatementController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [CompanyStatementController::class, 'edit'])->name('edit');
+        Route::post('/{id}/update', [CompanyStatementController::class, 'update'])->name('update');
+        Route::delete('/{id}/destroy', [CompanyStatementController::class, 'destroy'])->name('destroy');
+    });
 
-    Route::get('/admin/web/homepage/statements', [CompanyStatementController::class, 'index'])->name('admin.web.homepage.statements.index');
-    Route::get('/admin/web/homepage/statements/create', [CompanyStatementController::class, 'create'])->name('admin.web.homepage.statements.create');
-    Route::post('/admin/web/homepage/statements/store', [CompanyStatementController::class, 'store'])->name('admin.web.homepage.statements.store');
-    Route::get('/admin/web/homepage/statements/{id}/edit', [CompanyStatementController::class, 'edit'])->name('admin.web.homepage.statements.edit');
-    Route::post('/admin/web/homepage/statements/{id}/update', [CompanyStatementController::class, 'update'])->name('admin.web.homepage.statements.update');
-    Route::delete('/admin/web/homepage/statements/{id}/destroy', [CompanyStatementController::class, 'destroy'])->name('admin.web.homepage.statements.destroy');
+});
+
+
+
+
+
+
+
+
 });
 
 
@@ -231,7 +338,7 @@ Route::middleware(['auth', 'role:3'])->group(function () {
 
 
      Route::post('/subscription/apply', [SubscriptionController::class, 'apply'])->name('subscription.apply');
-    Route::get('/subscription/thankyou', [SubscriptionController::class, 'thankYou'])->name('subscription.thankyou');
+    Route::get('/finance/subscription/thankyou', [SubscriptionController::class, 'thankYou'])->name('finance.subscription.thankyou');
 
     // Finance Main Group
     Route::prefix('user/finance')->group(function () {
