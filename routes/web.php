@@ -1,37 +1,47 @@
 <?php
+// unactive  controllers
 use App\Http\Controllers\auth\AuthenticatedSessionController;
-
 use App\Http\Middleware\RedirectBasedOnRole;
-
-
-use App\Http\Controllers\{
-    DashboardController
-};
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubAccountController;
-use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\SolutionController;
-use App\Http\Controllers\Personal_solutionsController;
-use App\Http\Controllers\ServicesController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\MoreController;
-use App\Http\Controllers\EventController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\Finance\AdminPaymentController;
-use App\Http\Controllers\admin\Finance\AdminExpenseController;
-use App\Http\Controllers\admin\Finance\AdminBudgetController;
-use App\Http\Controllers\admin\Finance\AdminInvoiceController;
-use App\Http\Controllers\admin\Finance\AdminReportController;
-use App\Http\Controllers\admin\Finance\ReportExportController;
 use App\Http\Controllers\StaffPaymentController;
-use App\Http\Controllers\ContactController;
-
-use App\Http\Controllers\SubscriptionController;
 
 
+use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Finance\{
+
+// Models baing used 
+use App\Models\{
+    Pricing,
+    Package,
+    Plan,
+};
+
+
+// Authentication  controller
+use App\Http\Controllers\Auth\RegisteredUserController;
+ 
+
+// public controllers
+use App\Http\Controllers\{
+
+DashboardController,
+Personal_solutionsController,
+ProfileController,
+HomepageController,
+SolutionController,
+ServicesController,
+PackageController,
+MoreController,
+EventController,
+ContactController,
+SubscriptionController,
+
+};
+
+// user  controllers
+use App\Http\Controllers\User\account\ProfileAccountController;
+
+use App\Http\Controllers\user\Finance\{
     ExpenseController,
     InvoiceController,
     ReportController,
@@ -40,21 +50,32 @@ use App\Http\Controllers\Finance\{
     FinanceController
 };
 
+// staff  controllers
 
-use App\Models\Pricing;
-use App\Models\Package;
-use App\Models\Plan;
 
+
+// admin  controllers
+use App\Http\Controllers\admin\Finance\{
+   AdminPaymentController,
+   AdminExpenseController,
+   AdminBudgetController,
+   AdminInvoiceController,
+   AdminReportController,
+   ReportExportController,
+};
 
 // web controllers
-
 use App\Http\Controllers\Web\HomepageContentController;
 use App\Http\Controllers\Web\HomepageContentTableController;
 use App\Http\Controllers\Web\CompanyStatementController;
 
-// -----------------------------
-// Registration Pages (Custom for Admin Dashboard)
-// -----------------------------
+
+
+
+
+// ----------------------------------------------- //
+// Registration Pages (Custom for Admin Dashboard) //
+// ----------------------------------------------- //
 
 // Admin Registration Form (page loads inside iframe)
 Route::get('/admin/register/admin', [RegisteredUserController::class, 'showAdminRegisterForm'])->name('admin.register.admin');
@@ -87,7 +108,6 @@ Route::post('/contact', [ContactController::class, 'submit'])->name('contact.sub
 Route::get('/more', [MoreController::class, 'showSolutions']);
 Route::get('/pricing', [PackageController::class, 'pricingPage']);
 Route::get('/premium', [PackageController::class, 'premiumPage']);
-
 
 Route::get('/events', [EventController::class, 'showEvents'])->name('events.index');
 Route::get('/events/view/{id}', [EventController::class, 'show'])->name('events.show');
@@ -379,12 +399,20 @@ Route::middleware(['auth', 'role:3'])->group(function () {
             Route::get('/', [ReportController::class, 'index'])->name('reports.index');
         });
 
+     //subs
+            Route::get('/subscription', [SubscriptionController::class, 'index'])->name('subscriptions.index');
+
     });
 
-    // User Profile
+// Account Setup Profile Completion
     Route::get('/user/profile/edit', [ProfileController::class, 'edit'])->name('user.profile.edit');
     Route::post('/user/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
 
+    //  Full Profile CRUD (post-setup)
+    Route::get('/user/profile/account', [ProfileAccountController::class, 'index'])->name('user.profile.account.index');
+    Route::get('/user/profile/account/edit', [ProfileAccountController::class, 'edit'])->name('user.profile.account.edit');
+    Route::put('/user/profile/account', [ProfileAccountController::class, 'update'])->name('user.profile.account.update');
+    Route::delete('/user/profile/account', [ProfileAccountController::class, 'destroy'])->name('user.profile.account.destroy');
 });
 
 

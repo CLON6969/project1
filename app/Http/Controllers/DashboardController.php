@@ -14,7 +14,9 @@ class DashboardController extends Controller
             return redirect()->route('user.profile.edit');
         }
 
-        return view('user.dashboard');
+        return view('user.dashboard', [
+            'user' => $user
+        ]);
     }
 
     public function overview(Request $request)
@@ -25,7 +27,9 @@ class DashboardController extends Controller
             return redirect()->route('user.profile.edit');
         }
 
-        return view('dashboard.overview');
+        return view('dashboard.overview', [
+            'user' => $user
+        ]);
     }
 
     public function reports(Request $request)
@@ -36,6 +40,8 @@ class DashboardController extends Controller
             return redirect()->route('user.profile.edit');
         }
 
-        return view('dashboard.reports');
+        return view('dashboard.reports', [
+            'user' => $user
+        ]);
     }
 }

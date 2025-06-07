@@ -13,8 +13,12 @@
 
 
     <ul class="nav flex-column mt-2" id="sidebarMenu">
-      <!-- Dynamic menu will be inserted here -->
+      <div class="profile-container">
+          <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('uploads/pics/default.png') }}" alt="Profile">
+      </div>
+            
     </ul>
+
 
 <div class="mt-auto text-white px-3 py-2">
     <form method="POST" action="{{ route('logout') }}" class="logout-form">
@@ -33,7 +37,6 @@
   
   <div class="content">
     <div class="topbar">
-       <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo">
       <button id="toggleTheme" class="btn btn-sm btn-secondary">Dark Mode</button>
     </div>
     <iframe id="contentFrame" src="{{ route('user.finance.index') }}"></iframe>
@@ -139,8 +142,7 @@ function createDropdown(title, icon, items) {
   
 
   menu.appendChild(createDropdown('Profile', 'fas fa-user', [
-    { label: 'View Profile', url: '/page_loading' },
-    { label: 'Edit Profile', url: '/page_loading' }
+    { label: 'View Profile', url: '/user/profile/account' },
   ]));
 
 
@@ -172,10 +174,10 @@ function createDropdown(title, icon, items) {
   ]));
 
   menu.appendChild(createDropdown('Subscriptions', 'fas fa-box-open', [
-  { label: 'All Subscriptions', url: '/admin/subscriptions' },
-  { label: 'Pending Approvals', url: '/admin/subscriptions/pending' },
-  { label: 'Approved', url: '/admin/subscriptions/approved' },
-  { label: 'Rejected', url: '/admin/subscriptions/rejected' }
+  { label: 'All Subscriptions', url: '/user/finance/subscription' },
+  { label: 'Pending Approvals', url: '/user/subscriptions/pending' },
+  { label: 'Approved', url: '/user/subscriptions/approved' },
+  { label: 'Rejected', url: '/user/subscriptions/rejected' }
 ]));
 
 

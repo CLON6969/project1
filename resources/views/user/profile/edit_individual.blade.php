@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-4xl mx-auto py-6">
-    <h2 class="text-2xl font-bold mb-4">Complete Your Company Profile</h2>
+    <h2 class="text-2xl font-bold mb-4">Complete Your individual  Profile</h2>
 
     <form method="POST" action="{{ route('user.profile.update') }}" class="space-y-6">
         @csrf

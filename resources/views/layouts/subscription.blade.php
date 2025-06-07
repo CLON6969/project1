@@ -29,6 +29,8 @@
 
         <!-- Page content -->
         <main class="flex-1 p-6">
+                {{-- Include session alerts --}}
+@include('partials.alerts')
             @yield('content')
         </main>
     </div>

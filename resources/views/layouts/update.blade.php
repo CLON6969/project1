@@ -37,6 +37,8 @@
 
     <!-- Dynamic Content -->
     <main>
+           {{-- Include session alerts --}}
+@include('partials.alerts')
         @yield('content')
     </main>
     

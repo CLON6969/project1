@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Finance;
+namespace App\Http\Controllers\user\Finance;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
