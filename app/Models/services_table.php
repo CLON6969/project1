@@ -19,4 +19,12 @@ class services_table extends Model
         'button1_url',
         'category'
     ];
+
+    public function invoices()
+{
+    return $this->morphMany(Invoice::class, 'invoiceable');
 }
+
+}
+
+

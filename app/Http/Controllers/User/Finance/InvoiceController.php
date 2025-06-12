@@ -38,6 +38,16 @@ public function index() {
 
         return redirect()->route('user.finance.invoices.index')->with('success', 'Invoice created successfully.');
     }
+
+
+    public function show($id)
+{
+    $invoice = Invoice::with('payment')->findOrFail($id); // assuming invoice has one payment
+    return view('user.finance.invoices.show', compact('invoice'));
 }
+
+}
+
+
 
 

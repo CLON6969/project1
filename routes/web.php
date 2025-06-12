@@ -202,15 +202,19 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 
 
 
-
-
-Route::prefix('admin/finance/payments')->name('admin.finance.payments.')->group(function () {
+Route::prefix('admin/finance')->name('admin.finance.')->group(function () {
     
+    Route::get('/', [AdminPaymentController::class, 'index'])->name('index');
+
+});
+
+Route::prefix('admin/finance/payments')->name('admin.finance.payments.')->middleware(['auth', 'role:1'])->group(function () {
     Route::get('/', [AdminPaymentController::class, 'index'])->name('index');
     Route::get('/{payment}', [AdminPaymentController::class, 'show'])->name('show');
     Route::get('/{payment}/edit', [AdminPaymentController::class, 'edit'])->name('edit');
     Route::put('/{payment}', [AdminPaymentController::class, 'update'])->name('update');
 });
+
 
 Route::prefix('admin/finance/expenses')->name('admin.finance.expenses.')->middleware(['auth', 'role:1'])->group(function () {
     Route::get('/', [AdminExpenseController::class, 'index'])->name('index');
@@ -373,19 +377,37 @@ Route::middleware(['auth', 'role:3'])->group(function () {
             Route::post('/', [ExpenseController::class, 'store'])->name('expenses.store');
         });
 
-        // Invoices
-        Route::prefix('invoices')->group(function () {
-            Route::get('/', [InvoiceController::class, 'index'])->name('user.finance.invoices.index');
-            Route::get('/create', [InvoiceController::class, 'create'])->name('invoices.create');
-            Route::post('/', [InvoiceController::class, 'store'])->name('invoices.store');
-        });
+         // Invoices
+    Route::prefix('invoices')->group(function () {
+    Route::get('/', [InvoiceController::class, 'index'])->name('user.finance.invoices.index');
+    Route::get('/create', [InvoiceController::class, 'create'])->name('invoices.create');
+    Route::post('/', [InvoiceController::class, 'store'])->name('invoices.store');
+    Route::get('/view/{invoice}', [InvoiceController::class, 'show'])->name('user.finance.invoices.view');
 
-        // Payments
-        Route::prefix('payments')->group(function () {
-            Route::get('/', [PaymentController::class, 'index'])->name('payments.index');
-            Route::get('/create', [PaymentController::class, 'create'])->name('payments.create');
-            Route::post('/', [PaymentController::class, 'store'])->name('payments.store');
-        });
+
+    // Invoice Payment Routes
+    Route::get('/pay/{invoice}', [PaymentController::class, 'createFromInvoice'])->name('user.finance.invoices.pay');
+    Route::post('/pay/{invoice}', [PaymentController::class, 'storeInvoicePayment'])->name('user.finance.invoices.pay.submit');
+});
+
+// Payments
+Route::prefix('payments')->group(function () {
+    Route::get('/', [PaymentController::class, 'index'])->name('payments.index');
+    Route::get('/create/{subscription_id}', [PaymentController::class, 'create'])->name('payments.create');
+    Route::post('/', [PaymentController::class, 'store'])->name('payments.store');
+    Route::delete('/{id}/cancel', [PaymentController::class, 'cancel'])->name('payments.cancel');
+     Route::get('/{id}', [PaymentController::class, 'show'])->name('payments.show');
+     Route::get('/proceed/{payment}', [PaymentController::class, 'proceed'])->name('payments.proceed');
+
+
+    // General Payment (not linked to subscription or invoice)
+    Route::get('/general/create', [PaymentController::class, 'createGeneral'])->name('payments.general.create');
+    Route::post('/general', [PaymentController::class, 'storeGeneral'])->name('payments.general.store');
+});
+
+
+
+
 
         // Budgets
         Route::prefix('budgets')->group(function () {

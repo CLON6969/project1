@@ -41,6 +41,9 @@ class AdminPaymentController extends Controller
             ->with('success', 'Payment updated successfully.');
     }
 
+
+    
+
     /**
      * Display the specified payment details.
      */
@@ -49,5 +52,7 @@ class AdminPaymentController extends Controller
         return view('admin.finance.payments.show', compact('payment'));
     }
 }
+
+
 
 

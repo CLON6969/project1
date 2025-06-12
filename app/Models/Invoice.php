@@ -13,4 +13,22 @@ class Invoice extends Model {
     public function payments() {
         return $this->hasMany(Payment::class);
     }
+
+    
+
+
+    // Invoice.php
+
+public function service()
+{
+    return $this->belongsTo(services_table::class, 'service_id');
 }
+
+public function solution()
+{
+    return $this->belongsTo(SolutionTable::class, 'solution_id');
+}
+
+}
+
+

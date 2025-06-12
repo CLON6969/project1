@@ -147,37 +147,30 @@ function createDropdown(title, icon, items) {
 
 
 
-  menu.appendChild(createDropdown('Transactions', 'fas fa-briefcase', [
-    { label: 'Approved', url: '/page_loading' },
-    { label: 'Pending', url: '/page_loading' },
-    { label: 'Rejected', url: '/page_loading' },
 
-    {
+
+
+menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
+  { label: 'Overview', url: '/user/finance/' },
+  { label: 'Payments', url: '/user/finance/payments/' },
+  { label: 'Create General Payment', url: '/user/finance/payments/general/create' },
+  { label: 'Invoices', url: '/user/finance/invoices/' },
+  { label: 'Expenses', url: '/user/finance/expenses/' },
+  { label: 'Budget', url: '/user/finance/budgets/' },
+
+
+      {
       label: 'Analytics',
       children: [
-        { label: 'Monthly', url: '/page_loading' },
-        { label: 'Yearly', url: '/page_loading' }
+        { label: 'Reports', url: '/user/finance/reports/' }
       ]
     }
 
-  ]));
+]));
 
-
-
-  menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
-    { label: 'Overview', url: '/user/finance/' },
-    { label: 'Payments', url: '/user/finance/payments/create' },
-    { label: 'Invoices', url: '/user/finance/invoices/create' },
-    { label: 'Expenses', url: '/user/finance/expenses/create' },
-    { label: 'Budget', url: '/user/finance/budgets/create' },
-    { label: 'Reports', url: '/user/finance/reports/' }
-  ]));
 
   menu.appendChild(createDropdown('Subscriptions', 'fas fa-box-open', [
-  { label: 'All Subscriptions', url: '/user/finance/subscription' },
-  { label: 'Pending Approvals', url: '/user/subscriptions/pending' },
-  { label: 'Approved', url: '/user/subscriptions/approved' },
-  { label: 'Rejected', url: '/user/subscriptions/rejected' }
+  { label: 'All Subscriptions', url: '/user/finance/subscription' }
 ]));
 
 

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Finance;
 
-use App\Http\Controllers\Controller;
 use App\Models\Invoice;
+use App\Models\Payment;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminInvoiceController extends Controller
 {
@@ -27,6 +30,8 @@ class AdminInvoiceController extends Controller
             'amount' => 'required|numeric|min:0',
             'due_date' => 'required|date',
             'status' => 'required|in:unpaid,paid,overdue',
+            'service_id' => 'nullable|exists:services_table,id',
+            'solution_id' => 'nullable|exists:solution_tables,id',
             'notes' => 'nullable|string',
         ]);
 
@@ -54,6 +59,8 @@ class AdminInvoiceController extends Controller
             'amount' => 'required|numeric|min:0',
             'due_date' => 'required|date',
             'status' => 'required|in:unpaid,paid,overdue',
+            'service_id' => 'nullable|exists:services_table,id',
+            'solution_id' => 'nullable|exists:solution_tables,id',
             'notes' => 'nullable|string',
         ]);
 
@@ -70,6 +77,58 @@ class AdminInvoiceController extends Controller
         return redirect()->route('admin.finance.invoices.index')
             ->with('success', 'Invoice deleted successfully.');
     }
+
+
+
+public function payInvoice(Invoice $invoice)
+{
+    if ($invoice->user_id !== Auth::id()) {
+        abort(403);
+    }
+
+    return view('user.finance.payments.pay_invoice', compact('invoice'));
+}
+
+public function storeInvoicePayment(Request $request, Invoice $invoice)
+{
+    if ($invoice->user_id !== Auth::id() || $invoice->status !== 'unpaid') {
+        return back()->withErrors('Unauthorized or already paid.');
+    }
+
+    $request->validate([
+        'payment_method' => 'required|in:mobile,card,bank',
+        'mobile_number' => 'required_if:payment_method,mobile|regex:/^(\+260|0)?(95|96|97|76|77)\d{7}$/',
+        'card_number' => 'required_if:payment_method,card',
+        'bank_proof' => 'required_if:payment_method,bank|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        'notes' => 'nullable|string|max:1000',
+    ]);
+
+    $data = [
+        'user_id' => Auth::id(),
+        'invoice_id' => $invoice->id,
+        'reference' => strtoupper(Str::uuid()),
+        'amount' => $invoice->amount,
+        'payment_method' => $request->payment_method,
+        'transaction_type' => 'InvoicePayment',
+        'status' => 'pending',
+        'api_status' => 'not_applicable',
+        'narration' => 'Payment for Invoice #' . $invoice->number,
+        'notes' => $request->notes,
+    ];
+
+    if ($request->payment_method === 'mobile') {
+        $data['mobile_number'] = $request->mobile_number;
+    } elseif ($request->payment_method === 'card') {
+        $data['card_number'] = $request->card_number;
+    } elseif ($request->payment_method === 'bank') {
+        $data['bank_proof'] = $request->file('bank_proof')->store('bank_proofs', 'public');
+    }
+
+    Payment::create($data);
+
+    return redirect()->route('payments.index')->with('success', 'Invoice payment submitted and is pending review.');
+}
+
 }
 
 

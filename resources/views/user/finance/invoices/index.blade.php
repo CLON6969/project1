@@ -1,13 +1,7 @@
 @extends('layouts.user_payment')
 
-
 @section('content')
 <div class="p-6">
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold">Invoices</h2>
-        <a href="{{ route('invoices.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">+ New Invoice</a>
-    </div>
-
     @if(session('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
             {{ session('success') }}
@@ -22,6 +16,8 @@
                     <th>Description</th>
                     <th>Amount</th>
                     <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,9 +27,32 @@
                         <td class="py-2">{{ $invoice->description ?? '-' }}</td>
                         <td class="py-2 text-green-600">ZMW {{ number_format($invoice->amount, 2) }}</td>
                         <td class="py-2">{{ $invoice->due_date ? \Carbon\Carbon::parse($invoice->due_date)->format('d M Y') : '-' }}</td>
+                        <td class="py-2">
+                            @if($invoice->is_paid)
+                                <span class="text-green-600 font-semibold">Paid</span>
+                            @else
+                                <span class="text-red-500">Unpaid</span>
+                            @endif
+                        </td>
+                        <td class="py-2 flex space-x-2">
+    @if(!$invoice->is_paid)
+        <a href="{{ route('user.finance.invoices.pay', $invoice->id) }}"
+           class="bg-blue-500 hover:bg-blue-600 text-black px-3 py-1 rounded text-sm">
+            Pay Now
+        </a>
+    @else
+        <a href="{{ route('user.finance.invoices.view', $invoice->id) }}"
+           class="bg-green-500 hover:bg-green-600 text-black px-3 py-1 rounded text-sm">
+            View
+        </a>
+    @endif
+</td>
+
                     </tr>
                 @empty
-                    <tr><td colspan="4" class="text-center py-4 text-gray-500">No invoices found.</td></tr>
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-gray-500">No invoices found.</td>
+                    </tr>
                 @endforelse
             </tbody>
         </table>

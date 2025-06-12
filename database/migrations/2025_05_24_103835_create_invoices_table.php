@@ -13,6 +13,11 @@ return new class extends Migration {
             $table->string('description')->nullable();
             $table->decimal('amount', 10, 2);
             $table->enum('status', ['unpaid', 'paid', 'overdue'])->default('unpaid');
+            $table->boolean('is_paid')->default(false);
+            $table->unsignedBigInteger('service_id')->nullable();
+            $table->unsignedBigInteger('solution_id')->nullable();
+            $table->foreign('service_id')->references('id')->on('services_table')->onDelete('set null');
+            $table->foreign('solution_id')->references('id')->on('solution_tables')->onDelete('set null');
             $table->date('due_date')->nullable();
             $table->timestamps();
         });

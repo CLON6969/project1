@@ -35,3 +35,5 @@
     <label class="block font-medium">Notes</label>
     <textarea name="notes" class="input">{{ old('notes', $invoice->notes ?? '') }}</textarea>
 </div>
+
+

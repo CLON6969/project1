@@ -13,8 +13,10 @@
 
 
     <ul class="nav flex-column mt-2" id="sidebarMenu">
-      <!-- Dynamic menu will be inserted here -->
+
+            
     </ul>
+
 
 <div class="mt-auto text-white px-3 py-2">
     <form method="POST" action="{{ route('logout') }}" class="logout-form">
@@ -33,13 +35,11 @@
   
   <div class="content">
     <div class="topbar">
-       <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo">
       <button id="toggleTheme" class="btn btn-sm btn-secondary">Dark Mode</button>
     </div>
-    <iframe id="contentFrame" src="{{ route('admin.finance.reports.index') }}"></iframe>
+    <iframe id="contentFrame" src="{{ route('admin.finance.index') }}"></iframe>
   </div>
 </div>
-
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script>
   const sidebar = document.getElementById("sidebar");

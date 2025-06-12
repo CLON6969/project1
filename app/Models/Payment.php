@@ -49,6 +49,8 @@ class Payment extends Model
         return $this->belongsTo(Invoice::class);
     }
 
+    
+
     /**
      * Accessors / Helpers
      */
@@ -67,3 +69,5 @@ class Payment extends Model
         return $this->status === 'rejected';
     }
 }
+
+

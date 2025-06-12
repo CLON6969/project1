@@ -37,7 +37,7 @@
         x-data="{ show: true }" 
         x-init="setTimeout(() => show = false, 6000)" 
         x-show="show"
-        x-transition:leave="transition ease-in duration-500"
+        x-transition:leave="transition ease-in duration-5000"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
         class="mb-6 p-4 rounded border border-red-900 errors text-white"

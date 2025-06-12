@@ -22,7 +22,8 @@ return new class extends Migration {
             $table->string('bank_proof')->nullable();
             $table->foreignId('invoice_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamp('paid_at')->nullable();
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', ['pending', 'approved', 'paid', 'rejected'])->default('pending');
+
             $table->foreignId('pending_subscription_id')->nullable()->constrained('pending_subscriptions')->onDelete('set null');
 
             $table->text('notes')->nullable();
