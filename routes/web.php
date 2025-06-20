@@ -61,15 +61,24 @@ use App\Http\Controllers\admin\Finance\{
    AdminBudgetController,
    AdminInvoiceController,
    AdminReportController,
-   ReportExportController,
+   ReportExportController
 };
 
 // web controllers
-use App\Http\Controllers\Web\HomepageContentController;
-use App\Http\Controllers\Web\HomepageContentTableController;
-use App\Http\Controllers\Web\CompanyStatementController;
+use App\Http\Controllers\Web\{
+    WebHomepageContentController,
+    WebHomepageContentTableController,
+    WebCompanyStatementController,
+    WebServicesController,
+    WebServicesTableController,
+    WebPersonalSolutionController,
+    WebIndustrialSolutionTableController ,
+    WebPersonalSolutionTableController,
+    WebIndustrialSolutionController,
+    WebMoreSolutionController,
+    WebMoreTableController
 
-
+};
 
 
 
@@ -265,7 +274,7 @@ Route::prefix('admin/finance/reports')->name('admin.finance.reports.')->group(fu
 
     Route::get('/export/payments', [ReportExportController::class, 'exportPayments'])->name('reports.export.payments');
     Route::get('/export/invoices', [ReportExportController::class, 'exportInvoices'])->name('reports.export.invoices');
-    Route::get('/export/expenses', [ReportExportController::class, 'exportExpenses'])->name('reports.export.expenses');
+    Route::get('/export/expenses', action: [ReportExportController::class, 'exportExpenses'])->name('reports.export.expenses');
     Route::get('/export/budgets', [ReportExportController::class, 'exportBudgets'])->name('reports.export.budgets');
 
 
@@ -289,31 +298,145 @@ Route::prefix('admin/finance/reports')->name('admin.finance.reports.')->group(fu
 // web routes)
 
 // --- Homepage Main Content ---
+// web routes
+
+// --- Homepage Main Content ---
 Route::prefix('admin/web/homepage')->name('admin.web.homepage.')->group(function () {
 
     // Homepage Content
-    Route::get('/content/edit', [HomepageContentController::class, 'edit'])->name('content.edit');
-    Route::post('/content/update', [HomepageContentController::class, 'update'])->name('content.update');
+    Route::get('/content/edit', [WebHomepageContentController::class, 'edit'])->name('content.edit');
+    Route::post('/content/update', [WebHomepageContentController::class, 'update'])->name('content.update');
 
     // Homepage Content Table
     Route::prefix('table')->name('table.')->group(function () {
-        Route::get('/', [HomepageContentTableController::class, 'index'])->name('index');
-        Route::get('/create', [HomepageContentTableController::class, 'create'])->name('create');
-        Route::post('/', [HomepageContentTableController::class, 'store'])->name('store');
-        Route::get('/{table}/edit', [HomepageContentTableController::class, 'edit'])->name('edit');
-        Route::put('/{table}', [HomepageContentTableController::class, 'update'])->name('update');
-        Route::delete('/{table}', [HomepageContentTableController::class, 'destroy'])->name('destroy');
+        Route::get('/', [WebHomepageContentTableController::class, 'index'])->name('index');
+        Route::get('/create', [WebHomepageContentTableController::class, 'create'])->name('create');
+        Route::post('/', [WebHomepageContentTableController::class, 'store'])->name('store');
+        Route::get('/{table}/edit', [WebHomepageContentTableController::class, 'edit'])->name('edit');
+        Route::put('/{table}', [WebHomepageContentTableController::class, 'update'])->name('update');
+        Route::delete('/{table}', [WebHomepageContentTableController::class, 'destroy'])->name('destroy');
     });
 
     // Company Statements
     Route::prefix('statements')->name('statements.')->group(function () {
-        Route::get('/', [CompanyStatementController::class, 'index'])->name('index');
-        Route::get('/create', [CompanyStatementController::class, 'create'])->name('create');
-        Route::post('/store', [CompanyStatementController::class, 'store'])->name('store');
-        Route::get('/{id}/edit', [CompanyStatementController::class, 'edit'])->name('edit');
-        Route::post('/{id}/update', [CompanyStatementController::class, 'update'])->name('update');
-        Route::delete('/{id}/destroy', [CompanyStatementController::class, 'destroy'])->name('destroy');
+        Route::get('/', [WebCompanyStatementController::class, 'index'])->name('index');
+        Route::get('/create', [WebCompanyStatementController::class, 'create'])->name('create');
+        Route::post('/store', [WebCompanyStatementController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [WebCompanyStatementController::class, 'edit'])->name('edit');
+        Route::post('/{id}/update', [WebCompanyStatementController::class, 'update'])->name('update');
+        Route::delete('/{id}/destroy', [WebCompanyStatementController::class, 'destroy'])->name('destroy');
     });
+
+
+});
+
+
+
+
+
+// --- more Section ---
+
+
+
+
+Route::prefix('admin/web/solution/more')->name('admin.web.solution.more')->group(function () {
+
+    // Main "More" Solution Content (Single Row)
+    Route::prefix('/')->name('.')->group(function () {
+        Route::get('/edit', [WebMoreSolutionController::class, 'edit'])->name('edit');
+        Route::post('/update', [WebMoreSolutionController::class, 'update'])->name('update');
+    });
+
+    // "More" Solution Table (Multiple Rows)
+    Route::prefix('table')->name('table.')->group(function () {
+        Route::get('/', [WebMoreTableController::class, 'index'])->name('index');
+        Route::get('/create', [WebMoreTableController::class, 'create'])->name('create');
+        Route::post('/store', [WebMoreTableController::class, 'store'])->name('store');
+        Route::get('/edit/{table}', [WebMoreTableController::class, 'edit'])->name('edit');
+        Route::put('/update/{table}', [WebMoreTableController::class, 'update'])->name('update');
+        Route::delete('/delete/{table}', [WebMoreTableController::class, 'destroy'])->name('destroy');
+    });
+
+});
+
+
+
+
+
+
+// --- Solutions Section ---
+
+
+// --- Industrial Solution Section ---
+Route::prefix('admin/web/solution/industrial')->name('admin.web.solution.industrial')->group(function () {
+
+    // Main Industrial Content (Single Row)
+    Route::prefix('/')->name('.')->group(function () {
+        Route::get('/edit', [WebIndustrialSolutionController::class, 'edit'])->name('edit');
+        Route::post('update', [WebIndustrialSolutionController::class, 'update'])->name('update');
+    });
+
+    // Industrial Solution Table (Multiple Rows)
+    Route::prefix('/table')->name('table.')->group(function () {
+        Route::get('/', [WebIndustrialSolutionTableController::class, 'index'])->name('index');
+        Route::get('/create', [WebIndustrialSolutionTableController::class, 'create'])->name('create');
+        Route::post('/store', [WebIndustrialSolutionTableController::class, 'store'])->name('store');
+        Route::get('/edit/{table}', [WebIndustrialSolutionTableController::class, 'edit'])->name('edit');
+        Route::put('/update/{table}', [WebIndustrialSolutionTableController::class, 'update'])->name('update');
+        Route::delete('/delete/{table}', [WebIndustrialSolutionTableController::class, 'destroy'])->name('destroy');
+    });
+
+});
+
+
+
+// --- personal-solutionSection ---
+Route::prefix('admin/web/solution/personal')->name('admin.web.solution.personal.')->group(function () {
+
+    // --- Personal Solution Main Content ---
+    Route::get('/edit', [WebPersonalSolutionController::class, 'edit'])->name('edit');
+    Route::put('/update', [WebPersonalSolutionController::class, 'update'])->name('update');
+
+    // --- Personal Solution Table Section ---
+    Route::prefix('/table')->name('table.')->group(function () {
+        Route::get('/', [WebPersonalSolutionTableController::class, 'index'])->name('index');
+        Route::get('/create', [WebPersonalSolutionTableController::class, 'create'])->name('create');
+        Route::post('/store', [WebPersonalSolutionTableController::class, 'store'])->name('store');
+        Route::get('/edit/{table}', [WebPersonalSolutionTableController::class, 'edit'])->name('edit');
+        Route::put('/update/{table}', [WebPersonalSolutionTableController::class, 'update'])->name('update');
+        Route::delete('/delete/{table}', [WebPersonalSolutionTableController::class, 'destroy'])->name('destroy');
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+// --- Services Content ---
+Route::prefix('admin/web/services')->name('admin.web.services.')->group(function () {
+
+    // Services Content
+
+Route::prefix('/')->name('')->group(function () {
+Route::get('/edit', [WebServicesController::class, 'edit'])->name('edit');
+Route::post('/update', [WebServicesController::class, 'update'])->name('update');
+  });
+
+
+Route::prefix('/table')->name('table.')->group(function () {
+    Route::get('/', [WebServicesTableController::class, 'index'])->name('index');
+    Route::get('/create', [WebServicesTableController::class, 'create'])->name('create');
+    Route::post('/', [WebServicesTableController::class, 'store'])->name('store');
+    Route::get('/{table}/edit', [WebServicesTableController::class, 'edit'])->name('edit');
+    Route::put('/{table}', [WebServicesTableController::class, 'update'])->name('update');
+    Route::delete('/{table}', [WebServicesTableController::class, 'destroy'])->name('destroy');
+});
 
 });
 

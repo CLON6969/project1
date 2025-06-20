@@ -5,7 +5,7 @@
 
 <header class="hero">
     @foreach($personal_solutions as $personal_solution)
-    <img src="{{ asset('uploads/pics/100.jpg') }}" alt="logo">
+    <img src="{{ asset('storage/uploads/pics/' . $personal_solution->background_picture) }}" alt="background">
     <div class="overlay">
         <div class="overlay-content">
             <h1>{{ $personal_solution->title1 }}</h1>
@@ -56,7 +56,7 @@
 <section class="bottom-section">
 <div class="first-bottom-section">
     <div class="image-container">
-        <img src="{{ asset('uploads/pics/' . $personal_solution->picture1) }}" alt="logo">
+        <img src="{{ asset('storage/uploads/pics/' . $personal_solution->picture1) }}" alt="logo">
     </div>
 
 </div>

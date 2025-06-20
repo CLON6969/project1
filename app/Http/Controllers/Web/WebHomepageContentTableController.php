@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HomepageContentTable;
 use Illuminate\Http\Request;
 
-class HomepageContentTableController extends Controller
+class WebHomepageContentTableController extends Controller
 {
     public function index()
     {

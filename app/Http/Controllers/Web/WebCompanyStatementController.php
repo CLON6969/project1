@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CompanyStatement;
 
-class CompanyStatementController extends Controller
+class WebCompanyStatementController extends Controller
 {
     public function index()
     {

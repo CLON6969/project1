@@ -37,7 +37,7 @@
     <div class="topbar">
       <button id="toggleTheme" class="btn btn-sm btn-secondary">Dark Mode</button>
     </div>
-    <iframe id="contentFrame" src="{{ route('admin.finance.index') }}"></iframe>
+    <iframe id="contentFrame" src="{{ route('admin.finance.reports.index') }}"></iframe>
   </div>
 </div>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -209,7 +209,73 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [
         ]
       }
     ]
+  },
+
+{
+  label: 'Personal Solutions Page',
+  
+  children: [
+
+    {
+      label: 'Main Content',
+      children: [
+        { label: 'Edit Content', url: '/admin/web/solution/personal/edit' }
+      ]
+    },
+    {
+      label: 'Personal Solutions',
+      children: [
+        { label: 'View All', url: '/admin/web/solution/personal/table' },
+        { label: 'Create New', url: '/admin/web/solution/personal/table/create' }
+      ]
+    }
+  ]
+},
+
+{
+  label: 'Industrial Solutions Page',
+  children: [
+    {
+      label: 'Main Content',
+      children: [
+        { label: 'Edit Content', url: '/admin/web/solution/industrial/edit' }
+      ]
+    },
+    {
+      label: 'Industrial Solution',
+      children: [
+        { label: 'View All', url: '/admin/web/solution/industrial/table' },
+        { label: 'Create New', url: '/admin/web/solution/industrial/table/create' }
+      ]
+    }
+  ]
+},
+
+
+      {
+    label: 'Services-page',
+    children: [
+      {
+        label: 'Services Content',
+        children: [
+          { label: 'Edit', url: '/admin/web/services/edit' }
+        ]
+      },
+
+      {
+        label: 'services table',
+        children: [
+          { label: 'Edit', url: '/admin/web/services/table' }
+        ]
+      },
+
+    ]
   }
+
+
+
+
+
 ]));
 
 

@@ -6,7 +6,7 @@
 <header class="hero">
     @foreach( $services as  $service)
 
-    <img src="{{ asset('uploads/pics/' . $service->background_picture) }}" alt="background_picture">
+    <img src="{{ asset('storage/uploads/pics/' . $service->background_picture) }}" alt="background_picture">
 
     <div class="overlay">
         <h1>{{ $service->title1 }}</h1>
@@ -38,7 +38,7 @@
 
         @foreach($services_table as $table)
         <div class="card">
-        <div class="icon" style=""><i class="fa-solid {{ $table->icon }}"></i></div>
+        <div class="icon" style=""><i class="{{ $table->icon }}"></i></div>
 
         <h3>{{ $table->title1 }}</h3>
         <p>{{ $table->title1_sub_content }}</p>
@@ -70,7 +70,7 @@
 
     <div class="first-bottom-section">
         <div class="image-container">
-            <img src="{{ asset('uploads/pics/' . $service->picture1) }}" alt="picture">
+            <img src="{{ asset('storage/uploads/pics/' . $service->picture1) }}" alt="picture">
         </div>
     
     </div>

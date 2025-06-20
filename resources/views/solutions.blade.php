@@ -5,7 +5,7 @@
 
 <header class="hero">
     @foreach($solutions as $solution)
-    <img src="{{ asset('uploads/pics/100.jpg') }}" alt="logo">
+     <img src="{{ asset('storage/uploads/pics/' . $solution->background_picture) }}" alt="background">
     <div class="overlay">
         <div class="overlay-content">
             <h1>{{ $solution->title1 }}</h1>
@@ -37,7 +37,7 @@
 
         @foreach($solutionTables->where('category', 'industrial') as $table)
         <div class="card">
-        <div class="icon"><i class="fa-solid {{ $table->icon }}"></i></div>
+        <div class="icon"><i class="{{ $table->icon }}"></i></div>
 
         <h3>{{ $table->title1 }}</h3>
         <p>{{ $table->title1_sub_content }}</p>
@@ -56,7 +56,7 @@
 <section class="bottom-section">
 <div class="first-bottom-section">
     <div class="image-container">
-        <img src="{{ asset('uploads/pics/' . $solution->picture1) }}" alt="logo">
+        <img src="{{ asset('storage/uploads/pics/' . $solution->picture1) }}" alt="logo">
     </div>
 
 </div>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\HomepageContent;
 use Illuminate\Support\Facades\Storage;
 
-class HomepageContentController extends Controller
+class WebHomepageContentController extends Controller
 {
     public function edit()
     {
