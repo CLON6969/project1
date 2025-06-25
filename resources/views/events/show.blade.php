@@ -8,7 +8,7 @@
 <div class="event-detail-container">
     <!-- Hero Section -->
     <div class="event-hero">
-        <img src="{{ asset('uploads/pics/' . $event->picture) }}" alt="Event Image">
+        <img src="{{ asset('storage/uploads/events/' . $event->picture) }}" alt="Event Image">
         <div class="overlay">
             <h1 class="event-title">{{ $event->title1 }}</h1>
         </div>

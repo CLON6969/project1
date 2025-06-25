@@ -40,6 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'id_document_path',
         'business_license_path',
         'bio',
+        'job_title',
         'referral_source',
         'parent_account_id',
         'account_type',

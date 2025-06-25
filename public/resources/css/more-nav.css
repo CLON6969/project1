@@ -18,6 +18,8 @@ h1 {
 nav {
     height: 70px;
     display: flex;
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
     align-items: center;
     justify-content: space-between;
     padding: 0 8vw;

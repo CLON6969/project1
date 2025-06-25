@@ -35,6 +35,7 @@ MoreController,
 EventController,
 ContactController,
 SubscriptionController,
+AboutController
 
 };
 
@@ -75,11 +76,14 @@ use App\Http\Controllers\Web\{
     WebIndustrialSolutionTableController ,
     WebPersonalSolutionTableController,
     WebIndustrialSolutionController,
-    WebMoreSolutionController,
-    WebMoreTableController
+    WebMoreController,
+    WebMoreTableController,
+    WebEventTableController,
+    WebEventController,
+    WebAboutController,
+    WebAboutTableController
 
 };
-
 
 
 // ----------------------------------------------- //
@@ -128,6 +132,9 @@ Route::view('/emails/sales_contact_form', '/emails/sales_contact_form');
 
 Route::get('/load-more-packages', [PackageController::class, 'loadMore']);
 
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+Route::view('careers', 'careers');
 
 
 Route::get('/plan/compare', function () {
@@ -339,16 +346,16 @@ Route::prefix('admin/web/homepage')->name('admin.web.homepage.')->group(function
 
 
 
-Route::prefix('admin/web/solution/more')->name('admin.web.solution.more')->group(function () {
+Route::prefix('admin/web/more')->name('admin.web.more')->group(function () {
 
-    // Main "More" Solution Content (Single Row)
+    // Main "More"  Content (Single Row)
     Route::prefix('/')->name('.')->group(function () {
-        Route::get('/edit', [WebMoreSolutionController::class, 'edit'])->name('edit');
-        Route::post('/update', [WebMoreSolutionController::class, 'update'])->name('update');
+        Route::get('/edit', [WebMoreController::class, 'edit'])->name('edit');
+        Route::post('/update', [WebMoreController::class, 'update'])->name('update');
     });
 
-    // "More" Solution Table (Multiple Rows)
-    Route::prefix('table')->name('table.')->group(function () {
+    // "More"  Table (Multiple Rows)
+    Route::prefix('/table')->name('.table.')->group(function () {
         Route::get('/', [WebMoreTableController::class, 'index'])->name('index');
         Route::get('/create', [WebMoreTableController::class, 'create'])->name('create');
         Route::post('/store', [WebMoreTableController::class, 'store'])->name('store');
@@ -359,6 +366,54 @@ Route::prefix('admin/web/solution/more')->name('admin.web.solution.more')->group
 
 });
 
+
+
+
+
+
+// --- about Section ---
+
+Route::prefix('admin/web/about')->name('admin.web.about')->group(function () {
+
+    // Main About Content (Single Row)
+    Route::prefix('/')->name('.')->group(function () {
+        Route::get('/edit', [WebAboutController::class, 'edit'])->name('edit');
+        Route::post('/update', [WebAboutController::class, 'update'])->name('update');
+    });
+
+    // About Table Content (Multiple Rows)
+    Route::prefix('/table')->name('.table.')->group(function () {
+        Route::get('/', [WebAboutTableController::class, 'index'])->name('index');
+        Route::get('/create', [WebAboutTableController::class, 'create'])->name('create');
+        Route::post('/store', [WebAboutTableController::class, 'store'])->name('store');
+        Route::get('/edit/{table}', [WebAboutTableController::class, 'edit'])->name('edit');
+        Route::post('/update/{table}', [WebAboutTableController::class, 'update'])->name('update');
+        Route::delete('/delete/{table}', [WebAboutTableController::class, 'destroy'])->name('destroy');
+    });
+
+});
+
+
+// --- Events Section ---
+Route::prefix('admin/web/event')->name('admin.web.event')->group(function () {
+
+    // Main Event Content (Single Row)
+    Route::prefix('/')->name('.')->group(function () {
+        Route::get('/edit', [WebEventController::class, 'edit'])->name('edit');
+        Route::post('/update', [WebEventController::class, 'update'])->name('update');
+    });
+
+    // Event Table Content (Multiple Rows)
+    Route::prefix('/table')->name('.table.')->group(function () {
+        Route::get('/', [WebEventTableController::class, 'index'])->name('index');
+        Route::get('/create', [WebEventTableController::class, 'create'])->name('create');
+        Route::post('/store', [WebEventTableController::class, 'store'])->name('store');
+        Route::get('/edit/{table}', [WebEventTableController::class, 'edit'])->name('edit');
+        Route::put('/update/{table}', [WebEventTableController::class, 'update'])->name('update');
+        Route::delete('/delete/{table}', [WebEventTableController::class, 'destroy'])->name('destroy');
+    });
+
+});
 
 
 
@@ -377,7 +432,7 @@ Route::prefix('admin/web/solution/industrial')->name('admin.web.solution.industr
     });
 
     // Industrial Solution Table (Multiple Rows)
-    Route::prefix('/table')->name('table.')->group(function () {
+    Route::prefix('/table')->name('.table.')->group(function () {
         Route::get('/', [WebIndustrialSolutionTableController::class, 'index'])->name('index');
         Route::get('/create', [WebIndustrialSolutionTableController::class, 'create'])->name('create');
         Route::post('/store', [WebIndustrialSolutionTableController::class, 'store'])->name('store');

@@ -225,8 +225,7 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [
     {
       label: 'Personal Solutions',
       children: [
-        { label: 'View All', url: '/admin/web/solution/personal/table' },
-        { label: 'Create New', url: '/admin/web/solution/personal/table/create' }
+        { label: 'View All', url: '/admin/web/solution/personal/table' }
       ]
     }
   ]
@@ -244,8 +243,7 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [
     {
       label: 'Industrial Solution',
       children: [
-        { label: 'View All', url: '/admin/web/solution/industrial/table' },
-        { label: 'Create New', url: '/admin/web/solution/industrial/table/create' }
+        { label: 'View All', url: '/admin/web/solution/industrial/table' }
       ]
     }
   ]
@@ -270,8 +268,68 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [
       },
 
     ]
-  }
+  },
 
+        {
+    label: 'more-page',
+    children: [
+      {
+        label: 'More Content',
+        children: [
+          { label: 'Edit', url: '/admin/web/more/edit' }
+        ]
+      },
+
+      {
+        label: 'More table',
+        children: [
+          { label: 'Edit', url: '/admin/web/more/table' }
+        ]
+      },
+
+    ]
+  },
+
+  
+        {
+    label: 'Events-page',
+    children: [
+      {
+        label: 'Events Content',
+        children: [
+          { label: 'Edit', url: '/admin/web/event/edit' }
+        ]
+      },
+
+      {
+        label: 'services table',
+        children: [
+          { label: 'Edit', url: '/admin/web/event/table' }
+        ]
+      },
+
+    ]
+  },
+
+        {
+    label: 'About-page',
+    children: [
+      {
+        label: 'About Content',
+        children: [
+          { label: 'Edit', url: '/admin/web/about/edit' }
+        ]
+      },
+
+      {
+        label: 'About table',
+        children: [
+          { label: 'Edit', url: '/admin/web/about/table' }
+        ]
+      },
+
+    ]
+  }
 
 
 

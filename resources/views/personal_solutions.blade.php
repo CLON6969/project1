@@ -37,7 +37,7 @@
 
         @foreach($solutionTables->where('category', 'personal') as $table)
         <div class="card">
-        <div class="icon"><i class="fa-solid {{ $table->icon }}"></i></div>
+        <div class="icon"><i class="{{ $table->icon }}"></i></div>
 
         <h3>{{ $table->title1 }}</h3>
         <p>{{ $table->title1_sub_content }}</p>

@@ -116,7 +116,7 @@
         <p>{{ $homepageContent->title2_content ?? '' }}</p> 
 
     <div class="flex items-center justify-between mb-6 mt-4">
-        <a href="{{ route('admin.web.homepage.table.create') }}" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded shadow text-sm font-medium">
+        <a href="about" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded shadow text-sm font-medium">
             <i class="fas fa-plus mr-2"></i> Read more...
         </a>
     </div>

@@ -19,7 +19,7 @@
     <tbody>
         @foreach($records as $item)
         <tr>
-            <td>{{ $item->icon }}</td>
+                <td><i class="{{ $item->icon }}"></i> <small>{{ $item->icon }}</small></td>
             <td>{{ $item->title1 }}</td>
             <td>
                 <a href="{{ route('admin.web.solution.personal.table.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>

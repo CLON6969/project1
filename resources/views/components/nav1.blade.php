@@ -2,6 +2,8 @@
     $navItems = App\Models\Nav1::all();
 @endphp
 
+
+
 <nav>
     <input type="checkbox" id="check">
     <label for="check" class="checkbtn">

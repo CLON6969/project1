@@ -21,7 +21,7 @@
 
        <!-- CSS -->
        <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
-       <link href="{{ asset('resources/css/nav1.css') }}" rel="stylesheet">
+          <link href="{{ asset('resources/css/more-nav.css') }}" rel="stylesheet">
        <link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
        <link href="{{ asset('resources/css/partners.css') }}" rel="stylesheet">
        <link href="{{ asset('resources/css/premium.css') }}" rel="stylesheet">

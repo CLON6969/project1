@@ -18,7 +18,7 @@
    <!-- CSS Scripts -->
 
    <link href="{{ asset('resources/css/compare.css') }}" rel="stylesheet">
-   <link href="{{ asset('resources/css/nav1.css') }}" rel="stylesheet">
+      <link href="{{ asset('resources/css/more-nav.css') }}" rel="stylesheet">
    <link href="{{ asset('resources/css/partners.css') }}" rel="stylesheet">
    <link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
    <link href="{{ asset('resources/css/home.css') }}" rel="stylesheet">

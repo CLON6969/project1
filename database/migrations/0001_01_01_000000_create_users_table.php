@@ -47,6 +47,7 @@ return new class extends Migration
 
             // Optional fields
             $table->text('bio')->nullable();
+            $table->string('job_title')->nullable();
             $table->string('referral_source')->nullable();
 
             // Relationships
