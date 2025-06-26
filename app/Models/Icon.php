@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Social extends Model
+class Icon extends Model
 {
     use HasFactory;
 
-    protected $table = 'socials';
+    protected $table = 'icon'; // explicitly defined because of the underscore
 
     protected $fillable = [
-        'icon',
-        'name_url', 
-        'sort_order',
-        'is_active'
+        'picture',
+         'picture2',
+        'title'
     ];
 }
-
-

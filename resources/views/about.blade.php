@@ -91,8 +91,8 @@
       <p>{{ $about->title2_content }}</p>
 
       <div class="button">
-          <a href="{{$about->button1_name}}">
-             <!-- #endregion --><i class="fas fa-plus mr-2"></i> {{$about->button1_url}}
+          <a href="{{$about->button1_url}}">
+             <!-- #endregion --><i class="fas fa-plus mr-2"></i> {{$about->button1_name}}
           </a>
       </div>
 

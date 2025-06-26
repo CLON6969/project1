@@ -6,6 +6,7 @@ use App\Models\HomepageContent;
 use App\Models\HomepageContentTable;
 use App\Models\Package;
 use App\Models\CompanyStatement;
+use App\Models\Icon;
 
 class HomepageController extends Controller
 {
@@ -15,7 +16,8 @@ class HomepageController extends Controller
         $homepageContent = HomepageContent::first(); // Get the first row of content
         $packages = Package::with('plans.features')->get(); // Load packages with plans and features
         $statements = CompanyStatement::all(); // Get all company statements (mission, vision, etc.)
+         $icon = Icon::first(); // Changed from $icons = ... to $icon = ...
 
-        return view('welcome', compact('homepageContent', 'packages', 'statements', 'homepageContentTable')); // Pass to view
+        return view('welcome', compact('homepageContent', 'packages', 'statements', 'homepageContentTable', 'icon')); // Pass to view
     }
 }

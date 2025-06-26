@@ -184,7 +184,41 @@ function createDropdown(title, icon, items) {
 ]));
 
 
-menu.appendChild(createDropdown('Web', 'fas fa-globe', [
+menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
+    label: 'General',
+    children: [
+      {
+        label: 'Footer tittle',
+        children: [
+          { label: 'Edit', url: '/admin/web/general/footer/titles' }
+        ]
+      },
+
+      {
+        label: 'footer Items',
+        children: [
+          { label: 'Edit', url: '/admin/web/general/footer/items' }
+        ]
+      },
+
+      {
+        label: 'Socials ',
+        children: [
+          { label: 'Edit', url: '/admin/web/general/socials' }
+        ]
+      },
+
+      {
+        label: 'icon ',
+        children: [
+          { label: 'Edit', url: '/admin/web/general/icons' }
+        ]
+      }
+    ]
+  },
+
+
+
   {
     label: 'Landing-page',
     children: [

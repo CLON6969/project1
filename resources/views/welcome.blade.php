@@ -5,7 +5,7 @@
 <!-- HOME -->
 <section class="home">
     <div class="home-logo">
-        <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo">
+         <img src="{{ asset('storage/uploads/pics/' . $icon->picture2) }}" alt="logo">
     </div>
 
     <div class="home-tittle">
@@ -34,7 +34,7 @@
             <div class="box3"></div>
 
             <div class="box4">
-                <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo"> 
+                 <img src="{{ asset('storage/uploads/pics/' . $icon->picture2) }}" alt="logo">
             </div>
 
         </div>

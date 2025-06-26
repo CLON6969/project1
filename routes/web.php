@@ -81,8 +81,14 @@ use App\Http\Controllers\Web\{
     WebEventTableController,
     WebEventController,
     WebAboutController,
-    WebAboutTableController
+    WebAboutTableController 
 
+};
+
+use App\Http\Controllers\Web\General\{
+FooterController,
+SocialController,
+IconController
 };
 
 
@@ -338,6 +344,66 @@ Route::prefix('admin/web/homepage')->name('admin.web.homepage.')->group(function
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// --- general Section ---
+
+
+
+Route::prefix('admin/web/general/footer')->name('admin.web.general.footer.')->group(function () {
+
+    // --- Footer Titles ---
+    Route::get('/titles', [FooterController::class, 'titleIndex'])->name('titles.index');
+    Route::get('/titles/create', [FooterController::class, 'titleCreate'])->name('titles.create');
+    Route::post('/titles/store', [FooterController::class, 'titleStore'])->name('titles.store');
+    Route::get('/titles/{title}/edit', [FooterController::class, 'titleEdit'])->name('titles.edit');
+    Route::put('/titles/{title}/update', [FooterController::class, 'titleUpdate'])->name('titles.update');
+    Route::delete('/titles/{title}', [FooterController::class, 'titleDestroy'])->name('titles.destroy');
+
+    // --- Footer Items ---
+    Route::get('/items', [FooterController::class, 'itemIndex'])->name('items.index');
+    Route::get('/items/create', [FooterController::class, 'itemCreate'])->name('items.create');
+    Route::post('/items/store', [FooterController::class, 'itemStore'])->name('items.store');
+    Route::get('/items/{item}/edit', [FooterController::class, 'itemEdit'])->name('items.edit');
+    Route::put('/items/{item}/update', [FooterController::class, 'itemUpdate'])->name('items.update');
+    Route::delete('/items/{item}', [FooterController::class, 'itemDestroy'])->name('items.destroy');
+
+});
+
+   // --- socials  under general---
+Route::prefix('admin/web/general/socials')->name('admin.web.general.socials.')->group(function () {
+    Route::get('/', [SocialController::class, 'index'])->name('index');
+    Route::get('/create', [SocialController::class, 'create'])->name('create');
+    Route::post('/store', [SocialController::class, 'store'])->name('store');
+    Route::get('/{social}/edit', [SocialController::class, 'edit'])->name('edit');
+    Route::put('/{social}', [SocialController::class, 'update'])->name('update');
+    Route::delete('/{social}', [SocialController::class, 'destroy'])->name('destroy');
+});
+
+
+// --- icons under general---
+
+Route::prefix('admin/web/general/icons')->name('admin.web.general.icons.')->group(function () {
+    Route::get('/', [IconController::class, 'index'])->name('index');
+    Route::get('/create', [IconController::class, 'create'])->name('create');
+    Route::post('/store', [IconController::class, 'store'])->name('store');
+    Route::get('/{icon}/edit', [IconController::class, 'edit'])->name('edit');
+    Route::put('/{icon}/update', [IconController::class, 'update'])->name('update');
+    Route::delete('/{icon}/delete', [IconController::class, 'destroy'])->name('destroy');
+});
 
 
 

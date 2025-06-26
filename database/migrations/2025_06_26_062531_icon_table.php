@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up()
+    {
+        Schema::create('icon', function (Blueprint $table) {
+            $table->id();
+            $table->string('picture1'); // To store the icon picture
+             $table->string('picture2'); // To store the icon picture2
+             $table->string('title');
+            $table->timestamps(); // created_at and updated_at time
+        });
+    }
+    
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('icon');
+    }
+};
