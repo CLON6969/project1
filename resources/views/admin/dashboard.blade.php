@@ -209,9 +209,15 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       },
 
       {
-        label: 'icon ',
+        label: 'logo ',
         children: [
-          { label: 'Edit', url: '/admin/web/general/icons' }
+          { label: 'Edit', url: '/admin/web/general/logo' }
+        ]
+      },
+      {
+        label: 'partners',
+        children: [
+          { label: 'Edit', url: '/admin/web/general/partners/' }
         ]
       }
     ]

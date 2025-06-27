@@ -2,29 +2,29 @@
 
 @section('content')
 <div class="container">
-    <h2>Edit Icon</h2>
+    <h2>Edit Logo</h2>
 
-    <form action="{{ route('admin.web.general.icons.update', $icon->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.web.general.logo.update', $logo->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="mb-3">
             <label>Title</label>
-            <input type="text" name="title" class="form-control" value="{{ old('title', $icon->title) }}" required>
+            <input type="text" name="title" class="form-control" value="{{ old('title', $logo->title) }}" required>
         </div>
 
         <div class="mb-3">
-            <label>Picture 1</label><br>
-            @if($icon->picture)
-                <img src="{{ asset('storage/uploads/pics/' . $icon->picture) }}" width="80" class="mb-2">
+            <label>Picture</label><br>
+            @if($logo->picture)
+                <img src="{{ asset('storage/uploads/pics/' . $logo->picture) }}" width="60" class="mb-2">
             @endif
             <input type="file" name="picture" class="form-control">
         </div>
 
         <div class="mb-3">
             <label>Picture 2</label><br>
-            @if($icon->picture2)
-                <img src="{{ asset('storage/uploads/pics/' . $icon->picture2) }}" width="80" class="mb-2">
+            @if($logo->picture2)
+                <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" width="60" class="mb-2">
             @endif
             <input type="file" name="picture2" class="form-control">
         </div>

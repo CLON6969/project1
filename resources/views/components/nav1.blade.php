@@ -1,6 +1,6 @@
 @php 
     $navItems = App\Models\Nav1::all();
-    $icon = App\Models\Icon::first(); // Changed from $icons = ... to $icon = ...
+    $icon = App\Models\Logo::first(); // Changed from $icons = ... to $icon = ...
 @endphp
 
 <nav>

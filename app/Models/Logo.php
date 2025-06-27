@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Icon extends Model
+class Logo extends Model
 {
     use HasFactory;
 
-    protected $table = 'icon'; // explicitly defined because of the underscore
+    protected $table = 'logo'; // explicitly defined because of the underscore
 
     protected $fillable = [
         'picture',

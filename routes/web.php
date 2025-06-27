@@ -88,7 +88,8 @@ use App\Http\Controllers\Web\{
 use App\Http\Controllers\Web\General\{
 FooterController,
 SocialController,
-IconController
+LogoController,
+PartnersController
 };
 
 
@@ -394,15 +395,30 @@ Route::prefix('admin/web/general/socials')->name('admin.web.general.socials.')->
 });
 
 
-// --- icons under general---
+// --- logo under general---
 
-Route::prefix('admin/web/general/icons')->name('admin.web.general.icons.')->group(function () {
-    Route::get('/', [IconController::class, 'index'])->name('index');
-    Route::get('/create', [IconController::class, 'create'])->name('create');
-    Route::post('/store', [IconController::class, 'store'])->name('store');
-    Route::get('/{icon}/edit', [IconController::class, 'edit'])->name('edit');
-    Route::put('/{icon}/update', [IconController::class, 'update'])->name('update');
-    Route::delete('/{icon}/delete', [IconController::class, 'destroy'])->name('destroy');
+Route::prefix('admin/web/general/logo')->name('admin.web.general.logo.')->group(function () {
+    Route::get('/', [LogoController::class, 'index'])->name('index');
+    Route::get('/create', [LogoController::class, 'create'])->name('create');
+    Route::post('/store', [LogoController::class, 'store'])->name('store');
+    Route::get('/{logo}/edit', [LogoController::class, 'edit'])->name('edit');
+    Route::put('/{logo}/update', [LogoController::class, 'update'])->name('update');
+    Route::delete('/{logo}/delete', [LogoController::class, 'destroy'])->name('destroy');
+});
+
+
+// --- partiners under general---
+
+
+
+
+Route::prefix('admin/web/general/partners')->name('admin.web.general.partners.')->group(function () {
+    Route::get('/', [PartnersController::class, 'index'])->name('index');
+    Route::get('/create', [PartnersController::class, 'create'])->name('create');
+    Route::post('/store', [PartnersController::class, 'store'])->name('store');
+    Route::get('/{partner}/edit', [PartnersController::class, 'edit'])->name('edit');
+    Route::put('/{partner}/update', [PartnersController::class, 'update'])->name('update');
+    Route::delete('/{partner}/delete', [PartnersController::class, 'destroy'])->name('destroy');
 });
 
 

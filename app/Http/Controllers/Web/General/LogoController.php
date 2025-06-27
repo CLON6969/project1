@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Web\General;
 
 use App\Http\Controllers\Controller;
-use App\Models\Icon;
+use App\Models\Logo;
 use Illuminate\Http\Request;
 
-class IconController extends Controller
+class LogoController extends Controller
 {
     public function index()
     {
-        $icons = Icon::latest()->get();
-        return view('admin.web.general.icons.index', compact('icons'));
+        $logo = logo::latest()->get();
+        return view('admin.web.general.logo.index', compact('logo'));
     }
 
     public function create()
     {
-        return view('admin.web.general.icons.create');
+        return view('admin.web.general.logo.create');
     }
 
     public function store(Request $request)
@@ -39,17 +39,17 @@ class IconController extends Controller
             $data['picture2'] = basename($path2);
         }
 
-        Icon::create($data);
+        logo::create($data);
 
-        return redirect()->route('admin.web.general.icons.index')->with('success', 'Icon created successfully.');
+        return redirect()->route('admin.web.general.logo.index')->with('success', 'logo created successfully.');
     }
 
-    public function edit(Icon $icon)
+    public function edit(logo $logo)
     {
-        return view('admin.web.general.icons.edit', compact('icon'));
+        return view('admin.web.general.logo.edit', compact('logo'));
     }
 
-    public function update(Request $request, Icon $icon)
+    public function update(Request $request, logo $logo)
     {
         $request->validate([
             'picture' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
@@ -69,14 +69,14 @@ class IconController extends Controller
             $data['picture2'] = basename($path2);
         }
 
-        $icon->update($data);
+        $logo->update($data);
 
-        return redirect()->route('admin.web.general.icons.index')->with('success', 'Icon updated successfully.');
+        return redirect()->route('admin.web.general.logo.index')->with('success', 'logo updated successfully.');
     }
 
-    public function destroy(Icon $icon)
+    public function destroy(logo $logo)
     {
-        $icon->delete();
-        return back()->with('success', 'Icon deleted successfully.');
+        $logo->delete();
+        return back()->with('success', 'logo deleted successfully.');
     }
 }

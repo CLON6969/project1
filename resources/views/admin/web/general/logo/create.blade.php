@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h2>Create Icon</h2>
+    <h2>Create Logo</h2>
 
-    <form action="{{ route('admin.web.general.icons.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.web.general.logo.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -13,7 +13,7 @@
         </div>
 
         <div class="mb-3">
-            <label>Picture 1</label>
+            <label>Picture</label>
             <input type="file" name="picture" class="form-control">
         </div>
 

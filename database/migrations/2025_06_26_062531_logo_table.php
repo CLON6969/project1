@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('icon', function (Blueprint $table) {
+        Schema::create('logo', function (Blueprint $table) {
             $table->id();
-            $table->string('picture1'); // To store the icon picture
-             $table->string('picture2'); // To store the icon picture2
+            $table->string('picture1'); // To store the logo picture
+             $table->string('picture2'); // To store the logo picture2
              $table->string('title');
             $table->timestamps(); // created_at and updated_at time
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('icon');
+        Schema::dropIfExists('logo');
     }
 };
