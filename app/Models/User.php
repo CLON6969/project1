@@ -36,7 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'tax_id',
         'organization_size',
         'two_factor_enabled',
-        'email_verified',
+        'email_verified' => 'boolean',
         'id_document_path',
         'business_license_path',
         'bio',

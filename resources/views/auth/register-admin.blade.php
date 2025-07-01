@@ -1,13 +1,16 @@
+@php 
+    $logo = App\Models\Logo::first(); // Changed from $icons = ... to $logo = ...
+@endphp
 @extends('layouts.signup')
 
 @section('content')
 <div class="body">
-    <img class="body-img" src="{{ asset('uploads/pics/33.jpg') }}" alt="logo">
+      <img class="body-img" src="{{ asset('storage/uploads/pics/'  . $logo->background_picture) }}" alt="background">
 
     <div class="login-container">
         <div class="login-box">
             <div class="text-center">
-                <img src="{{ asset('uploads/pics/logo1.png') }}" alt="logo">
+                < <img src="{{ asset('storage/uploads/pics/' . $logo->picture) }}" alt="logo">
                 <h2>Admin Sign Up</h2>
             </div>
 

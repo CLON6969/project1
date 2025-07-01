@@ -81,7 +81,8 @@ use App\Http\Controllers\Web\{
     WebEventTableController,
     WebEventController,
     WebAboutController,
-    WebAboutTableController 
+    WebAboutTableController,
+  WebPackageController
 
 };
 
@@ -499,6 +500,21 @@ Route::prefix('admin/web/event')->name('admin.web.event')->group(function () {
 
 
 
+
+// --- pricing Section(page) ---
+
+
+
+// Grouping under admin and web general namespace (adjust as needed)
+Route::prefix('admin/web/package')->name('admin.web.package.')->group(function () {
+    Route::get('/', [WebPackageController::class, 'index'])->name('index');
+    Route::get('/create', [WebPackageController::class, 'create'])->name('create');
+    Route::post('/', [WebPackageController::class, 'store'])->name('store');
+    Route::get('/{package}/edit', [WebPackageController::class, 'edit'])->name('edit');
+    Route::put('/{package}', [WebPackageController::class, 'update'])->name('update');
+    Route::delete('/{package}', [WebPackageController::class, 'destroy'])->name('destroy');
+
+});
 
 
 // --- Solutions Section ---

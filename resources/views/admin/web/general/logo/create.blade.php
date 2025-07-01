@@ -22,6 +22,11 @@
             <input type="file" name="picture2" class="form-control">
         </div>
 
+        <div class="mb-3">
+            <label>Background picture</label>
+            <input type="file" name="background_picture" class="form-control">
+        </div>
+
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
 </div>

@@ -16,6 +16,7 @@
                 <th>Title</th>
                 <th>Picture 1</th>
                 <th>Picture 2</th>
+                <th>background picture</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                     <td>{{ $item->title }}</td>
                     <td><img src="{{ asset('storage/uploads/pics/' . $item->picture) }}" width="50"></td>
                     <td><img src="{{ asset('storage/uploads/pics/' . $item->picture2) }}" width="50"></td>
+                    <td><img src="{{ asset('storage/uploads/pics/' . $item->background_picture) }}" width="50"></td>
                     <td>
                         <a href="{{ route('admin.web.general.logo.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('admin.web.general.logo.destroy', $item->id) }}" method="POST" style="display:inline-block">

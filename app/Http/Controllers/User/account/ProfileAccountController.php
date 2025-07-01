@@ -103,6 +103,7 @@ class ProfileAccountController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('status', 'Account deleted successfully.');
+        return response()->view('redirect-top', ['url' => url('/')]);
+
     }
 }

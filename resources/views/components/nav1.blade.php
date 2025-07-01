@@ -1,6 +1,6 @@
 @php 
     $navItems = App\Models\Nav1::all();
-    $icon = App\Models\Logo::first(); // Changed from $icons = ... to $icon = ...
+    $logo = App\Models\Logo::first(); // Changed from $icons = ... to $logo = ...
 @endphp
 
 <nav>
@@ -9,8 +9,8 @@
         <i class="fas fa-bars"></i>
     </label>
 
-    @if($icon && $icon->picture)
-        <img src="{{ asset('storage/uploads/pics/' . $icon->picture) }}" alt="logo">
+    @if($logo && $logo->picture)
+        <img src="{{ asset('storage/uploads/pics/' . $logo->picture) }}" alt="logo">
     @else
         <img src="{{ asset('uploads/default.png') }}" alt="logo"> {{-- Optional fallback --}}
     @endif

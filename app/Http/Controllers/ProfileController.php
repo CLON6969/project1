@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\CompanyProfileUpdateRequest;
+use App\Http\Requests\InstitutionProfileUpdateRequest;
+use App\Http\Requests\IndividualProfileUpdateRequest;
+use Illuminate\Routing\Redirector;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,29 +46,63 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $user = $request->user();
+public function update(Request $request): RedirectResponse
+{
+    $user = $request->user();
 
-        $user->fill($request->validated());
+    // Determine the FormRequest class based on user_type
+    $formRequestClass = match ($user->user_type) {
+        'company' => CompanyProfileUpdateRequest::class,
+        'institution' => InstitutionProfileUpdateRequest::class,
+        default => IndividualProfileUpdateRequest::class,
+    };
 
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
+    // Instantiate the FormRequest
+    /** @var \Illuminate\Foundation\Http\FormRequest $formRequest */
+    $formRequest = app($formRequestClass);
 
-        $user->profile_completed = true;
-        $user->save();
+    // Set container and redirector for the FormRequest
+$formRequest->setRedirector(app()->make(Redirector::class));
 
-        // Redirect to dashboard (custom) or profile edit (Breeze fallback)
-        if ($user->role_id === 2) { // example: role_id 2 = staff standard
-            return redirect()->route('staff.dashboard')->with('status', 'profile-updated');
 
-        } else  if ($user->role_id === 1) { // example: role_id 1 = addmin standard 
-            return redirect()->route('admin.dashboard')->with('status', 'profile-updated');
-        }
+    // Initialize FormRequest with current request data
+    $formRequest->initialize(
+        $request->query->all(),
+        $request->request->all(),
+        $request->attributes->all(),
+        $request->cookies->all(),
+        $request->files->all(),
+        $request->server->all(),
+        $request->getContent()
+    );
 
-        return Redirect::route('user.dashboard')->with('status', 'profile-updated');
+    // Run validation (throws ValidationException on failure)
+    $formRequest->validateResolved();
+
+    // Get validated data
+    $validatedData = $formRequest->validated();
+
+    // Fill user with validated data
+    $user->fill($validatedData);
+
+    // Reset email_verified if email changed
+    if ($user->isDirty('email')) {
+        $user->email_verified = false; 
     }
+
+    $user->profile_completed = true;
+    $user->save();
+
+    // Redirect based on role
+    if ($user->role_id === 2) {
+        return redirect()->route('staff.dashboard')->with('status', 'profile-updated');
+    } elseif ($user->role_id === 1) {
+        return redirect()->route('admin.dashboard')->with('status', 'profile-updated');
+    }
+
+    return redirect()->route('user.dashboard')->with('status', 'profile-updated');
+}
+
 
     /**
      * Delete the user's account.

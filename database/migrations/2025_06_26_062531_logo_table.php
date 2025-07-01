@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('logo', function (Blueprint $table) {
             $table->id();
-            $table->string('picture1'); // To store the logo picture
+            $table->string('picture'); // To store the logo picture
              $table->string('picture2'); // To store the logo picture2
              $table->string('title');
+              $table->string('background_picture'); // To store the background picture of both the login and register pages
             $table->timestamps(); // created_at and updated_at time
         });
     }

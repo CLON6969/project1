@@ -15,13 +15,11 @@
 
    <!-- tailwind CSS -->
    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <link href="https://cdn.tailwindcss.com" rel="stylesheet">
 
-       <!-- Bootstrap CSS -->
-       <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
 <!-- CSS -->
-<link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
+
 
 <link href="{{ asset('resources/css/update_form.css') }}" rel="stylesheet">
 
@@ -44,7 +42,6 @@
     
 
 
-                <!-- Bootstrap JS (before closing </body>) -->
-                <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    
 </body>
 </html>

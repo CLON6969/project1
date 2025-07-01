@@ -24,6 +24,7 @@ class LogoController extends Controller
         $request->validate([
             'picture' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'picture2' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'background_picture' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:11048',
             'title' => 'required|string|max:255',
         ]);
 
@@ -37,6 +38,11 @@ class LogoController extends Controller
         if ($request->hasFile('picture2')) {
             $path2 = $request->file('picture2')->store('uploads/pics', 'public');
             $data['picture2'] = basename($path2);
+        }
+
+        if ($request->hasFile('background_picture')) {
+            $path2 = $request->file('background_picture')->store('uploads/pics', 'public');
+            $data['background_picture'] = basename($path2);
         }
 
         logo::create($data);
@@ -54,6 +60,7 @@ class LogoController extends Controller
         $request->validate([
             'picture' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'picture2' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'background_picture' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:11048',
             'title' => 'required|string|max:255',
         ]);
 
@@ -68,6 +75,12 @@ class LogoController extends Controller
             $path2 = $request->file('picture2')->store('uploads/pics', 'public');
             $data['picture2'] = basename($path2);
         }
+
+        if ($request->hasFile('background_picture')) {
+            $path2 = $request->file('background_picture')->store('uploads/pics', 'public');
+            $data['background_picture'] = basename($path2);
+        }
+
 
         $logo->update($data);
 

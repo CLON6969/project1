@@ -218,6 +218,15 @@ section.section_1 a:hover {
       text-shadow: 0 0 10px var(--primary);
     }
 
+    section.section_2 p {
+     background-color: rgba(0, 0, 0, 0.099);
+     border-radius: 10px;
+      color:var(--white);
+      text-shadow: 0 0 10px var(--primary);
+      font-size: 16px;
+      font-weight: 500;
+    
+   }
     section.section_2 img.bg {
       position: absolute;
       top: 0; left: 0;

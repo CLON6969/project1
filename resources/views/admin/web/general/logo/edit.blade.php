@@ -29,6 +29,16 @@
             <input type="file" name="picture2" class="form-control">
         </div>
 
+
+        <div class="mb-3">
+            <label>Background picture</label><br>
+            @if($logo->background_picture)
+                <img src="{{ asset('storage/uploads/pics/' . $logo->background_picture) }}" width="60" class="mb-2">
+            @endif
+            <input type="file" name="background_picture" class="form-control">
+        </div>
+
+
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>

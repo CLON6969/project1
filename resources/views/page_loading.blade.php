@@ -1,3 +1,6 @@
+@php 
+    $logo = App\Models\Logo::first(); // Changed from $icons = ... to $logo = ...
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +59,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="{{ asset('uploads/pics/logo2.png') }}" alt="Future Tech Logo" class="logo">
+        <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" alt="logo" class="logo">
         <h1>Page being worked on...</h1>
         <h1>Next Launch</h1>
         <button class="notify-btn" id="notify-btn">Notify Me</button>
