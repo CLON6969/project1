@@ -6,3 +6,4 @@
     @include('admin.web.package.partials.form', ['package' => $package])
 </div>
 @endsection
+

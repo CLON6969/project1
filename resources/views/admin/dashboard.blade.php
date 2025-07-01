@@ -355,7 +355,7 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       {
         label: 'pricing Content',
         children: [
-          { label: 'Edit', url: '/page_loading.blade' }
+          { label: 'Edit', url: '/admin/web/pricing/edit' }
         ]
       },
 

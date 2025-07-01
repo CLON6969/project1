@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('pricing', function (Blueprint $table) {
             $table->id();
-            $table->string('tittle1')->nullable();
+            $table->string('title1')->nullable();
            
-            $table->string('tittle2')->nullable();
-            $table->text('tittle2_content')->nullable();
-            $table->string('tittle3')->nullable();
+            $table->string('title2')->nullable();
+            $table->text('title2_content')->nullable();
+            $table->string('tttle3')->nullable();
 
-            $table->string('tittle4')->nullable();
+            $table->string('title4')->nullable();
 
             $table->timestamps();
         });

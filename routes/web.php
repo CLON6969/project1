@@ -82,7 +82,8 @@ use App\Http\Controllers\Web\{
     WebEventController,
     WebAboutController,
     WebAboutTableController,
-  WebPackageController
+    WebPackageController,
+    WebPricingController
 
 };
 
@@ -504,6 +505,14 @@ Route::prefix('admin/web/event')->name('admin.web.event')->group(function () {
 // --- pricing Section(page) ---
 
 
+
+
+Route::prefix('admin/web/pricing')->name('admin.web.pricing.')->group(function () {
+    Route::get('/edit', [WebPricingController::class, 'edit'])->name('edit');
+    Route::put('/update', [WebPricingController::class, 'update'])->name('update');
+});
+
+// --- pricing page content
 
 // Grouping under admin and web general namespace (adjust as needed)
 Route::prefix('admin/web/package')->name('admin.web.package.')->group(function () {

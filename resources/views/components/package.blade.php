@@ -23,13 +23,13 @@
                 {{ $plan->currency }} {{ number_format($plan->amount, 2) }}
             </div>
             <div class="subtext">{{ $plan->content1 }}</div>
-            <div class="free-header">{{ $plan->titttle1 }}</div>
+            <div class="free-header">Free hosting</div>
             
 <form method="POST" action="{{ route('subscription.apply') }}">
     @csrf
     <input type="hidden" name="package_id" value="{{ $package->id }}">
     <input type="hidden" name="plan_id" value="{{ $plan->id }}">
-    <button type="submit" class="choice">{{ $plan->button1_name }}</button>
+    <button type="submit" class="choice">choose</button>
 </form>
 
 

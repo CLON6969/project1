@@ -15,6 +15,8 @@ class Plan extends Model
         'button2_name', 'button2_url', 'package_id'
     ];
 
+    
+
     public function package()
     {
         return $this->belongsTo(Package::class);
@@ -31,3 +33,4 @@ class Plan extends Model
 }
 
 }
+

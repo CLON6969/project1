@@ -1,6 +1,4 @@
-@php
-    $isEdit = isset($package);
-@endphp
+@php $isEdit = isset($package); @endphp
 
 <form action="{{ $isEdit ? route('admin.web.package.update', $package) : route('admin.web.package.store') }}" method="POST">
     @csrf
@@ -9,17 +7,31 @@
     @endif
 
     {{-- PACKAGE FIELDS --}}
-    <div class="mb-3">
-        <label for="package_tittle">Package Title</label>
-        <input type="text" name="package_tittle" id="package_tittle" class="form-control" value="{{ old('package_tittle', $package->package_tittle ?? '') }}" required>
-    </div>
+    @foreach([
+        'package_tittle' => 'Package Title',
+        'statement' => 'Statement',
+        'tittle1' => 'Title 1',
+        'tittle1_content' => 'Title 1 Content',
+        'tittle2' => 'Title 2',
+        'tittle2_content' => 'Title 2 Content',
+        'tittle3' => 'Title 3',
+        'tittle3_content' => 'Title 3 Content',
+        'tittle4' => 'Title 4',
+        'tittle4_content' => 'Title 4 Content',
+        'tittle5' => 'Title 5',
+        'tittle5_content' => 'Title 5 Content',
+    ] as $field => $label)
+        <div class="mb-3">
+            <label for="{{ $field }}">{{ $label }}</label>
+            @if(str_contains($field, 'content') || $field === 'statement')
+                <textarea name="{{ $field }}" id="{{ $field }}" class="form-control">{{ old($field, $package->$field ?? '') }}</textarea>
+            @else
+                <input type="text" name="{{ $field }}" id="{{ $field }}" class="form-control" value="{{ old($field, $package->$field ?? '') }}">
+            @endif
+        </div>
+    @endforeach
 
-    <div class="mb-3">
-        <label for="statement">Statement</label>
-        <textarea name="statement" id="statement" class="form-control">{{ old('statement', $package->statement ?? '') }}</textarea>
-    </div>
-
-    {{-- DYNAMIC PLANS WRAPPER --}}
+    {{-- PLANS SECTION --}}
     <div id="plans-wrapper">
         <h4>Plans</h4>
 
@@ -28,24 +40,26 @@
                 <div class="card mb-4 plan-card" data-index="{{ $pIndex }}">
                     <div class="card-body">
                         <button type="button" class="btn btn-sm btn-danger float-end" onclick="removeElement(this)">Remove Plan</button>
-
                         <input type="hidden" name="plans[{{ $pIndex }}][id]" value="{{ $plan->id }}">
 
-                        <div class="mb-2">
-                            <label>Plan Title</label>
-                            <input type="text" name="plans[{{ $pIndex }}][plan_tittle]" class="form-control" value="{{ $plan->plan_tittle }}" required>
-                        </div>
+                        @foreach([
+                            'plan_tittle' => 'Plan Title',
+                            'amount' => 'Amount',
+                            'currency' => 'Currency',
+                            'content1' => 'Content 1',
+                            'titttle1' => 'Tittle 1',
+                            'button1_name' => 'Button 1 Name',
+                            'button1_url' => 'Button 1 URL',
+                            'button2_name' => 'Button 2 Name',
+                            'button2_url' => 'Button 2 URL'
+                        ] as $pField => $pLabel)
+                            <div class="mb-2">
+                                <label>{{ $pLabel }}</label>
+                                <input type="text" name="plans[{{ $pIndex }}][{{ $pField }}]" class="form-control" value="{{ old("plans.{$pIndex}.{$pField}", $plan->$pField) }}">
+                            </div>
+                        @endforeach
 
-                        <div class="mb-2">
-                            <label>Amount</label>
-                            <input type="number" name="plans[{{ $pIndex }}][amount]" class="form-control" value="{{ $plan->amount }}" required>
-                        </div>
-
-                        <div class="mb-2">
-                            <label>Currency</label>
-                            <input type="text" name="plans[{{ $pIndex }}][currency]" class="form-control" value="{{ $plan->currency }}" required>
-                        </div>
-
+                        {{-- FEATURES --}}
                         <h6>Features</h6>
                         <div class="features-wrapper">
                             @foreach($plan->features as $fIndex => $feature)
@@ -70,7 +84,7 @@
     </div>
 </form>
 
-
+{{-- Scripts --}}
 <script>
     let planIndex = {{ $isEdit && $package->plans ? $package->plans->count() : 0 }};
 
@@ -81,20 +95,22 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-sm btn-danger float-end" onclick="removeElement(this)">Remove Plan</button>
 
-                    <div class="mb-2">
-                        <label>Plan Title</label>
-                        <input type="text" name="plans[\${planIndex}][plan_tittle]" class="form-control" required>
-                    </div>
-
-                    <div class="mb-2">
-                        <label>Amount</label>
-                        <input type="number" name="plans[\${planIndex}][amount]" class="form-control" required>
-                    </div>
-
-                    <div class="mb-2">
-                        <label>Currency</label>
-                        <input type="text" name="plans[\${planIndex}][currency]" class="form-control" required>
-                    </div>
+                    @foreach([
+                        'plan_tittle' => 'Plan Title',
+                        'amount' => 'Amount',
+                        'currency' => 'Currency',
+                        'content1' => 'Content 1',
+                        'titttle1' => 'Tittle 1',
+                        'button1_name' => 'Button 1 Name',
+                        'button1_url' => 'Button 1 URL',
+                        'button2_name' => 'Button 2 Name',
+                        'button2_url' => 'Button 2 URL'
+                    ] as $pField => $pLabel)
+                        <div class="mb-2">
+                            <label>{{ $pLabel }}</label>
+                            <input type="text" name="plans[\${planIndex}][{{ $pField }}]" class="form-control">
+                        </div>
+                    @endforeach
 
                     <h6>Features</h6>
                     <div class="features-wrapper"></div>
@@ -125,4 +141,3 @@
         button.closest('.plan-card').remove();
     }
 </script>
-

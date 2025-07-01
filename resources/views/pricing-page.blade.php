@@ -5,12 +5,12 @@
 {{-- PRICING PAGE HEADER --}}
 @foreach ($pricing as $pricing_page)
     <div class="home-title">
-        <button>{{ $pricing_page->tittle1 }} <i class="fas fa-volleyball-ball"></i></button>
-        <h1>{{ $pricing_page->tittle2 }}</h1>
-        <p>{{ $pricing_page->tittle2_content }}</p>
+        <button>{{ $pricing_page->title1 }} <i class="fas fa-volleyball-ball"></i></button>
+        <h1>{{ $pricing_page->title2 }}</h1>
+        <p>{{ $pricing_page->title2_content }}</p>
         <div class="overlap-buttons">
-            <button>{{ $pricing_page->tittle3 }} <i class="fas fa-volleyball-ball"></i></button>
-            <button>{{ $pricing_page->tittle4 }} <i class="fas fa-volleyball-ball"></i></button>
+            <button>{{ $pricing_page->title3 }} <i class="fas fa-volleyball-ball"></i></button>
+            <button>{{ $pricing_page->title4 }} <i class="fas fa-volleyball-ball"></i></button>
         </div>
     </div>
 @endforeach
