@@ -31,6 +31,10 @@ export default defineConfig({
                 'resources/css/learn_more_services.css',
                 'resources/css/learn_more_solutions.css',
                 'resources/css/learn_more_events.css',
+                'resources/css/user_payment.css',
+                'resources/css/legal.css',
+                'resources/css/about.css',
+                'resources/css/update_form.css',
                 
 
                'resources/vendor/fontawesome/css/all.min.css',
