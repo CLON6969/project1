@@ -1,3 +1,9 @@
+@php 
+    $logo = App\Models\Logo::first(); // Changed from $icons = ... to $logo = ...
+@endphp
+
+
+
 <div class="package-container">
     <div class="tittle">
         <h1>{{ $package->package_tittle }}</h1>
@@ -15,7 +21,7 @@
         @foreach ($package->plans as $plan)
         <div class="plan {{ $loop->index == 0 ? 'first' : ($loop->index == 1 ? 'second' : 'third') }}">
             <div class="plan-header"> 
-                <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo"> 
+                <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" alt="logo"> 
                 <div class="plan-header-tittle">{{ $plan->plan_tittle }}</div> 
             </div>
             <div class="price">
@@ -41,7 +47,7 @@
                 @endforeach
             </ul>
             <div class="read_more">
-                <a href="{{ route('plan.details', $plan->id) }}" class="button">{{ $plan->button2_name }}</a>
+                <a href="{{ route('plan.details', $plan->id) }}" class="button">Read more</a>
             </div>
         </div>
         @endforeach

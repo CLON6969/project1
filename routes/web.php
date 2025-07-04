@@ -14,11 +14,13 @@ use App\Models\{
     Pricing,
     Package,
     Plan,
+    LegalDocument,
 };
 
 
 // Authentication  controller
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\LoginController;
  
 
 // public controllers
@@ -83,7 +85,9 @@ use App\Http\Controllers\Web\{
     WebAboutController,
     WebAboutTableController,
     WebPackageController,
-    WebPricingController
+    WebPricingController,
+    WebLegalController,
+    WebUserController
 
 };
 
@@ -146,6 +150,16 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::view('careers', 'careers');
 
 
+
+
+Route::get('/legal/{slug}', function ($slug) {
+    $document = LegalDocument::where('slug', $slug)->with(['sections.listItems'])->firstOrFail();
+    return view('legal.show', compact('document'));
+})->name('legal.show');
+
+
+
+
 Route::get('/plan/compare', function () {
     $packages = Package::all(); // <-- fetch packages
 
@@ -169,32 +183,6 @@ Route::get('/plan/{id}', function ($id) {
 
 
 
-
-
-Route::get('/login', function () {
-    if (auth()->check()) {
-        return redirect()->route(match (auth()->user()->role_id) {
-            1 => 'admin.dashboard',
-            2 => 'staff.dashboard',
-            3 => 'user.dashboard',
-        });
-    }
-
-    return view('auth.login');
-})->name('login');
-    
-Route::get('/register', function () {
-    if (auth()->check()) {
-        return redirect()->route(match (auth()->user()->role_id) {
-            1 => 'admin.dashboard',
-            2 => 'staff.dashboard',
-            3 => 'user.dashboard',
-        });
-    }
-
-    return view('auth.register');
-})->name('register');
-   
 
 
 
@@ -348,8 +336,29 @@ Route::prefix('admin/web/homepage')->name('admin.web.homepage.')->group(function
 
 
 
+// --- terms and privacy Section ---
+
+Route::prefix('admin/web/legal')->name('admin.web.legal.')->group(function() {
+    Route::get('/', [WebLegalController::class, 'index'])->name('index');
+    Route::get('/create', [WebLegalController::class, 'create'])->name('create');
+    Route::post('/', [WebLegalController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [WebLegalController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [WebLegalController::class, 'update'])->name('update');
+    Route::delete('/{id}', [WebLegalController::class, 'destroy'])->name('destroy');
+});
 
 
+
+// --- users Section ---
+
+Route::prefix('admin/web/users')->name('admin.web.users.')->middleware('auth')->group(function () {
+    Route::get('/', [WebUserController::class, 'index'])->name('index');
+    Route::get('/create', [WebUserController::class, 'create'])->name('create');
+    Route::post('/', [WebUserController::class, 'store'])->name('store');
+    Route::get('/{user}/edit', [WebUserController::class, 'edit'])->name('edit');
+    Route::put('/{user}', [WebUserController::class, 'update'])->name('update');
+    Route::delete('/{user}', [WebUserController::class, 'destroy'])->name('destroy');
+});
 
 
 
@@ -724,4 +733,40 @@ Route::prefix('payments')->group(function () {
 
 
 // Keep this LAST so default auth routes don’t override custom ones
+
 require __DIR__.'/auth.php';
+Route::get('/auth/google/redirect', [LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
+
+Route::get('/auth/facebook/redirect', [LoginController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('/auth/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
+
+Route::get('/auth/apple/redirect', [LoginController::class, 'redirectToApple'])->name('login.apple');
+Route::get('/auth/apple/callback', [LoginController::class, 'handleAppleCallback']);
+
+
+
+
+Route::get('/login', function () {
+    if (auth()->check()) {
+        return redirect()->route(match (auth()->user()->role_id) {
+            1 => 'admin.dashboard',
+            2 => 'staff.dashboard',
+            3 => 'user.dashboard',
+        });
+    }
+
+    return view('auth.login');
+})->name('login');
+    
+Route::get('/register', function () {
+    if (auth()->check()) {
+        return redirect()->route(match (auth()->user()->role_id) {
+            1 => 'admin.dashboard',
+            2 => 'staff.dashboard',
+            3 => 'user.dashboard',
+        });
+    }
+
+    return view('auth.register');
+})->name('register');

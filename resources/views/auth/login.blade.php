@@ -59,9 +59,25 @@
                 <div class="separator">or</div>
 
                 <!-- Social Login Buttons -->
-                <button type="button" class="social-button google">Continue with Google</button>
-                <button type="button" class="social-button facebook">Continue with Facebook</button>
-                <button type="button" class="social-button apple">Continue with Apple</button>
+<!-- Google
+<button class="social-button google" type="button" onclick="location.href='{{ route('login.google') }}'">
+    <i class="fab fa-google"></i> Continue with Google
+</button>
+ -->
+
+<!-- Facebook 
+<button class="social-button facebook" type="button" onclick="location.href='{{ route('login.facebook') }}'">
+    <i class="fab fa-facebook-f"></i> Continue with Facebook
+</button>
+ -->
+
+<!-- Apple Login
+<button class="social-button apple" type="button" onclick="location.href='{{ route('login.apple') }}'">
+    <i class="fab fa-apple"></i> Continue with Apple
+</button>
+
+ -->
+
 
                 <p class="signup-text">New to Kumoyo? <a href="{{ route('register') }}">Sign up</a></p>
             </form>

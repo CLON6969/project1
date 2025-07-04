@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Kumoyo | subscription</title>
 
     <!-- Font Awesome -->
     <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">

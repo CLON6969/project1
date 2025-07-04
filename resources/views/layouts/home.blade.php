@@ -29,7 +29,7 @@
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
 
-   <title>Kumoyo</title>
+   <title>Kumoyo | Home</title>
 </head>
 
 

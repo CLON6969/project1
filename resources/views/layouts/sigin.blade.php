@@ -16,7 +16,7 @@
    
    <!--JS Scripts -->
 
-   <title>Kumoyo</title>
+   <title>Kumoyo | Sigin</title>
 </head>
 
 

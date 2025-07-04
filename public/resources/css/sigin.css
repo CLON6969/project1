@@ -83,14 +83,14 @@ label {
 .icon {
     position: absolute;
     left: 10px;
-    color: #fff;
+    color: #000000;
 }
 
 .toggle-password {
     position: absolute;
     right: 10px;
     cursor: pointer;
-    color: #cbd5e0;
+    color: #000000;
 }
 
 .options {

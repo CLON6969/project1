@@ -113,6 +113,12 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboard'); // Adjust if needed
+        
+                return redirect()->intended(match ($user->role_id) {
+                1 => route('admin.dashboard'),
+                2 => route('staff.dashboard'),
+                3 => route('user.dashboard'),
+                default => '/',
+            }); // Adjust if needed
     }
 }

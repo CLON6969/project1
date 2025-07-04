@@ -4,8 +4,13 @@
 
 
 <div class="profile-form-container">
+    
     <h2>Complete Your Profile</h2>
 
+<form action="{{ route('logout') }}" method="POST" style="text-align: right; margin-bottom: 1rem;">
+    @csrf
+    <button type="submit" class="btn-danger" style="background:red; padding: 10px;">Logout</button>
+</form>
 
 
     <form method="POST" action="{{ route('user.profile.update') }}" enctype="multipart/form-data" novalidate>
@@ -84,5 +89,6 @@
 
         <button type="submit">Save and Continue</button>
     </form>
+    
 </div>
 @endsection

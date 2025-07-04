@@ -62,13 +62,16 @@
         <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" alt="logo" class="logo">
         <h1>Page being worked on...</h1>
         <h1>Next Launch</h1>
-        <button class="notify-btn" id="notify-btn">Notify Me</button>
+        <button class="notify-btn" id="notify-btn">
+           <a href="/"> HOME</a>
+        </button>
     </div>
 
-    <script>
+  <!--  <script>
         document.getElementById('notify-btn').addEventListener('click', () => {
             alert("You'll be notified when we launch!");
         });
     </script>
+-->
 </body>
 </html>

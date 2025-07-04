@@ -30,7 +30,7 @@
 
    @stack('styles') <!-- <- Extra styles will be injected here -->
    
-   <title>Kumoyo - Pricing</title>
+   <title>Kumoyo | Pricing</title>
 </head>
 
 <body>

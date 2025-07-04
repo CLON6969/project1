@@ -15,7 +15,7 @@
    <link href="{{ asset('resources/css/signup.css') }}" rel="stylesheet">
    
 
-   <title>Kumoyo</title>
+   <title>Kumoyo | Signup</title>
 </head>
 
 

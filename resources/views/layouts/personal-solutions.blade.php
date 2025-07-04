@@ -28,7 +28,7 @@
 <!-- JS -->
 <script src="{{ asset('resources/js/app.js') }}" defer></script>
 
-   <title>Kumoyo</title>
+   <title>Kumoyo | personal-solutions</title>
 </head>
 
 

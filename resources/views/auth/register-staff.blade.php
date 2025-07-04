@@ -14,7 +14,7 @@
                 <h2>Sign up for Kumoyo</h2>
             </div>
 
-            <form method="POST" action="{{ route('register.staff') }}">
+            <form method="POST" action="{{ route('admin.register.staff') }}">
 
                 @csrf
                 <input type="hidden" name="role_id" value="2"> {{-- assuming 2 = Staff --}}

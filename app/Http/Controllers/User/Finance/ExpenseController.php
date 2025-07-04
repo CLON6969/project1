@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\user\Finance;
+namespace App\Http\Controllers\User\Finance;
 
 use App\Models\Expense;
 use Illuminate\Http\Request;

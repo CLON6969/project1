@@ -23,7 +23,7 @@
    <link href="{{ asset('resources/css/admin_dashboard.css') }}" rel="stylesheet">
 
   
-   <title>Kumoyo</title>
+   <title>Kumoyo | Dashboard</title>
 </head>
 
 

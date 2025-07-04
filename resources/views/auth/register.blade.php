@@ -1,6 +1,7 @@
 @php 
     $logo = App\Models\Logo::first(); // Changed from $icons = ... to $logo = ...
 @endphp
+
 @extends('layouts.signup')
 
 @section('content')
@@ -101,7 +102,7 @@
                 <!-- Terms Checkbox -->
                 <div class="input-group checkbox-group">
                     <input type="checkbox" name="terms" id="terms" required>
-                    <label for="terms">I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a></label>
+                    <label for="terms">I agree to the <a href="{{ route('legal.show', 'terms-of-service') }}" target="_blank">Terms of Service</a> and <a href="{{ route('legal.show', 'privacy-policy') }}" target="_blank">Privacy Policy</a></label>
                     @error('terms')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -112,15 +113,25 @@
             
                 <!-- Social Buttons -->
                 <div class="separator">or</div>
-                <button class="social-button google" type="button">
-                    <i class="fab fa-google"></i> Continue with Google
-                </button>
-                <button class="social-button facebook" type="button">
-                    <i class="fab fa-facebook-f"></i> Continue with Facebook
-                </button>
-                <button class="social-button apple" type="button">
-                    <i class="fab fa-apple"></i> Continue with Apple
-                </button>
+<!-- Google Login
+<button class="social-button google" type="button" onclick="location.href='{{ route('login.google') }}'">
+    <i class="fab fa-google"></i> Continue with Google
+</button>
+ -->
+
+
+<!-- Facebook Login 
+<button class="social-button facebook" type="button" onclick="location.href='{{ route('login.facebook') }}'">
+    <i class="fab fa-facebook-f"></i> Continue with Facebook
+</button>
+-->
+
+<!-- Apple Login
+<button class="social-button apple" type="button" onclick="location.href='{{ route('login.apple') }}'">
+    <i class="fab fa-apple"></i> Continue with Apple
+</button>
+
+ -->
             
                 <p class="signup-text">Already have an account? <a href="{{ route('login') }}">Sign in</a></p>
             </form>

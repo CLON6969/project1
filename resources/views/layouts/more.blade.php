@@ -26,7 +26,7 @@
 <link href="{{ asset('resources/css/partners.css') }}" rel="stylesheet">
 <link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
 <link href="{{ asset('resources/css/more.css') }}" rel="stylesheet">
-   <title>Kumoyo</title>
+   <title>Kumoyo | More-info</title>
 </head>
 
 

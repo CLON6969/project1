@@ -6,6 +6,11 @@
 <div class="profile-form-container">
     <h2>Complete Your Institution Profile</h2>
 
+    <form action="{{ route('logout') }}" method="POST" style="text-align: right; margin-bottom: 1rem;">
+    @csrf
+    <button type="submit" class="btn-danger" style="background:red; padding: 10px;">Logout</button>
+</form>
+
     @if ($errors->any())
         <div class="status-message bg-red-100 text-red-700 p-4 rounded mb-6 border border-red-300">
             <ul class="list-disc list-inside">

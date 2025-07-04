@@ -25,7 +25,7 @@
    
    <!--JS Scripts -->
 
-  <title>Make Payment</title>
+  <title>Payment</title>
 
 </head>
 

@@ -178,6 +178,12 @@ function createDropdown(title, icon, items) {
   { label: 'Rejected', url: '/admin/subscriptions/rejected' }
 ]));
 
+menu.appendChild(createDropdown('Account Management', 'fas fa-users-cog', [
+  { label: 'Add Staff', url: '/admin/register/staff' },
+  { label: 'Add Admin', url: '/admin/register/admin' }
+]));
+
+
 
 menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
     label: 'General',
@@ -215,6 +221,21 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
           { label: 'Edit', url: '/admin/web/general/partners/' }
         ]
       },
+            {
+        label: 'Term & privacy',
+        children: [
+          { label: 'Edit', url: '/admin/web/legal/' }
+        ]
+      },
+
+                  {
+        label: 'users',
+        children: [
+          { label: 'Edit', url: '/admin/web/users/' }
+        ]
+      },
+
+      
        {
         label: 'Company Statements',
         children: [

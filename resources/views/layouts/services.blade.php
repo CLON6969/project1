@@ -29,7 +29,7 @@
 
 
 
-   <title>Kumoyo</title>
+   <title>Kumoyo | Industrial-solutions</title>
 </head>
 
 

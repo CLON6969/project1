@@ -30,7 +30,7 @@
 <link href="{{ asset('resources/css/partners.css') }}" rel="stylesheet">
 <link href="{{ asset('resources/css/solutions.css') }}" rel="stylesheet">
 
-   <title>Kumoyo</title>
+   <title>Kumoyo | Solutions</title>
 </head>
 
 

@@ -5,22 +5,61 @@
 
 @section('content')
 <div class="body">
-      <img class="body-img" src="{{ asset('storage/uploads/pics/'  . $logo->background_picture) }}" alt="background">
+        <img class="body-img" src="{{ asset('storage/uploads/pics/'  . $logo->background_picture) }}" alt="background">
 
     <div class="login-container">
         <div class="login-box">
             <div class="text-center">
-                < <img src="{{ asset('storage/uploads/pics/' . $logo->picture) }}" alt="logo">
-                <h2>Admin Sign Up</h2>
+                <img src="{{ asset('storage/uploads/pics/' . $logo->picture) }}" alt="logo">
+                <h2>Sign up for Kumoyo</h2>
             </div>
 
-            <form method="POST" action="{{ route('register.admin') }}">
+            <form method="POST" action="{{ route('admin.register.admin') }}">
+
                 @csrf
+                <input type="hidden" name="role_id" value="1"> {{-- assuming 2 = admin --}}
+                <input type="hidden" name="account_type" value="main"> {{-- or 'sub' if being created by another account --}}
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <div class="input-wrapper">
+                        <span class="icon"><i class="far fa-user"></i></span>
+                        <input type="text" name="name" placeholder="Full Name" value="{{ old('name') }}" required>
+                    </div>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
 
-                <input type="hidden" name="role_id" value="1"> {{-- assuming 1 = Admin --}}
-                <input type="hidden" name="account_type" value="main">>
+                <div class="input-group">
+                    <label>Email address</label>
+                    <div class="input-wrapper">
+                        <span class="icon"><i class="far fa-envelope"></i></span>
+                        <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                    </div>
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
 
-                @include('auth.partials.signup-form-fields')
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <span class="icon"><i class="fas fa-lock"></i></span>
+                        <input type="password" name="password" id="password" placeholder="Password" required>
+                        <span id="togglePassword" class="toggle-password"><i class="fas fa-eye"></i></span>
+                    </div>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <div class="input-wrapper">
+                        <span class="icon"><i class="fas fa-lock"></i></span>
+                        <input type="password" name="password_confirmation" id="confirm-password" placeholder="Confirm Password" required>
+                    </div>
+                </div>
 
                 <button type="submit" class="login-button">Sign up</button>
 
@@ -44,9 +83,5 @@
     </script>
 </div>
 @endsection
-
-
-
-
 
 
