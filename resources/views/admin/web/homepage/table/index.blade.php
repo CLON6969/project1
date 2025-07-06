@@ -26,7 +26,7 @@
                 @forelse($records as $item)
                     <tr class="hover:bg-gray-100 transition duration-200">
                         <td class="px-6 py-4">
-                            <img src="{{ asset('storage/' . $item->picture) }}" class="w-16 h-10 object-cover rounded border border-gray-300 shadow-sm" />
+                            <img src="{{ asset('/public/storage/' . $item->picture) }}" class="w-16 h-10 object-cover rounded border border-gray-300 shadow-sm" />
                         </td>
                         <td class="px-6 py-4 text-sm font-medium">{{ $item->url_name }}</td>
                         <td class="px-6 py-4 text-sm">

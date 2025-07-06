@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next Launch</title>
+       <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     @vite(['resources/css/loading.css']) <!-- Or use the CSS below directly -->
@@ -58,12 +59,14 @@
     </style>
 </head>
 <body>
+    
+    
     <div class="container">
-        <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" alt="logo" class="logo">
+        <img src="{{ asset('/public/storage/uploads/pics/' . $logo->picture2) }}" alt="logo" class="logo">
         <h1>Page being worked on...</h1>
         <h1>Next Launch</h1>
         <button class="notify-btn" id="notify-btn">
-           <a href="/"> HOME</a>
+           <a href="https://kumoyotech.com/ERP/"> HOME</a>
         </button>
     </div>
 

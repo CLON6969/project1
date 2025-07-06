@@ -8,12 +8,14 @@
 
     <!-- Font Awesome -->
     <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+        <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Custom CSS -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
     <!-- Alpine.js -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>

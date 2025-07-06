@@ -16,7 +16,7 @@
     <div class="plan-header-container"> 
 
         <div class="plan-header"> 
-            <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo"> 
+            <img src="{{ asset('/public/uploads/pics/logo2.png') }}" alt="logo"> 
             
             <div class="plan-header-tittle">
                 <p>Premium Plan</p> 
@@ -68,7 +68,7 @@
     <h4 class="additional-benefits">Additional Benefits</h4>
 
     <ul>
-        <li>• Hosting: Free 200GB storage with automated backups.</li>
+        <li>• Hosting: Free 200GB /public/storage with automated backups.</li>
         <li>• Customization: Fully customizable theme design to match institutional branding.</li>
         <li>• Support: Dedicated account manager, priority support, and 24/7 technical support (10% of the initial contract price per month).</li>
         <li>• Maintenance Fee (Annual): 12% of the initial cost (from the second year).</li>

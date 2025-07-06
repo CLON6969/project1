@@ -12,14 +12,16 @@
 
       <!-- fontawsome -->
       <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+          <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
          <!-- tailwind CSS -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
    <!-- CSS Scripts -->
-   <link href="{{ asset('resources/css/dashboard.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/resources/css/dashboard.css') }}" rel="stylesheet">
    
    <!--JS Scripts -->
-<script src="{{ asset('resources/js/admin_profile.js' }}" defer></script>
+<script src="{{ asset('/public/resources/js/admin_profile.js' }}" defer></script>
    <title>Kumoyo</title>
 </head>
 

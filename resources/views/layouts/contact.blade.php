@@ -11,19 +11,22 @@
 
 
    <!-- fontawsome -->
-   <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
-      <!-- tailwind CSS -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <link href="/public/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+   
+          <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+      <!-- tailwind CSS -->      <!-- tailwind CSS -->
+<link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
 
    <!-- CSS Scripts -->
-      <link href="{{ asset('resources/css/more-nav.css') }}" rel="stylesheet">
-   <link href="{{ asset('resources/css/partners.css') }}" rel="stylesheet">
-   <link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
-   <link href="{{ asset('resources/css/contact.css') }}" rel="stylesheet">
+      <link href="{{ asset('/public/resources/css/more-nav.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/resources/css/partners.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/resources/css/footer.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/resources/css/contact.css') }}" rel="stylesheet">
    
    <!--JS Scripts -->
-   <script src="{{ asset('resources/js/app.js') }}" defer></script>
+   <script src="{{ asset('/public/resources/js/app.js') }}" defer></script>
    <title>Kumoyo | contact sales</title>
 </head>
 

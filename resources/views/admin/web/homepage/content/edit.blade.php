@@ -45,7 +45,7 @@
             <input type="file" name="background_picture" id="background_picture"
                 class="mt-2 w-full bg-[#1e293b] text-[#000000] border border-[#334155] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
             @if($content->background_picture)
-                <img src="{{ asset('storage/uploads/pics/' . $content->background_picture) }}" alt="Current Image" class="mt-3 h-40 object-cover rounded-lg border border-[#334155]">
+                <img src="{{ asset('/public/storage/uploads/pics/' . $content->background_picture) }}" alt="Current Image" class="mt-3 h-40 object-cover rounded-lg border border-[#334155]">
             @endif
         </div>
 
@@ -55,7 +55,7 @@
             <input type="file" name="picture1" id="picture1"
                 class="mt-2 w-full bg-[#1e293b] text-[#000000] border border-[#334155] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
             @if($content->picture1)
-                <img src="{{ asset('storage/uploads/pics/' . $content->picture1) }}" alt="Current Image" class="mt-3 h-40 object-cover rounded-lg border border-[#334155]">
+                <img src="{{ asset('/public/storage/uploads/pics/' . $content->picture1) }}" alt="Current Image" class="mt-3 h-40 object-cover rounded-lg border border-[#334155]">
             @endif
         </div>
 

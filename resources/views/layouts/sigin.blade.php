@@ -9,10 +9,12 @@
 
       <!-- icon -->
    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+       <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
 
    <!-- CSS Scripts -->
-   <link href="{{ asset('resources/css/sigin.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/resources/css/sigin.css') }}" rel="stylesheet">
    
    <!--JS Scripts -->
 
@@ -31,7 +33,7 @@
 
     
             <!-- Bootstrap JS (before closing </body>) -->
-            <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 </html>

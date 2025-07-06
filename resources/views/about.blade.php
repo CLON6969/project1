@@ -5,7 +5,7 @@
 
 
 <section class="hero">
-  <img src="{{ asset('storage/uploads/pics/' . $about->background_picture) }}" class="bg" alt="background picture">
+  <img src="{{ asset('/public/storage/uploads/pics/' . $about->background_picture) }}" class="bg" alt="background picture">
 
 
   <div class="content">
@@ -100,7 +100,7 @@
   </section>
 
     <section class="section_2">
-  <img src="{{ asset('storage/uploads/pics/' . $about->background_picture2) }}" class="bg" alt="background picture">
+  <img src="{{ asset('/public/storage/uploads/pics/' . $about->background_picture2) }}" class="bg" alt="background picture">
       <div class="content">
              <h1>{{ $about->title3 }}</h1>
       <p>{{ $about->title3_content }}</p>
@@ -127,7 +127,7 @@
 
 
   @foreach($about_table as $table)
-      <div class="feature" data-image="{{ asset('storage/uploads/pics/' . $table->picture) }}">
+      <div class="feature" data-image="{{ asset('/public/storage/uploads/pics/' . $table->picture) }}">
         <h4>{{ $table->title1}}</h4>
         <p>{{ $table->title1_content}}</p>
          <small style="color: #888;">{{ $table->title1_small_text}}</small>
@@ -153,7 +153,7 @@
             {{ $statement->title1_main_content }}
           </div>
           <div class="color-overlay"></div>
-          <img src="{{ asset('storage/uploads/pics/' . $statement->background_picture) }}" alt="background picture">
+          <img src="{{ asset('/public/storage/uploads/pics/' . $statement->background_picture) }}" alt="background picture">
         </div>
       </div>
   @endforeach
@@ -187,24 +187,19 @@
       <h2>{{$about->title6}}</h2>
       <div class="team-grid">
         <div class="team-member">
-          <img src="uploads/pics/75.jpg" alt="CEO" />
-          <h4>Jordan Lee</h4>
-          <p>Chief Executive Officer</p>
+          <img src=" {{ asset('/public/uploads/pics/default.png') }}" alt="CEO" />
+          <h4>Mbumwae.S.M</h4>
+          <p>C.E.O</p>
         </div>
         <div class="team-member">
-          <img src="uploads/pics/125.jpg" alt="CTO" />
-          <h4>Samantha Diaz</h4>
+          <img src=" {{ asset('/public/uploads/pics/default.png') }}" alt="CTO" />
+          <h4>Erick Maliko</h4>
           <p>Chief Technology Officer</p>
         </div>
         <div class="team-member">
-          <img src="uploads/pics/230.jpg" alt="UX Lead" />
-          <h4>Isaac Chen</h4>
+          <img src=" {{ asset('/public/uploads/pics/default.png') }}" alt="UX Lead" />
+          <h4>Mwami Miyanda</h4>
           <p>Lead UX Designer</p>
-        </div>
-        <div class="team-member">
-          <img src="uploads/pics/232.jpg" alt="Product Manager" />
-          <h4>Lara Smith</h4>
-          <p>Product Manager</p>
         </div>
       </div>
     </section>
@@ -217,7 +212,7 @@
   <div class="team-grid">
     @foreach($team as $member)
       <div class="team-member">
-        <img src="{{ asset('storage/' . $member->profile_picture) }}" alt="{{ $member->name }}" />
+        <img src="{{ asset('/public/storage/' . $member->profile_picture) }}" alt="{{ $member->name }}" />
         <h4>{{ $member->name }}</h4>
         <p>{{ $member->job_title }}</p>
       </div>

@@ -11,17 +11,19 @@
 
 
 <!-- fontawsome -->
-<link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+<link href="/public/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
    <!-- tailwind CSS -->
-   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
        <!-- Bootstrap CSS -->
-    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/public/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
 <!-- CSS -->
-<link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/user_payment.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/user_payment.css') }}" rel="stylesheet">
    
    <!--JS Scripts -->
 
@@ -43,6 +45,6 @@
 <!-- footer Content -->
 
                 <!-- Bootstrap JS (before closing </body>) -->
-                <script src="{{ asset('public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+                <script src="{{ asset('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

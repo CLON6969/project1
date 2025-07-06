@@ -40,7 +40,7 @@
     <iframe id="contentFrame" src="{{ route('admin.finance.reports.index') }}"></iframe>
   </div>
 </div>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script>
   const sidebar = document.getElementById("sidebar");
   const toggleBtn = document.getElementById("toggleSidebar");
@@ -153,12 +153,12 @@ function createDropdown(title, icon, items) {
   
 
   menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
-  { label: 'Overview', url: '/admin/finance/reports' },
-  { label: 'payments', url: '/admin/finance/payments' },
-  { label: 'Invoices', url: '/admin/finance/invoices' },
-  { label: 'Expenses', url: '/admin/finance/expenses' },
-  { label: 'Budget', url: '/admin/finance/budgets' },
-  { label: 'Reports', url: '/admin/finance/reports' },
+  { label: 'Overview', url: 'finance/reports' },
+  { label: 'payments', url: 'finance/payments' },
+  { label: 'Invoices', url: 'finance/invoices' },
+  { label: 'Expenses', url: 'finance/expenses' },
+  { label: 'Budget', url: 'finance/budgets' },
+  { label: 'Reports', url: 'finance/reports' },
 
       {
       label: 'Analytics',
@@ -172,15 +172,15 @@ function createDropdown(title, icon, items) {
 
 
   menu.appendChild(createDropdown('Subscriptions', 'fas fa-box-open', [
-  { label: 'All Subscriptions', url: '/admin/subscriptions' },
-  { label: 'Pending', url: '/admin/subscriptions/pending' },
-  { label: 'Approved', url: '/admin/subscriptions/approved' },
-  { label: 'Rejected', url: '/admin/subscriptions/rejected' }
+  { label: 'All Subscriptions', url: 'subscriptions' },
+  { label: 'Pending', url: 'subscriptions/pending' },
+  { label: 'Approved', url: 'subscriptions/approved' },
+  { label: 'Rejected', url: 'subscriptions/rejected' }
 ]));
 
 menu.appendChild(createDropdown('Account Management', 'fas fa-users-cog', [
-  { label: 'Add Staff', url: '/admin/register/staff' },
-  { label: 'Add Admin', url: '/admin/register/admin' }
+  { label: 'Add Staff', url: 'register/staff' },
+  { label: 'Add Admin', url: 'register/admin' }
 ]));
 
 
@@ -191,47 +191,47 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       {
         label: 'Footer tittle',
         children: [
-          { label: 'Edit', url: '/admin/web/general/footer/titles' }
+          { label: 'Edit', url: 'web/general/footer/titles' }
         ]
       },
 
       {
         label: 'footer Items',
         children: [
-          { label: 'Edit', url: '/admin/web/general/footer/items' }
+          { label: 'Edit', url: 'web/general/footer/items' }
         ]
       },
 
       {
         label: 'Socials ',
         children: [
-          { label: 'Edit', url: '/admin/web/general/socials' }
+          { label: 'Edit', url: 'web/general/socials' }
         ]
       },
 
       {
         label: 'logo ',
         children: [
-          { label: 'Edit', url: '/admin/web/general/logo' }
+          { label: 'Edit', url: 'web/general/logo' }
         ]
       },
       {
         label: 'partners',
         children: [
-          { label: 'Edit', url: '/admin/web/general/partners/' }
+          { label: 'Edit', url: 'web/general/partners/' }
         ]
       },
             {
         label: 'Term & privacy',
         children: [
-          { label: 'Edit', url: '/admin/web/legal/' }
+          { label: 'Edit', url: 'web/legal/' }
         ]
       },
 
                   {
         label: 'users',
         children: [
-          { label: 'Edit', url: '/admin/web/users/' }
+          { label: 'Edit', url: 'web/users/' }
         ]
       },
 
@@ -239,7 +239,7 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
        {
         label: 'Company Statements',
         children: [
-          { label: 'Edit', url: '/admin/web/homepage/statements' }
+          { label: 'Edit', url: 'web/homepage/statements' }
         ]
       }
     ]
@@ -253,14 +253,14 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       {
         label: 'Homepage Content',
         children: [
-          { label: 'Edit', url: '/admin/web/homepage/content/edit' }
+          { label: 'Edit', url: 'web/homepage/content/edit' }
         ]
       },
 
       {
         label: 'Homepage bottom',
         children: [
-          { label: 'Edit', url: '/admin/web/homepage/table' }
+          { label: 'Edit', url: 'web/homepage/table' }
         ]
       },
 
@@ -276,13 +276,13 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
     {
       label: 'Main Content',
       children: [
-        { label: 'Edit Content', url: '/admin/web/solution/personal/edit' }
+        { label: 'Edit Content', url: 'web/solution/personal/edit' }
       ]
     },
     {
       label: 'Personal Solutions',
       children: [
-        { label: 'View All', url: '/admin/web/solution/personal/table' }
+        { label: 'View All', url: 'web/solution/personal/table' }
       ]
     }
   ]
@@ -296,13 +296,13 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
     {
       label: 'Main Content',
       children: [
-        { label: 'Edit Content', url: '/admin/web/solution/industrial/edit' }
+        { label: 'Edit Content', url: 'web/solution/industrial/edit' }
       ]
     },
     {
       label: 'Industrial Solution',
       children: [
-        { label: 'View All', url: '/admin/web/solution/industrial/table' }
+        { label: 'View All', url: 'web/solution/industrial/table' }
       ]
     }
   ]
@@ -315,14 +315,14 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       {
         label: 'Services Content',
         children: [
-          { label: 'Edit', url: '/admin/web/services/edit' }
+          { label: 'Edit', url: 'web/services/edit' }
         ]
       },
 
       {
         label: 'services table',
         children: [
-          { label: 'Edit', url: '/admin/web/services/table' }
+          { label: 'Edit', url: 'web/services/table' }
         ]
       },
 
@@ -335,14 +335,14 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       {
         label: 'More Content',
         children: [
-          { label: 'Edit', url: '/admin/web/more/edit' }
+          { label: 'Edit', url: 'web/more/edit' }
         ]
       },
 
       {
         label: 'More table',
         children: [
-          { label: 'Edit', url: '/admin/web/more/table' }
+          { label: 'Edit', url: 'web/more/table' }
         ]
       },
 
@@ -356,14 +356,14 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       {
         label: 'Events Content',
         children: [
-          { label: 'Edit', url: '/admin/web/event/edit' }
+          { label: 'Edit', url: 'web/event/edit' }
         ]
       },
 
       {
         label: 'services table',
         children: [
-          { label: 'Edit', url: '/admin/web/event/table' }
+          { label: 'Edit', url: 'web/event/table' }
         ]
       },
 
@@ -376,14 +376,14 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       {
         label: 'pricing Content',
         children: [
-          { label: 'Edit', url: '/admin/web/pricing/edit' }
+          { label: 'Edit', url: 'web/pricing/edit' }
         ]
       },
 
       {
         label: 'pricing table',
         children: [
-          { label: 'Edit', url: '/admin/web/package' }
+          { label: 'Edit', url: 'web/package' }
         ]
       },
 
@@ -396,14 +396,14 @@ menu.appendChild(createDropdown('Web', 'fas fa-globe', [  {
       {
         label: 'About Content',
         children: [
-          { label: 'Edit', url: '/admin/web/about/edit' }
+          { label: 'Edit', url: 'web/about/edit' }
         ]
       },
 
       {
         label: 'About table',
         children: [
-          { label: 'Edit', url: '/admin/web/about/table' }
+          { label: 'Edit', url: 'web/about/table' }
         ]
       },
 

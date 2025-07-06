@@ -5,7 +5,7 @@
 <div class="mb-3">
     <label>Picture</label><br>
     @if($editing && $table->picture)
-        <img src="{{ asset('storage/uploads/events/' . $table->picture) }}" width="100"><br>
+        <img src="{{ asset('/public/storage/uploads/events/' . $table->picture) }}" width="100"><br>
     @endif
     <input type="file" name="picture" class="form-control">
 </div>

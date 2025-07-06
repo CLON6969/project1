@@ -10,9 +10,9 @@
     </label>
 
     @if($logo && $logo->picture)
-        <img src="{{ asset('storage/uploads/pics/' . $logo->picture) }}" alt="logo">
+        <img src="{{ asset('/public/storage/uploads/pics/' . $logo->picture) }}" alt="logo">
     @else
-        <img src="{{ asset('uploads/default.png') }}" alt="logo"> {{-- Optional fallback --}}
+        <img src="{{ asset('/public/uploads/default.png') }}" alt="logo"> {{-- Optional fallback --}}
     @endif
 
     <ul>

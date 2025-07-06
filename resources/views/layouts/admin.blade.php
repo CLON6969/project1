@@ -13,10 +13,12 @@
 
 
    <!-- fontawsome -->
-   <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+   <link href="/public/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+       <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
       <!-- Bootstrap CSS -->
-       <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+       <link href="{{ asset('/public/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
 
   

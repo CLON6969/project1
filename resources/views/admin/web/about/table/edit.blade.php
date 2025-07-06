@@ -10,7 +10,7 @@
         <div class="mb-3">
             <label>Current Picture</label><br>
             @if($table->picture)
-                <img src="{{ asset('storage/uploads/pics/' . $table->picture) }}" alt="pic" width="100" class="mb-2">
+                <img src="{{ asset('/public/storage/uploads/pics/' . $table->picture) }}" alt="pic" width="100" class="mb-2">
             @endif
             <input type="file" name="picture" class="form-control">
         </div>

@@ -8,23 +8,25 @@
 
 
    <!-- fontawsome -->
-   <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+   <link href="/public/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+       <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
     <!-- this is tailwind -->
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
 
 
 
        <!-- Bootstrap CSS -->
-<link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
    <!-- tailwind CSS -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
 <!-- CSS -->
-<link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/more-nav.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/home.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/more-nav.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/footer.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/home.css') }}" rel="stylesheet">
 
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
@@ -54,6 +56,6 @@
 
 <!-- JS -->
 
-<script src="{{ asset('resources/js/clock.js') }}" defer></script>
+<script src="{{ asset('/public/resources/js/clock.js') }}" defer></script>
 </body>
 </html>

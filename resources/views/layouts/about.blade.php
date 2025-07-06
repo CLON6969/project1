@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Kumoyo | About Us</title>
+  
+     <!-- icon -->
+   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+        <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
 
 
 
 
-     <link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
-    <link href="{{ asset('resources/css/more-nav.css') }}" rel="stylesheet">
-     <link href="{{ asset('resources/css/about.css') }}" rel="stylesheet">
+     <link href="{{ asset('/public/resources/css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('/public/resources/css/more-nav.css') }}" rel="stylesheet">
+     <link href="{{ asset('/public/resources/css/about.css') }}" rel="stylesheet">
 
 </head>
 <body >

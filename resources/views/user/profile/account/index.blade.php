@@ -7,7 +7,7 @@
     <div class="bg-white rounded shadow p-6">
         <div class="flex items-center space-x-4">
             @if($user->profile_picture)
-                <img src="{{ asset('storage/'.$user->profile_picture) }}" class="w-20 h-20 rounded-full object-cover" alt="Profile Picture">
+                <img src="{{ asset('/public/storage/'.$user->profile_picture) }}" class="w-20 h-20 rounded-full object-cover" alt="Profile Picture">
             @else
                 <div class="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center">N/A</div>
             @endif

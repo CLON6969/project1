@@ -5,12 +5,12 @@
 
 @section('content')
 <div class="body">
-        <img class="body-img" src="{{ asset('storage/uploads/pics/'  . $logo->background_picture) }}" alt="background">
+        <img class="body-img" src="{{ asset('/public/storage/uploads/pics/'  . $logo->background_picture) }}" alt="background">
 
     <div class="login-container">
         <div class="login-box">
             <div class="text-center">
-               <img src="{{ asset('storage/uploads/pics/' . $logo->picture) }}" alt="logo">
+               <img src="{{ asset('/public/storage/uploads/pics/' . $logo->picture) }}" alt="logo">
                 <h2>Sign in to Kumoyo</h2>
             </div>
 

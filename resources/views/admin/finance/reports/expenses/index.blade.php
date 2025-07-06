@@ -75,7 +75,7 @@
                         <td class="px-4 py-2">{{ $expense->department ?? '—' }}</td>
                         <td class="px-4 py-2">
                             @if ($expense->invoice_file)
-                                <a href="{{ asset('storage/' . $expense->invoice_file) }}" class="text-blue-500 underline" target="_blank">View</a>
+                                <a href="{{ asset('/public/storage/' . $expense->invoice_file) }}" class="text-blue-500 underline" target="_blank">View</a>
                             @else
                                 —
                             @endif

@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <title>Kumoyo | privacy</title>
+       <!-- icon -->
+   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
-    <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="/public/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+        <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('resources/css/more-nav.css') }}" rel="stylesheet">
-    <link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
-    <link href="{{ asset('resources/css/partners.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('resources/css/legal.css') }}">
+    <link href="{{ asset('/public/resources/css/more-nav.css') }}" rel="stylesheet">
+    <link href="{{ asset('/public/resources/css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('/public/resources/css/partners.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/public/resources/css/legal.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body class="min-h-screen flex flex-col">

@@ -32,7 +32,7 @@
                         <td class="px-6 py-4 text-sm">{{ Str::limit($s->title1_sub_content, 40) }}</td>
                         <td class="px-6 py-4">
                             @if($s->background_picture)
-                                <img src="{{ asset('storage/uploads/pics/' . $s->background_picture) }}"
+                                <img src="{{ asset('/public/storage/uploads/pics/' . $s->background_picture) }}"
                                      alt="Background"
                                      class="w-16 h-10 object-cover rounded border border-gray-300 shadow-sm">
                             @else

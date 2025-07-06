@@ -7,7 +7,7 @@
   
 
 
-    <img src="{{ asset('storage/uploads/pics/' . $event->background_picture) }}"><br>
+    <img src="{{ asset('/public/storage/uploads/pics/' . $event->background_picture) }}"><br>
     <div class="overlay">
         <div class="overlay-content">
             <h1>{{ $event->title1 }}</h1>
@@ -49,7 +49,7 @@
 
         <div class="card">
             <div class="icon">
-                <img src="{{ asset('storage/uploads/events/' . $event->picture) }}" alt="logo">
+                <img src="{{ asset('/public/storage/uploads/events/' . $event->picture) }}" alt="logo">
                 <div class="overlay"></div>
 
                 <div class="overlay-text">

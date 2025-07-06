@@ -1,3 +1,9 @@
+@php 
+    $logo = App\Models\Logo::first(); // Changed from $icons = ... to $logo = ...
+@endphp
+
+              
+
 @extends('layouts.plan-detail')
 @push('styles')
 
@@ -25,7 +31,7 @@
 
     <div class="plan-header-container"> 
         <div class="plan-header"> 
-            <img src="{{ asset('uploads/pics/logo2.png') }}" alt="logo"> 
+             <img src="{{ asset('/public/storage/uploads/pics/' . $logo->picture2) }}" alt="logo">
             <div class="plan-header-tittle">
                 <p>{{ $plan->plan_tittle }}</p> 
             </div> 
@@ -39,7 +45,6 @@
     <div class="premium-header">
         <h1>{{ $plan->currency }} {{ number_format($plan->amount, 2) }}</h1>
         <p class="free-hosting">Free Hosting</p>
-        <div class="choice">{{ $plan->button1_name }}</div>
     </div>
 
     <div class="features">
@@ -53,7 +58,7 @@
     <div class="addtional-section">
         <h4 class="additional-benefits">Additional Benefits</h4>
         <ul>
-            <li>• Hosting: Free 200GB storage with automated backups.</li>
+            <li>• Hosting: Free 200GB /public/storage with automated backups.</li>
             <li>• Customization: Fully customizable theme design to match branding.</li>
             <li>• Support: Dedicated account manager, priority support, and 24/7 support.</li>
             <li>• Maintenance Fee (Annual): 12% of the initial cost (after year one).</li>

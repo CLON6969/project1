@@ -57,7 +57,7 @@
         <div class="mb-3">
             <label>Picture 1</label><br>
             @if($service->picture1)
-                <img src="{{ asset('storage/uploads/pics/' . $service->picture1) }}" width="100" class="mb-2">
+                <img src="{{ asset('/public/storage/uploads/pics/' . $service->picture1) }}" width="100" class="mb-2">
             @endif
             <input type="file" name="picture1" class="form-control">
         </div>
@@ -78,7 +78,7 @@
         <div class="mb-3">
             <label>Background Picture</label><br>
             @if($service->background_picture)
-                <img src="{{ asset('storage/uploads/pics/' . $service->background_picture) }}" width="100" class="mb-2">
+                <img src="{{ asset('/public/storage/uploads/pics/' . $service->background_picture) }}" width="100" class="mb-2">
             @endif
             <input type="file" name="background_picture" class="form-control">
         </div>

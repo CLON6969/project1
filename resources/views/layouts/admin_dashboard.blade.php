@@ -14,13 +14,16 @@
 
 
    <!-- fontawsome -->
-   <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+   <link href="/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+
 
       <!-- Bootstrap CSS -->
-       <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+       <link href="{{ asset('/public/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
    <!-- CSS Scripts -->
-   <link href="{{ asset('resources/css/admin_dashboard.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/resources/css/admin_dashboard.css') }}" rel="stylesheet">
 
   
    <title>Kumoyo | Dashboard</title>

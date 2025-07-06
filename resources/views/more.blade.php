@@ -5,7 +5,7 @@
 
 <header class="hero">
     @foreach( $more as  $mores)
-    <img src="{{ asset('storage/uploads/pics/' . $mores->background_picture) }}" alt="logo">
+    <img src="{{ asset('/public/storage/uploads/pics/' . $mores->background_picture) }}" alt="logo">
     <div class="overlay">
         <div class="overlay-content">
             <h1>{{ $mores->title1 }}</h1>
@@ -74,7 +74,7 @@
 <div class="second-bottom-section">
 <div class="first-bottom-section">
     <div class="image-container">
-        <img src="{{ asset('storage/uploads/pics/' . $mores->picture1) }}" alt="logo">
+        <img src="{{ asset('/public/storage/uploads/pics/' . $mores->picture1) }}" alt="logo">
     </div>
 
 </div>

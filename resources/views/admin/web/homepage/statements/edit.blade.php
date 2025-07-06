@@ -37,7 +37,7 @@
             
             @if($statement->background_picture)
                 <div class="mt-4">
-                    <img src="{{ asset('storage/uploads/pics/' . $statement->background_picture) }}" alt="Current Background"
+                    <img src="{{ asset('/public/storage/uploads/pics/' . $statement->background_picture) }}" alt="Current Background"
                          class="w-24 h-auto rounded shadow border border-gray-300">
                 </div>
             @endif

@@ -19,7 +19,7 @@
     @if($payment->bank_proof)
         <div class="mt-4">
             <h4 class="font-medium">Bank Proof:</h4>
-            <a href="{{ asset('storage/' . $payment->bank_proof) }}" target="_blank" class="text-blue-500 underline">
+            <a href="{{ asset('/public/storage/' . $payment->bank_proof) }}" target="_blank" class="text-blue-500 underline">
                 View Uploaded File
             </a>
         </div>

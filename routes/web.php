@@ -42,9 +42,9 @@ AboutController
 };
 
 // user  controllers
-use App\Http\Controllers\User\account\ProfileAccountController;
+use App\Http\Controllers\User\Account\ProfileAccountController;
 
-use App\Http\Controllers\user\Finance\{
+use App\Http\Controllers\User\Finance\{
     ExpenseController,
     InvoiceController,
     ReportController,
@@ -58,7 +58,7 @@ use App\Http\Controllers\user\Finance\{
 
 
 // admin  controllers
-use App\Http\Controllers\admin\Finance\{
+use App\Http\Controllers\Admin\Finance\{
    AdminPaymentController,
    AdminExpenseController,
    AdminBudgetController,

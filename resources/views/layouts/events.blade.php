@@ -11,26 +11,28 @@
 
 
       <!-- fontawsome -->
-<link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+<link href="/public/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
        <!-- Bootstrap CSS -->
-       <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+       <link href="{{ asset('/public/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
           <!-- tailwind CSS -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
 
 <!-- CSS Scripts -->
 
-<link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/more-nav.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/partners.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/events.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/more-nav.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/partners.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/footer.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/events.css') }}" rel="stylesheet">
 
 
    
    <!--JS Scripts -->
-   <script src="{{ asset('resources/js/app.js') }}" defer></script>
+   <script src="{{ asset('/public/resources/js/app.js') }}" defer></script>
    <title>Kumoyo | Events</title>
 </head>
 
@@ -52,10 +54,10 @@
 
 
     <!-- Bootstrap JS (before closing </body>) -->
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 
 <!-- JS -->
-<script src="{{ asset('resources/js/app.js') }}" defer></script>
+<script src="{{ asset('/public/resources/js/app.js') }}" defer></script>
 </body>
 </html>

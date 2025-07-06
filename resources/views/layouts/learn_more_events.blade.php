@@ -12,20 +12,22 @@
 
    
    <!-- fontawsome -->
-<link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+<link href="/public/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
    <!-- tailwind CSS -->
-   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
         <!-- Bootstrap JS (before closing </body>) -->
-        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 <!-- CSS -->
-<link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/more-nav.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/footer.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/partners.css') }}" rel="stylesheet">
-<link href="{{ asset('resources/css/learn_more_events.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/app.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/more-nav.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/footer.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/partners.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/learn_more_events.css') }}" rel="stylesheet">
 
 
 

@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         
-         <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" alt="logo" class="logo">
+         <img src="{{ asset('/public/storage/uploads/pics/' . $logo->picture2) }}" alt="logo" class="logo">
         <h1>Next Launch</h1>
         
         <div class="countdown">

@@ -36,7 +36,7 @@
               @foreach ($socialIcons as $social)
                <li class="{{ Str::slug($social->icon) }} box">
                   <a href="{{ $social->name_url }}" target="_blank">
-                     <i class="fa-brands {{ $social->icon }}"></i>
+                     <i class="{{ $social->icon }}"></i>
                   </a>
               </li>
               @endforeach

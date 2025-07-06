@@ -35,7 +35,7 @@
 
             @if($table->picture)
                 <div class="mt-4">
-                    <img src="{{ asset('storage/' . $table->picture) }}" alt="Current Picture"
+                    <img src="{{ asset('/public/storage/' . $table->picture) }}" alt="Current Picture"
                          class="w-24 h-auto rounded shadow border border-gray-300">
                 </div>
             @endif

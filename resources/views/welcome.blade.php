@@ -5,7 +5,7 @@
 <!-- HOME -->
 <section class="home">
     <div class="home-logo">
-         <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" alt="logo">
+         <img src="{{ asset('/public/storage/uploads/pics/' . $logo->picture2) }}" alt="logo">
     </div>
 
     <div class="home-tittle">
@@ -24,7 +24,7 @@
     </div>
 
     @if(isset($homepageContent))
-        <img src="{{ asset('storage/uploads/pics/' . $homepageContent->background_picture) }}" alt="background">
+        <img src="{{ asset('/public/storage/uploads/pics/' . $homepageContent->background_picture) }}" alt="background">
     @endif
 
     <div class="home-logo2">
@@ -34,7 +34,7 @@
             <div class="box3"></div>
 
             <div class="box4">
-                 <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" alt="logo">
+                 <img src="{{ asset('/public/storage/uploads/pics/' . $logo->picture2) }}" alt="logo">
             </div>
 
         </div>
@@ -67,7 +67,7 @@
             @if (strtolower($statement->id) === '2')
                 {{-- Swap: Image first, then Text --}}
                 <div class="card {{ $imageCardClass }}">
-                    <img src="{{ asset('storage/uploads/pics/' . $statement->background_picture) }}" alt="background picture">
+                    <img src="{{ asset('/public/storage/uploads/pics/' . $statement->background_picture) }}" alt="background picture">
                     <div class="overlay">
                         <div class="overlay-content">
                             <h3>{{ $statement->title1_sub_content }}</h3>
@@ -87,7 +87,7 @@
                 </div>
         
                 <div class="card {{ $imageCardClass }}">
-                    <img src="{{ asset('storage/uploads/pics/' . $statement->background_picture) }}" alt="background picture">
+                    <img src="{{ asset('/public/storage/uploads/pics/' . $statement->background_picture) }}" alt="background picture">
                     <div class="overlay">
                         <div class="overlay-content">
                             <h3>{{ $statement->title1_sub_content }}</h3>
@@ -126,7 +126,7 @@
 
     @if(isset($homepageContent->picture1))
     <div class="image_container">
-        <img src="{{ asset('storage/uploads/pics/' . $homepageContent->picture1) }}" alt="Image">
+        <img src="{{ asset('/public/storage/uploads/pics/' . $homepageContent->picture1) }}" alt="Image">
     </div>
     @endif
 </section>
@@ -139,7 +139,7 @@
         @foreach($homepageContentTable as $table)
             <div class="image4 container">
                 <li><a href="{{ $table->url }}">{{ $table->url_name }}</a></li>
-                <img src="{{ asset('storage/' . $table->picture) }}" alt="Image">
+                <img src="{{ asset('/public/storage/' . $table->picture) }}" alt="Image">
             </div>
         @endforeach
            

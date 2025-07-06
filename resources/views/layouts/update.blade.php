@@ -11,17 +11,19 @@
 
 
          <!-- fontawsome -->
-<link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+<link href="/public/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- fontawsome back up-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 
    <!-- tailwind CSS -->
-   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
 
 
 <!-- CSS -->
 
 
-<link href="{{ asset('resources/css/update_form.css') }}" rel="stylesheet">
+<link href="{{ asset('/public/resources/css/update_form.css') }}" rel="stylesheet">
 
 
 

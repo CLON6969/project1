@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="left-section">
-        <img src="{{ asset('uploads/pics/83.jpg') }}" alt="logo">
+        <img src="{{ asset('/public/uploads/pics/83.jpg') }}" alt="logo">
         <div class="overlay">
             <h1>Kumoyo Platform</h1>
             <h2>Talk to our sales team</h2>

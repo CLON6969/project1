@@ -118,10 +118,7 @@
 
         <button type="submit">Save and Continue</button>
     </form>
-    <form action="{{ route('logout') }}" method="POST" style="text-align: right; margin-bottom: 1rem;">
-    @csrf
-    <button type="submit" class="btn btn-danger">Logout</button>
-</form>
+
 
 </div>
 @endsection

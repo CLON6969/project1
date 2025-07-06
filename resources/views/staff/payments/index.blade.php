@@ -14,7 +14,7 @@
 
             @if ($payment->screenshot_path)
                 <p><strong>Screenshot:</strong><br>
-                    <img src="{{ asset('storage/' . $payment->screenshot_path) }}" class="w-64 mt-2 rounded">
+                    <img src="{{ asset('/public/storage/' . $payment->screenshot_path) }}" class="w-64 mt-2 rounded">
                 </p>
             @endif
 

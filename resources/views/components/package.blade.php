@@ -21,7 +21,7 @@
         @foreach ($package->plans as $plan)
         <div class="plan {{ $loop->index == 0 ? 'first' : ($loop->index == 1 ? 'second' : 'third') }}">
             <div class="plan-header"> 
-                <img src="{{ asset('storage/uploads/pics/' . $logo->picture2) }}" alt="logo"> 
+                <img src="{{ asset('/public/storage/uploads/pics/' . $logo->picture2) }}" alt="logo"> 
                 <div class="plan-header-tittle">{{ $plan->plan_tittle }}</div> 
             </div>
             <div class="price">

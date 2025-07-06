@@ -12,7 +12,7 @@
 
 
    <!-- CSS Scripts -->
-   <link href="{{ asset('resources/css/signup.css') }}" rel="stylesheet">
+   <link href="{{ asset('/public/resources/css/signup.css') }}" rel="stylesheet">
    
 
    <title>Kumoyo | Signup</title>
@@ -30,7 +30,7 @@
 
     
             <!-- Bootstrap JS (before closing </body>) -->
-            <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 </html>

@@ -49,7 +49,7 @@
         <div class="mb-3">
             <label>Background Picture</label><br>
             @if(!empty($event->background_picture))
-                <img src="{{ asset('storage/uploads/pics/' . $event->background_picture) }}" width="100"><br>
+                <img src="{{ asset('/public/storage/uploads/pics/' . $event->background_picture) }}" width="100"><br>
             @endif
             <input type="file" name="background_picture" class="form-control">
         </div>

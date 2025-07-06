@@ -14,7 +14,7 @@
 
     <ul class="nav flex-column mt-2" id="sidebarMenu">
       <div class="profile-container">
-          <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('uploads/pics/default.png') }}" alt="Profile">
+          <img src="{{ $user->profile_picture ? asset('/public/storage/' . $user->profile_picture) : asset('uploads/pics/default.png') }}" alt="Profile">
       </div>
             
     </ul>
@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script>
   const sidebar = document.getElementById("sidebar");
   const toggleBtn = document.getElementById("toggleSidebar");
@@ -142,7 +142,7 @@ function createDropdown(title, icon, items) {
   
 
   menu.appendChild(createDropdown('Profile', 'fas fa-user', [
-    { label: 'View Profile', url: '/user/profile/account' },
+    { label: 'View Profile', url: 'profile/account' },
   ]));
 
 
@@ -151,18 +151,18 @@ function createDropdown(title, icon, items) {
 
 
 menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
-  { label: 'Overview', url: '/user/finance/' },
-  { label: 'Payments', url: '/user/finance/payments/' },
-  { label: 'Create General Payment', url: '/user/finance/payments/general/create' },
-  { label: 'Invoices', url: '/user/finance/invoices/' },
-  { label: 'Expenses', url: '/user/finance/expenses/' },
-  { label: 'Budget', url: '/user/finance/budgets/' },
+  { label: 'Overview', url: 'finance/' },
+  { label: 'Payments', url: 'finance/payments/' },
+  { label: 'Create General Payment', url: 'finance/payments/general/create' },
+  { label: 'Invoices', url: 'finance/invoices/' },
+  { label: 'Expenses', url: 'finance/expenses/' },
+  { label: 'Budget', url: 'finance/budgets/' },
 
 
       {
       label: 'Analytics',
       children: [
-        { label: 'Reports', url: '/user/finance/reports/' }
+        { label: 'Reports', url: 'finance/reports/' }
       ]
     }
 
@@ -170,7 +170,7 @@ menu.appendChild(createDropdown('Finance', 'fas fa-coins', [
 
 
   menu.appendChild(createDropdown('Subscriptions', 'fas fa-box-open', [
-  { label: 'All Subscriptions', url: '/user/finance/subscription' }
+  { label: 'All Subscriptions', url: 'finance/subscription' }
 ]));
 
 
